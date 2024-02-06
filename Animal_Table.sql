@@ -18,3 +18,19 @@ VALUES ('Zebra',20, 'Outside',5,3);
 GO
 
 SELECT * FROM ANIMALS;
+
+CREATE TABLE Visitors (
+    VisitorID INT PRIMARY KEY,
+    Name VARCHAR(200),
+    VisitDate DATE,
+    TicketType VARCHAR(200),
+    MembershipStatus BOOLEAN
+);
+CREATE TABLE Habitats (
+    HabitatID INT PRIMARY KEY,
+    Type VARCHAR(255),
+    Location VARCHAR(255),
+    Capacity INT,
+    ClimateSettings VARCHAR(255)
+);
+
