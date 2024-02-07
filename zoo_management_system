@@ -22,9 +22,7 @@ CREATE TABLE `administrator`  (
 INSERT INTO `administrator` VALUES (1, 'aa', '13812345678', 'male', '25', 'aaa', 'password123');
 INSERT INTO `administrator` VALUES (2, 'bb', '13987654321', 'female', '30', 'bbb', 'admin456');
 INSERT INTO `administrator` VALUES (3, 'cc', '13711112222', 'male', '28', 'ccc', 'pass987');
-INSERT INTO `administrator` VALUES (4, 'dd', '13655556666', 'female', '22', 'ddd', 'secure789');
-INSERT INTO `administrator` VALUES (5, 'ee', '13533334444', 'male', '35', 'eee', 'access567');
-INSERT INTO `administrator` VALUES (6, 'test', '1234567890', 'male', '30', 'test1', 'test123');
+INSERT INTO `administrator` VALUES (4, 'test', '1234567890', 'male', '30', 'test1', 'test123');
 
 -- ----------------------------
 -- Table structure for animal
@@ -43,8 +41,8 @@ CREATE TABLE `animal`  (
 -- Records of animal
 -- ----------------------------
 INSERT INTO `animal` VALUES (1, 'Lion', 'male', '5', 'Leo');
-INSERT INTO `animal` VALUES (2, 'Elephont', 'female', '8', 'Ella');
-INSERT INTO `animal` VALUES (3, 'Panguin', 'female', '2', 'Penny');
+INSERT INTO `animal` VALUES (2, 'Elephant', 'female', '8', 'Ella');
+INSERT INTO `animal` VALUES (3, 'Penguin', 'female', '2', 'Penny');
 INSERT INTO `animal` VALUES (4, 'Test', 'female', '4', 'Test');
 
 -- ----------------------------
@@ -80,7 +78,7 @@ CREATE TABLE `place`  (
 -- ----------------------------
 -- Records of place
 -- ----------------------------
-INSERT INTO `place` VALUES ('Panguin Zone', '40', '11:00:00 - 15:00:00');
+INSERT INTO `place` VALUES ('Penguin Zone', '40', '11:00:00 - 15:00:00');
 INSERT INTO `place` VALUES ('Elephont Zone', '30', '10:00:00 - 16:00:00');
 INSERT INTO `place` VALUES ('Lion Zone', '50', '09:00:00 - 17:00:00');
 
