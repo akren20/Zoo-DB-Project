@@ -11,6 +11,13 @@
     background-size: cover;
     position: relative;
 }
+
+.row{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
 nav{
     display: flex;
     padding: 2%;
@@ -24,7 +31,6 @@ nav img {
 .nav-links{
     flex:1;
     text-align: right;
-
 }
 
 .nav-links ul li {
@@ -149,12 +155,6 @@ p{
     padding: 10px;
 }
 
-.row{
-    margin-top: 5%;
-    display: flex;
-    justify-content: space-between;
-}
-
 .todo-col{
     flex-basis: 31%;
     background: #fff3f3;
@@ -182,16 +182,52 @@ h3{
 
 }
 
-<!--About-->
+/*<!-- About top right hand task bar-->*/
 
-.about{
-    width: 80%;
+.aboutnav-links {
+    flex:1;
+    text-align: right;
+}
+
+.aboutnav-links ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.aboutnav-links ul li a{
+    color:rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.aboutnav-links ul li::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: rgb(0, 0, 0);
+    display: block;
     margin: auto;
-    text-align: center;
+    transition: 0.5s
+}
+
+.aboutnav-links ul li:hover::after{
+    width:100%;
 }
 
 
-.about-col{
+/*<!----About HTML Page Styling--->*/
+
+.aboutpg {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+
+}
+
+.aboutpg-col{
     flex-basis: 32%;
     border-radius: 10px;
     margin-bottom: 30px;
@@ -199,14 +235,15 @@ h3{
     overflow: hidden;
 }
 
-.about-col img{
+.aboutpg-col img {
     width: 100%;
     margin-left: 25px;
-    border-top-left-radius: 20px; /* Adjust the value to change the amount of rounding */
-    border-bottom-left-radius: 20px;
+    border-radius:20px;
+    display: block;
 }
 
-.layer{
+
+.aboutpg-layer{
     background: transparent;
     height: 100%;
     width: 100%;
@@ -216,19 +253,19 @@ h3{
     transition: 0.5s;
 }
 
-.about h3 {
+.aboutpg h3 {
     color: #fff;
     font-size: 25px;
 }
 
-.about h1{
+.aboutpg h1{
     width: 80%;
     margin: auto;
     text-align: center;
-    padding-top: 2px;
+    padding-top: 0px;
 }
 
-.about p{
+.aboutpg p{
     width: 80%;
     margin: auto;
     text-align: center;
@@ -236,3 +273,41 @@ h3{
     padding-bottom: 5px;
 }
 
+.aboutpg-spacer {
+    margin-bottom: 30px;
+}
+
+
+/*<!---Tickets Webpage---->*/
+
+.tickets-links {
+    flex:1;
+    text-align: right;
+}
+
+.ticketsnav-links ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.ticketsnav-links ul li a{
+    color:rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.ticketsnav-links ul li::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: rgb(0, 0, 0);
+    display: block;
+    margin: auto;
+    transition: 0.5s
+}
+
+.ticketsnav-links ul li:hover::after{
+    width:100%;
+}
