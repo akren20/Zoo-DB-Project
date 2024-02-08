@@ -5,11 +5,11 @@ USE ZOODB;
 GO
 
 CREATE TABLE ANIMALS(
-ANIMAL_NAME VARCHAR(50) PRIMARY KEY,
-ANIMAL_AGE INT,
-ANIMAL_RES VARCHAR(50),	--where in the zoo the animals reside
-ANIMAL_FEEDFR INT,	--animals feeding frequency in hours
-ANIMAL_STAY INT	-- how long the animlas have stayed at the zoo
+    ANIMAL_NAME VARCHAR(50) PRIMARY KEY,
+    ANIMAL_AGE INT,
+    ANIMAL_RES VARCHAR(50),	--where in the zoo the animals reside
+    ANIMAL_FEEDFR INT,	--animals feeding frequency in hours
+    ANIMAL_STAY INT	-- how long the animlas have stayed at the zoo
 );
 GO
 
