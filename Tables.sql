@@ -9,15 +9,15 @@ CREATE TABLE Animals(
     Animals_age INT,
     Animals_res VARCHAR(50),	--where in the zoo the animals reside
     Animals_feedfr INT,	--animals feeding frequency in hours
-    Animals_stay INT	-- how long the animlas have stayed at the zoo
+    Animals_stay INT	-- how long the animals have stayed at the zoo
 );
 GO
 
-INSERT INTO ANIMALS (Animals_name, Animals_age, Animals_res, Animals_feedfr, Animals_stay)
-VALUES ('Zebra',20, 'Outside',5,3);
+INSERT INTO Animals (Animals_name, Animals_age, Animals_res, Animals_feedfr, Animals_stay)
+VALUES ('Zebra', 20, 'Outside',5,3);
 GO
 
-SELECT * FROM ANIMALS;
+SELECT * FROM Animals;
 
 CREATE TABLE Visitors (
     VisitorID INT PRIMARY KEY,
