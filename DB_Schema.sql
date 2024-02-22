@@ -145,6 +145,50 @@ CREATE TABLE event (
   -- FOREIGN KEY (employee_id) REFERENCES employee(employee_id)
 );
 
+ALTER TABLE `zoodb1`.`administrator` 
+ADD UNIQUE INDEX `admin_id_UNIQUE` (`admin_id` ASC) VISIBLE;
+;
+
+ALTER TABLE `zoodb1`.`animal` 
+ADD UNIQUE INDEX `animal_id_UNIQUE` (`animal_id` ASC) VISIBLE;
+;
+
+ALTER TABLE `zoodb1`.`customer` 
+ADD UNIQUE INDEX `customer_id_UNIQUE` (`customer_id` ASC) VISIBLE;
+;
+
+ALTER TABLE `zoodb1`.`employee` 
+ADD UNIQUE INDEX `employee_id_UNIQUE` (`employee_id` ASC) VISIBLE;
+;
+
+ALTER TABLE `zoodb1`.`gift_shop` 
+ADD UNIQUE INDEX `gftshop_id_UNIQUE` (`gftshop_id` ASC) VISIBLE;
+;
+
+ALTER TABLE `zoodb1`.`food_shop` 
+ADD UNIQUE INDEX `fdshop_id_UNIQUE` (`fdshop_id` ASC) VISIBLE;
+;
+
+ALTER TABLE `zoodb1`.`event` 
+ADD UNIQUE INDEX `event_id_UNIQUE` (`event_id` ASC) VISIBLE;
+;
+
+ALTER TABLE `zoodb1`.`habitat` 
+ADD UNIQUE INDEX `habitat_id_UNIQUE` (`habitat_id` ASC) VISIBLE;
+;
+
+ALTER TABLE `zoodb1`.`medical` 
+ADD UNIQUE INDEX `medical_sku_UNIQUE` (`medical_sku` ASC) VISIBLE;
+;
+
+ALTER TABLE `zoodb1`.`ticket` 
+ADD UNIQUE INDEX `ticket_id_UNIQUE` (`ticket_id` ASC) VISIBLE;
+;
+
+ALTER TABLE `zoodb1`.`employee` 
+CHANGE COLUMN `hours_worked` `hours_worked` DOUBLE NULL DEFAULT 0 ;
+
+
 -- DELIMITER //
 
 -- -- Trigger to prevent salary decrease for employees
