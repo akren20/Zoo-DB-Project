@@ -1,3 +1,4 @@
+
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -22,7 +23,9 @@ CREATE TABLE `administrator`  (
 INSERT INTO `administrator` VALUES (1, 'aa', '13812345678', 'male', '25', 'aaa', 'password123');
 INSERT INTO `administrator` VALUES (2, 'bb', '13987654321', 'female', '30', 'bbb', 'admin456');
 INSERT INTO `administrator` VALUES (3, 'cc', '13711112222', 'male', '28', 'ccc', 'pass987');
-INSERT INTO `administrator` VALUES (4, 'test', '1234567890', 'male', '30', 'test1', 'test123');
+INSERT INTO `administrator` VALUES (4, 'dd', '13655556666', 'female', '22', 'ddd', 'secure789');
+INSERT INTO `administrator` VALUES (5, 'ee', '13533334444', 'male', '35', 'eee', 'access567');
+INSERT INTO `administrator` VALUES (6, 'test', '1234567890', 'male', '30', 'test1', 'test123');
 
 -- ----------------------------
 -- Table structure for animal
@@ -41,8 +44,8 @@ CREATE TABLE `animal`  (
 -- Records of animal
 -- ----------------------------
 INSERT INTO `animal` VALUES (1, 'Lion', 'male', '5', 'Leo');
-INSERT INTO `animal` VALUES (2, 'Elephant', 'female', '8', 'Ella');
-INSERT INTO `animal` VALUES (3, 'Penguin', 'female', '2', 'Penny');
+INSERT INTO `animal` VALUES (2, 'Elephont', 'female', '8', 'Ella');
+INSERT INTO `animal` VALUES (3, 'Panguin', 'female', '2', 'Penny');
 INSERT INTO `animal` VALUES (4, 'Test', 'female', '4', 'Test');
 
 -- ----------------------------
@@ -60,8 +63,8 @@ CREATE TABLE `announcement`  (
 -- ----------------------------
 -- Records of announcement
 -- ----------------------------
-INSERT INTO `announcement` VALUES (1, 'Open Time', 'Zoo will open at 9:00 AM to 6:00 PM。', '2024-01-15 10:00:00');。
-INSERT INTO `announcement` VALUES (2, 'New Party', 'There is a new party with rare animals.', '2024-02-05 14:30:00');
+INSERT INTO `announcement` VALUES (1, 'Open Time', 'Zoo will open at 9:00 AM to 6:00 PM。', '2024-01-15 10:00:00');-- 动物园开放时间，动物园将每天上午9点至下午6点开放。
+INSERT INTO `announcement` VALUES (2, 'New Party', 'There is a new party with differnet animals.', '2024-02-05 14:30:00');-- 新展览开放，精彩新展览，展示罕见物种。
 INSERT INTO `announcement` VALUES (3, 'Test Annouomcement', 'This is a test announcement', '2024-12-25 14:32:45');
 
 -- ----------------------------
@@ -78,7 +81,7 @@ CREATE TABLE `place`  (
 -- ----------------------------
 -- Records of place
 -- ----------------------------
-INSERT INTO `place` VALUES ('Penguin Zone', '40', '11:00:00 - 15:00:00');
+INSERT INTO `place` VALUES ('Panguin Zone', '40', '11:00:00 - 15:00:00');
 INSERT INTO `place` VALUES ('Elephont Zone', '30', '10:00:00 - 16:00:00');
 INSERT INTO `place` VALUES ('Lion Zone', '50', '09:00:00 - 17:00:00');
 
@@ -122,6 +125,41 @@ INSERT INTO `ticket` VALUES (1, 'Adult Ticket', '100', NULL);
 INSERT INTO `ticket` VALUES (2, 'Child Ticket', '50', NULL);
 INSERT INTO `ticket` VALUES (3, 'Student Ticket', '30', NULL);
 INSERT INTO `ticket` VALUES (12, 'Adult Ticket', '50', '2024-12-25 14:46:29');
+
+-- ----------------------------
+-- Table structure for shop
+-- ----------------------------
+DROP TABLE IF EXISTS `shop`;
+CREATE TABLE `shop` (
+  `shop_id` int(11) NOT NULL AUTO_INCREMENT,
+  `shop_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `shop_location` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `shop_telephone` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `opening_hours` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`shop_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+-- ----------------------------
+-- Records of shop
+-- ----------------------------
+INSERT INTO `shop` VALUES (1, 'Panguin Shop', 'Panguin Zone', '1112223333', '11:00 - 17:00');
+
+-- ----------------------------
+-- Table structure for shop inventory
+-- ----------------------------
+DROP TABLE IF EXISTS `shop_inventory`;
+CREATE TABLE `shop_inventory` (
+  `inventory_id` int(11) NOT NULL AUTO_INCREMENT,
+  `shop_id` int(11) NOT NULL,
+  `product_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`inventory_id`),
+  FOREIGN KEY (`shop_id`) REFERENCES `shop` (`shop_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+-- ----------------------------
+-- Records of shop inventory
+-- ----------------------------
+INSERT INTO `shop` VALUES (1, 1, 'Panguin Toy', '50', '$19.99');
 
 -- ----------------------------
 -- Table structure for tourists
@@ -237,6 +275,41 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for AssNewshop
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `AddNewShop`;
+DELIMITER ;;
+CREATE PROCEDURE `AddNewShop`(
+    IN p_shop_name VARCHAR(50),
+    IN p_shop_location VARCHAR(100),
+    IN p_shop_telephone VARCHAR(15),
+    IN p_opening_hours VARCHAR(50)
+)
+BEGIN
+    INSERT INTO shop (shop_name, shop_location, shop_telephone, opening_hours)
+    VALUES (p_shop_name, p_shop_location, p_shop_telephone, p_opening_hours);
+END;;
+DELIMITER ;
+-- ----------------------------
+-- Procedure structure for UpdateInventory
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `UpdateInventory`;
+DELIMITER ;;
+CREATE PROCEDURE `UpdateInventory`(
+    IN p_shop_id INT,
+    IN p_product_name VARCHAR(50),
+    IN p_quantity INT,
+    IN p_price DECIMAL(10,2)
+)
+BEGIN
+    INSERT INTO shop_inventory (shop_id, product_name, quantity, price)
+    VALUES (p_shop_id, p_product_name, p_quantity, p_price)
+    ON DUPLICATE KEY UPDATE quantity = p_quantity, price = p_price;
+END;;
+DELIMITER ;
+
+
+-- ----------------------------
 -- Triggers structure for table announcement
 -- ----------------------------
 DROP TRIGGER IF EXISTS `set_announcement_date`;
@@ -248,6 +321,8 @@ CREATE TRIGGER `set_announcement_date` BEFORE INSERT ON `announcement` FOR EACH 
 END
 ;;
 delimiter ;
+
+
 
 -- ----------------------------
 -- Triggers structure for table ticket
