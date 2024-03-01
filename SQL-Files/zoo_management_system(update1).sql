@@ -40,7 +40,7 @@ CREATE TABLE `animal`  (
   `animal_health` varchar(25) NOT NULL,
   `animal_species` varchar(20) NOT NULL,
   `animal_status` varchar(25) NOT NULL,
-  `animal_name` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `animal_name` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`animal_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
@@ -245,7 +245,7 @@ CREATE TABLE `gftshop_inventory` (
 -- ----------------------------
 -- Records of shop inventory
 -- ----------------------------
-INSERT INTO `gftshop_inventory` VALUES (1, 1, 'Panguin Toy', '50', '$19.99');
+INSERT INTO `gftshop_inventory` VALUES (1, 1, 'Panguin Toy', '50', '19.99');
 
 -- ----------------------------
 -- Table structure for event
@@ -281,8 +281,18 @@ FROM administrator ;
 -- View structure for animal_view
 -- ----------------------------
 DROP VIEW IF EXISTS `animal_view`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `animal_view` AS SELECT an_id, an_type, an_sex, an_age, an_name
-FROM animal ;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `animal_view` AS 
+SELECT animal_id, 
+  animal_type, 
+  animal_gender, 
+  animal_dob, 
+  animal_name,
+  animal_species,
+  animal_status,
+  animal_health,
+  animal_habitat
+FROM animal;
+
 
 -- ----------------------------
 -- View structure for announcement_view
@@ -321,13 +331,35 @@ delimiter ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `InsertAnimal`;
 delimiter ;;
-CREATE PROCEDURE `InsertAnimal`(IN p_type VARCHAR(5),
-    IN p_sex VARCHAR(2),
-    IN p_age VARCHAR(3),
-    IN p_name VARCHAR(5))
+CREATE PROCEDURE `InsertAnimal`(
+	IN p_animal_type VARCHAR(25),
+    IN p_animal_dob date,
+    IN p_animal_habitat int,
+    IN p_animal_gender VARCHAR(10),
+    IN p_animal_health VARCHAR(25),
+    IN p_animal_species VARCHAR(20),
+    IN p_animal_status VARCHAR(25),
+    IN p_animal_name VARCHAR(25)
+)
 BEGIN
-    INSERT INTO animal (an_type, an_sex, an_age, an_name)
-    VALUES (p_type, p_sex, p_age, p_name);
+    INSERT INTO animal (
+	  animal_type, 
+      animal_dob, 
+      animal_habitat, 
+      animal_gender, 
+      animal_health, 
+      animal_species, 
+      animal_status, 
+      animal_nam)
+    VALUES (p_animal_type, 
+      p_animal_dob, 
+      p_animal_habitat, 
+      p_animal_gender, 
+      p_animal_health, 
+      p_animal_species, 
+      p_animal_status, 
+      p_animal_name
+);
 END
 ;;
 delimiter ;
