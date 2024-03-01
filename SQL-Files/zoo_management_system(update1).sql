@@ -233,7 +233,7 @@ CREATE TABLE `food_shop` (
 -- Table structure for gftshop inventory
 -- ----------------------------
 DROP TABLE IF EXISTS `gftshop_inventory`;
-CREATE TABLE `shop_inventory` (
+CREATE TABLE `gftshop_inventory` (
   `inventory_id` int(11) NOT NULL AUTO_INCREMENT,
   `gftshop_id` int(11) NOT NULL,
   `product_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
