@@ -10,11 +10,13 @@ CREATE TABLE animal (
   animal_name VARCHAR(25),
   animal_dob DATE,
   animal_habitat INT,
-  animal_gender INT,
-  animal_health INT,
+  animal_gender INT,	-- 0 = male, 1 = female
+  animal_health INT,	-- 0 = healthy, 1 = not healthy 
   animal_species VARCHAR(20),
-  medical_status INT
+  medical_status INT	--  0 = healthy
 );
+
+INSERT INTO `animal` VALUES (1, 'Leo', '2010-01-01', 1, 0 , 0 , 'Panthera Leo (Lion)', 0);
 
 -- Create the employee table
 CREATE TABLE employee (
@@ -170,6 +172,28 @@ CREATE TABLE event (
   event_employee_id INT,
   FOREIGN KEY (event_employee_id) REFERENCES employee(employee_id)
 );
+
+CREATE TABLE `administrator`  (
+  `adm_id` int(11)  PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `adm_username` varchar(10) NOT NULL,
+  `adm_phone` varchar(15) NOT NULL,
+  `adm_gender` varchar(10) NOT NULL,
+  `adm_age` int(3) NOT NULL,
+  `adm_name` varchar(5) NOT NULL,
+  `adm_password` varchar(15) NOT NULL
+);
+
+-- ----------------------------
+-- Records of administrator
+-- ----------------------------
+INSERT INTO `administrator` VALUES (1, 'aa', '13812345678', 'male', '25', 'aaa', 'password123');
+INSERT INTO `administrator` VALUES (2, 'bb', '13987654321', 'female', '30', 'bbb', 'admin456');
+INSERT INTO `administrator` VALUES (3, 'cc', '13711112222', 'male', '28', 'ccc', 'pass987');
+INSERT INTO `administrator` VALUES (4, 'dd', '13655556666', 'female', '22', 'ddd', 'secure789');
+INSERT INTO `administrator` VALUES (5, 'ee', '13533334444', 'male', '35', 'eee', 'access567');
+INSERT INTO `administrator` VALUES (6, 'test', '1234567890', 'male', '30', 'test1', 'test123');
+
+SELECT * FROM administrator;
 
 ALTER TABLE `zoodb`.`animal` 
 ADD UNIQUE INDEX `animal_id_UNIQUE` (`animal_id` ASC) VISIBLE;
