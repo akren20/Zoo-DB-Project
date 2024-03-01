@@ -71,25 +71,6 @@ CREATE TABLE `medical`(
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for announcement
--- ----------------------------
-DROP TABLE IF EXISTS `announcement`;
-CREATE TABLE `announcement`  (
-  `ann_id` int(11) NOT NULL AUTO_INCREMENT,
-  `ann_title` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `ann_content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `ann_date` datetime NULL DEFAULT NULL,
-  PRIMARY KEY (`ann_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of announcement
--- ----------------------------
-INSERT INTO `announcement` VALUES (1, 'Open Time', 'Zoo will open at 9:00 AM to 6:00 PM。', '2024-01-15 10:00:00');-- 动物园开放时间，动物园将每天上午9点至下午6点开放。
-INSERT INTO `announcement` VALUES (2, 'New Party', 'There is a new party with differnet animals.', '2024-02-05 14:30:00');-- 新展览开放，精彩新展览，展示罕见物种。
-INSERT INTO `announcement` VALUES (3, 'Test Annouomcement', 'This is a test announcement', '2024-12-25 14:32:45');
-
--- ----------------------------
 -- Table structure for customer
 -- ----------------------------
 DROP TABLE IF EXISTS `customer`;
@@ -245,10 +226,10 @@ CREATE TABLE `gftshop_inventory` (
 -- ----------------------------
 -- Records of shop inventory
 -- ----------------------------
-INSERT INTO `gftshop_inventory` VALUES (1, 1, 'Panguin Toy', '50', '19.99');
+INSERT INTO `gftshop_inventory` VALUES (1, 1, 'Penguin Toy', '50', '19.99');
 
 -- ----------------------------
--- Table structure for event
+-- Table structure for the event
 -- ----------------------------
 DROP TABLE IF EXISTS `event`;
 CREATE TABLE `event`  (
