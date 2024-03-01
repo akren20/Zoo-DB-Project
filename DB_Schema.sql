@@ -83,17 +83,17 @@ CREATE TABLE customer (
 );
     
 CREATE TABLE closure (
-		temperature double NOT NULL,
-        precipitation_chance int,
-        weather_status int PRIMARY KEY,	-- sunny, cloudy, raining
-        days_closed int,
-        days_open int ,
-        hours_open int NULL,
-        hours_closed int NULL,
-        number_visitors int NOT NULL, -- number of people in the zoo
-        number_employees INT NOT NULL, -- in the zoo
-        customer_email varchar(50) NOT NULL,
-        contact_info varchar(50) NOT NULL	-- notify a customer via email that we are closed
+	temperature double NOT NULL,
+	precipitation_chance int,
+	weather_status int PRIMARY KEY,	-- sunny, cloudy, raining
+	days_closed int,
+	days_open int ,
+	hours_open int NULL,
+	hours_closed int NULL,
+	number_visitors int NOT NULL, -- number of people in the zoo
+	number_employees INT NOT NULL, -- in the zoo
+	customer_email varchar(50) NOT NULL,
+	contact_info varchar(50) NOT NULL	-- notify a customer via email that we are closed
     );
 
 CREATE INDEX idx_customer_email ON customer(customer_email);

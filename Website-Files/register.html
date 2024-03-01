@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.boostrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+
+</head>
+
+
+<body>
+<section class="about">
+    <nav>
+        <!--<a href="index.html"><img src="C:/Users/ari_a/OneDrive/Documents/School Work/Code/Databases/Zoo_DB/Zoo-DB-Project/Website/logo.png" alt="Logo"></a>-->
+        <div class="aboutnav-links" id="navLinks">
+            <!--i class="fa fa-times" onclick="hideMenu()"></i> --X sign-->
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="tickets.html">TICKETS</a></li>
+                <li><a href="login.html">LOGIN</a></li>
+            </ul>
+        </div>
+        <!--i class="fa fa-bars" onclick="showMenu()"></i>  <--three bars-->
+    </nav>
+<section>
+
+<section class="registerpg">
+<section class = "registerpg-body">
+    <div class="wrapper">
+        <form action="">
+            <h1>Register</h1>
+
+            <div class="input-box">
+                <input type="text" placeholder="First Name" 
+                required>
+                <i class='bx bxs-cool'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="text" placeholder="Last name" 
+                required>
+                <i class='bx bxs-wink-smile'></i>   <!--boxicon logos-->
+            </div>
+
+            <div class="input-box">
+                <input type="text" placeholder="Username" 
+                required>
+                <i class='bx bxs-user'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="password" placeholder="Password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            
+            <ul>
+            <button type="submit"  class="btn" onclick="redirectToLogin()">Register</button>
+
+            <script>
+                function redirectToLogin() {
+                    window.location.href = "login.html";
+                }
+            </script>
+
+        </form>
+
+    </div>
+</section>
