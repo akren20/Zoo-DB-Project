@@ -173,25 +173,24 @@ CREATE TABLE event (
   FOREIGN KEY (event_employee_id) REFERENCES employee(employee_id)
 );
 
-CREATE TABLE `administrator`  (
-  `adm_id` int(11)  PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `adm_username` varchar(10) NOT NULL,
-  `adm_phone` varchar(15) NOT NULL,
-  `adm_gender` varchar(10) NOT NULL,
-  `adm_age` int(3) NOT NULL,
-  `adm_name` varchar(5) NOT NULL,
-  `adm_password` varchar(15) NOT NULL
+CREATE TABLE administrator  (
+  adm_id int(11)  PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  adm_username varchar(11) NOT NULL,
+  adm_phone varchar(11) NOT NULL,
+  adm_gender int NOT NULL,
+  adm_name varchar(100) NOT NULL,
+  adm_password varchar(15) NOT NULL
 );
 
 -- ----------------------------
 -- Records of administrator
 -- ----------------------------
-INSERT INTO `administrator` VALUES (1, 'aa', '13812345678', 'male', '25', 'aaa', 'password123');
-INSERT INTO `administrator` VALUES (2, 'bb', '13987654321', 'female', '30', 'bbb', 'admin456');
-INSERT INTO `administrator` VALUES (3, 'cc', '13711112222', 'male', '28', 'ccc', 'pass987');
-INSERT INTO `administrator` VALUES (4, 'dd', '13655556666', 'female', '22', 'ddd', 'secure789');
-INSERT INTO `administrator` VALUES (5, 'ee', '13533334444', 'male', '35', 'eee', 'access567');
-INSERT INTO `administrator` VALUES (6, 'test', '1234567890', 'male', '30', 'test1', 'test123');
+INSERT INTO `administrator` VALUES (1, 'aa', '13812345678', 0, 'aaa', 'password123');
+INSERT INTO `administrator` VALUES (2, 'bb', '13987654321', 1, 'bbb', 'admin456');
+INSERT INTO `administrator` VALUES (3, 'cc', '13711112222', 0, 'ccc', 'pass987');
+INSERT INTO `administrator` VALUES (4, 'dd', '13655556666', 1, 'ddd', 'secure789');
+INSERT INTO `administrator` VALUES (5, 'ee', '13533334444', 0, 'eee', 'access567');
+INSERT INTO `administrator` VALUES (6, 'test', '1234567890', 1, 'test1', 'test123');
 
 SELECT * FROM administrator;
 
