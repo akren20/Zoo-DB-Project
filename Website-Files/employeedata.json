@@ -1,0 +1,26 @@
+[ 
+    { 
+        "id": 1001, 
+        "imageUrl": "gfg.png", 
+        "firstName": "Thomas", 
+        "lastName": "Leannon", 
+        "email": "Thomas.Leannon@gfg.com", 
+        "contactNumber": "4121091095", 
+        "age": 43, 
+        "dob": "26/08/1979", 
+        "salary": 1, 
+        "address": "Address1"
+    }, 
+    { 
+        "id": 1002, 
+        "imageUrl": "gfg.png", 
+        "firstName": "Faye", 
+        "lastName": "Sauer", 
+        "email": "Faye.Sauergfg.com", 
+        "contactNumber": "4914696673", 
+        "age": 60, 
+        "dob": "28/06/1962", 
+        "salary": 2, 
+        "address": "Address2"
+    }
+]
