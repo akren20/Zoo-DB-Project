@@ -32,16 +32,18 @@
 <section class="loginpg">
 <section class = "loginpg-body">
     <div class="wrapper">
-        <form action="">
+        <form onsubmit="return authenticate(event)">
+        
+    
             <h1>Login</h1>
             <div class="input-box">
-                <input type="text" placeholder="Username" 
-                required>
+                <input type="text" placeholder="Username" id="username" required>
+            
                 <i class='bx bxs-user'></i>
             </div>
 
             <div class="input-box">
-                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Password" id="password" required>
                 <i class='bx bxs-lock-alt'></i>
             </div>
 
@@ -66,3 +68,52 @@
 
     </div>
 </section>
+
+<script>
+    function authenticate(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+        console.log("Authenticating..."); 
+       
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        console.log("Username: " + username + ", Password: " + password); 
+        // Example credentials; replace with your desired credentials
+        var correctUsername = 'e';
+        var correctPassword = 'e';
+
+        if(username === correctUsername && password === correctPassword) {
+            // Redirect to the employee portal page if credentials match
+            console.log("Credentials match, redirecting...");
+            window.location.href = 'employee-portal.html'; // Update with the actual path to your employee portal
+        } else {
+            alert('Incorrect username or password!');
+            console.log("Incorrect credentials.");
+        }
+        return false; // Prevent form from submitting normally
+    }
+</script>
+<script>
+    function authenticate(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+        console.log("Authenticating..."); 
+       
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        console.log("Username: " + username + ", Password: " + password); 
+        // Example credentials; replace with your desired credentials
+        var correctUsername = 'a';
+        var correctPassword = 'a';
+
+        if(username === correctUsername && password === correctPassword) {
+            // Redirect to the admin portal page if credentials match
+            console.log("Credentials match, redirecting...");
+            window.location.href = 'admin-portal.html'; 
+        } else {
+            alert('Incorrect username or password!');
+            console.log("Incorrect credentials.");
+        }
+        return false; // Prevent form from submitting normally
+    }
+</script>
+</body>
+</html>
