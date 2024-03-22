@@ -95,20 +95,29 @@
 <script>
     function authenticate(event) {
         event.preventDefault(); // Prevent form from submitting normally
-        console.log("Authenticating..."); 
-       
+        console.log("Authenticating...");
+
         var username = document.getElementById('username').value;
         var password = document.getElementById('password').value;
-        console.log("Username: " + username + ", Password: " + password); 
-        // Example credentials; replace with your desired credentials
-        var correctUsername = 'a';
-        var correctPassword = 'a';
+        console.log("Username: " + username + ", Password: " + password);
 
-        if(username === correctUsername && password === correctPassword) {
-            // Redirect to the admin portal page if credentials match
-            console.log("Credentials match, redirecting...");
-            window.location.href = 'admin-portal.html'; 
-        } else {
+        // Example credentials; adjust as necessary
+        var employeeUsername = 'e';
+        var employeePassword = 'e';
+        var adminUsername = 'a';
+        var adminPassword = 'a';
+
+        // Check if the credentials match the employee account
+        if(username === employeeUsername && password === employeePassword) {
+            console.log("Employee credentials match, redirecting...");
+            window.location.href = 'employee-portal.html'; // Redirect to the employee portal
+        } 
+        // Check if the credentials match the admin account
+        else if(username === adminUsername && password === adminPassword) {
+            console.log("Admin credentials match, redirecting...");
+            window.location.href = 'admin-portal.html'; // Redirect to the admin portal
+        } 
+        else {
             alert('Incorrect username or password!');
             console.log("Incorrect credentials.");
         }
