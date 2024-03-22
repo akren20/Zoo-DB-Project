@@ -71,7 +71,7 @@ nav img {
 }
 
 .text-box h1{
-    font-size: 62 px;
+    font-size: 62;
 }
 
 .text-box p{
@@ -148,8 +148,8 @@ h1{
 }
 
 p{
-    color:#777;
-    font-size: 14px;
+    color:rgb(0, 0, 0);
+    font-size: 16px;
     font-weight: 300;
     line-height: 22px;
     padding: 10px;
@@ -186,7 +186,7 @@ h3{
 
 .aboutnav-links {
     flex:1;
-    text-align: right;
+    text-align: right    
 }
 
 .aboutnav-links ul li {
@@ -271,8 +271,8 @@ h3{
     text-align: center;
     padding-top: 5px;
     padding-bottom: 5px;
-    font-size: 20px;
-    color: #777;
+    font-size: 16px;
+    color:rgb(0, 0, 0);
 }
 
 .aboutpg-spacer {
@@ -329,6 +329,17 @@ h3{
 
 }
 
+.ticketspg-t{
+    min-height: 100vh;
+    width: 100%;
+    background-image:url(tickets_graphic.png); /*alternate values were: gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)),url(rhino.jpg); picture was slightly darker*/
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    margin-bottom: 25px;
+}
+
 .ticketspg-col{
     flex-basis: 32%;
     border-radius: 10px;
@@ -342,8 +353,8 @@ h3{
     margin-left: 25px;
     border-radius:20px;
     display: block;
-}
 
+}
 
 .ticketspg-layer{
     background: transparent;
@@ -356,7 +367,7 @@ h3{
 }
 
 .ticketspg h3 {
-    color: #fff;
+    color: rgb(0, 0, 0);
     font-size: 25px;
 }
 
@@ -373,19 +384,60 @@ h3{
     text-align: center;
     padding-top: 5px;
     padding-bottom: 5px;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .ticketspg-spacer {
     margin-bottom: 30px;
 }
 
+.tickets-todo{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+}
 
-/*<!-- Tickets Webpage-->*/
+.tickets h1{
+    font-size: 36px;
+    font-weight:600;
+    padding-bottom: 20px;
+}
 
+.tickets p{
+    color:rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+    padding: 10px;
+}
 
+.tickets-todo-col{
+    flex-basis: 31%;
+    background: #fff3f3;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
 
+.tickets h3{
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0;
+}
 
+.tickets-todo-col:hover{
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
+}
+
+@media(max-width: 700px) {
+    .tickets-row{
+        flex-direction: column;
+    }
+
+}
 
 /*<!-- Login Webpage-->*/
 
@@ -550,3 +602,89 @@ h3{
     color: white ;
     margin-top: 15px;
 }
+
+
+/*Footer*/
+.content {
+    padding: 20px;
+  }
+
+  .container{
+	max-width: 1170px;
+	margin:auto;
+}
+
+.footer-row{
+	display: flex;
+	flex-wrap: wrap;
+}
+  
+.footer{
+	background-color: #4b505a;
+    padding-bottom: 35px;
+    padding-top: 20px;
+    max-height: 100%;
+    border-top: 0px;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+	font-size: 18px;
+	color: #ffffff;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+}
+.footer-col h4::before{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom: -10px;
+	background-color: #e91e63;
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+}
+.footer-col ul li:not(:last-child){
+	margin-bottom: 10px;
+}
+.footer-col ul li a{
+	font-size: 16px;
+	text-transform: capitalize;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 300;
+	color: #ffffff;
+	display: block;
+	transition: all 0.3s ease;
+}
+.footer-col ul li p:hover{
+	color: #ffffff;
+	padding-left: 8px;
+}
+.footer-col .social-links p{
+	display: inline-block;
+	height: fit-content;
+	width: 40px;
+	background-color: rgba(255,255,255,0.2);
+	margin:0 10px 10px 0;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	color: #ffffff;
+	transition: all 0.5s ease;
+}
+.footer-col .social-links p:hover{
+	color: #24262b;
+	background-color: #ffffff;
+}
+
+.unclickable {
+    color: #ffffff; /* Inherit the text color from the parent */
+    cursor: default; /* Set default cursor */
+    pointer-events: none; /* Disable pointer events */
+  }
+  
