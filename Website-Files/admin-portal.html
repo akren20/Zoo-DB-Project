@@ -74,28 +74,35 @@
 
 <div id="Medical" class="tabcontent">
     <h3>Medical</h3>
-    <p>Access medical records and status updates here.</p>
+    <p>Access medical records, status updates, and current Medical Inventory.</p>
     <div class="medical-subtabs">
         <button class="subtablinks" onclick="openSubTab(event, 'MedicalInformation')">Medical Information</button>
         <div id="MedicalInformation" class="subtabcontent">
             <h4>Medical Information</h4>
             <button class="createSku">Add New Sku</button>
-            <div class="medical_sku--list"></div>
-            <div class="medical_sku--info"></div>
+            <div class="medical-items__names--list"></div>
+            <div class="medical-items__names--item"></div>
             <div class="addSku" style="display:none;"></div>
         </div>
-    <form class="addSku_create">
-        <input type="text" name="firstName" placeholder="First Name" required>
-        <input type="text" name="lastName" placeholder="Last Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="tel" name="contactNumber" placeholder="Contact Number" required>
-        <input type="text" name="address" placeholder="Address" required>
-        <input type="date" class="addEmployee_create--dob" name="dob" required>
-        <input type="url" name="imageUrl" placeholder="Image URL">
-        <button type="submit">Add Sku</button>
+    </div>
+    <form class="addMedicalItem_create">
+        <input type="text" name="medicalCheckup" placeholder="Checkup Completed (Y or N)" required>
+        <input type="text" name="medicalStatus" placeholder="Medical Status (Good, Fair, or Poor Condition)" required>
+        <input type="text" name="vetId" placeholder="Veterinarian ID Number" required>
+        <input type="text" name="medicalID" placeholder="Animal ID" required>
+        <button type="submit">Add Medical Information</button>
     </form>
 
-
+    <form class="addMedicalItem_create">
+        <input type="text" name="medicalSku" placeholder="Sku" required>
+        <input type="email" name="medicalCost" placeholder="Cost ($)" required>
+        <input type="text" name="medicalQuantity" placeholder="Quantity" required>
+        <input type="text" name="medicalSupplier" placeholder="Supplier" required>
+        <input type="text" name="medicalLocation" placeholder="Storage Location" required>
+        <input type="date" class="addMedical_create--dob" name="Expiration Date" required>
+        <button type="submit">Add Medical Inventory</button>
+    </form>
+</div>
 <script src="medical.js"></script> 
 
 <div id="Revenue" class="tabcontent">
@@ -107,6 +114,7 @@
         <p>Details on gift shop revenue.</p>
     </div>
 </div>
+<!--add revenue.js with stylings-->
 
 <div id="CustomerInfo" class="tabcontent">
     <h3>Customer Info</h3>
@@ -120,11 +128,15 @@
     <h3>Transactions</h3>
     <p>Review transaction history and details here.</p>
 </div>
+<!--add transactions.js with stylings-->
+<!--script src="transactions.js"></script--> 
 
 <div id="Events" class="tabcontent">
     <h3>Events for the Day</h3>
     <p>View and manage today's events here.</p>
 </div>
+<!--add events.js with stylings-->
+<!--script src="events.js"></script--> 
 
 <script>
     function openTab(evt, tabName) {

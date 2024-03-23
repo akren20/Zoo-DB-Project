@@ -120,6 +120,8 @@
         display: flex; 
         flex-direction: column; 
         gap: 15px; 
+        margin-bottom: 15px;
+        margin-top: 15px;
     } 
     .addMedicalItem_create > div { 
         display: grid; 
