@@ -26,28 +26,28 @@
     .header > button:hover { 
         background-color: var(--btn-hover); 
     } 
-    .medical-items { 
+    .event-items { 
         display: flex; 
     } 
-    .medical-items > div { 
+    .event-items > div { 
         border: 1px solid black; 
         overflow-y: scroll; 
         height: 450px; 
     } 
-    .medical-items__names { 
+    .event-items__names { 
         width: 30%; 
     } 
-    .medical-items__single { 
+    .event-items__single { 
         width: 70%; 
     } 
-    .medical-items__names, 
-    .medical-items__single { 
+    .event-items__names, 
+    .event-items__single { 
         padding: 10px; 
         display: flex; 
         flex-direction: column; 
     } 
-    .medical-items__names--title, 
-    .medical-items__single--title { 
+    .event-items__names--title, 
+    .event-items__single--title { 
         padding-bottom: 10px; 
         margin-bottom: 5px; 
         text-align: center; 
@@ -55,12 +55,12 @@
     } 
     /* Initial Structural CSS - END */
     
-    /* Render all Medical Items - START */
-    .medical-items__names--list { 
+    /* Render all Event Items - START */
+    .event-items__names--list { 
         display: flex; 
         flex-direction: column; 
     } 
-    .medical-items__names--item { 
+    .event-items__names--item { 
         cursor: pointer; 
         padding: 10px 15px; 
         margin-bottom: 5px; 
@@ -71,35 +71,35 @@
         justify-content: space-between; 
         align-items: center; 
     } 
-    .medical-items__names--item:hover, 
+    .event-items__names--item:hover, 
     .selected { 
         background-color: var(--btn); 
     } 
-    /* Render all Medical Items - END */
+    /* Render all Event Items - END */
     
-    /* Render Single Medical Item - START */
-    .medical-items__single--heading { 
+    /* Render Single Event Item - START */
+    .event-items__single--heading { 
         text-align: center; 
         font-size: 25px; 
         text-transform: uppercase; 
         padding: 5px; 
     } 
-    .medical-items__single--info { 
+    .event-items__single--info { 
         display: flex; 
         flex-direction: column; 
         align-items: center; 
         gap: 10px; 
     } 
-    .medical-items__single--info > img { 
+    .event-items__single--info > img { 
         width: 250px; 
         height: 250px; 
         object-fit: contain; 
         border-radius: 50%; 
     } 
-    /* Render Single Medical Item - END */
+    /* Render Single Event Item - END */
     
-    /* Add Medical Item - START */
-    .addMedicalItem { 
+    /* Add Event Item - START */
+    .addEventItem { 
         display: none; 
         width: 100%; 
         height: 100%; 
@@ -110,7 +110,7 @@
         align-items: center; 
         background-color: var(--modal-bg); 
     } 
-    .addMedicalItem_create { 
+    .addEventItem_create { 
         width: 400px; 
         background-color: white; 
         box-shadow: 0 0 50px grey; 
@@ -123,36 +123,37 @@
         margin-bottom: 15px;
         margin-top: 15px;
     } 
-    .addMedicalItem_create > div { 
+    .addEventItem_create > div { 
         display: grid; 
         grid-template-columns: 48.1% 48.1%; 
         column-gap: 15px; 
     } 
-    .addMedicalItem_create input { 
+    .addEventItem_create input { 
         padding: 5px 10px; 
         border-radius: 5px; 
         border: 1px solid rgb(236, 236, 236); 
     } 
     
     /* removes arrows from input type='number' */
-    .addMedicalItem_create input::-webkit-outer-spin-button, 
-    .addMedicalItem_create input::-webkit-inner-spin-button { 
+    .addEventItem_create input::-webkit-outer-spin-button, 
+    .addEventItem_create input::-webkit-inner-spin-button { 
         -webkit-appearance: none; 
         margin: 0; 
     } 
-    .addMedicalItem_create--submit { 
+    .addEventItem_create--submit { 
         padding: 10px !important; 
         border-radius: 5px; 
         border: none; 
         background-color: var(--btn); 
         cursor: pointer; 
     } 
-    .addMedicalItem_create--submit:hover { 
+    .addEventItem_create--submit:hover { 
         background-color: var(--btn-hover); 
     } 
+
     
-    /* Add Medical Item - END */ `;
-  
+    /* Add Event Item - END */ `;
+   
     const styleSheet = document.createElement("style");
     styleSheet.type = "text/css";
     styleSheet.innerText = css;
@@ -160,89 +161,89 @@
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadAndDisplayMedicalItems();
+    loadAndDisplayEventItems();
 });
 
-async function loadAndDisplayMedicalItems() {
+async function loadAndDisplayEventItems() {
     try {
-        const response = await fetch('medicaldata.json');
-        const medicalItems = await response.json();
-        displayMedicalItems(medicalItems);
+        const response = await fetch('eventdata.json');
+        const eventItems = await response.json();
+        displayEventItems(eventItems);
     } catch (error) {
-        console.error('Could not load medical items:', error);
+        console.error('Could not load event items:', error);
     }
 }
 
-function displayMedicalItems(medicalItems) {
-    const medicalItemList = document.querySelector('.medical-items__names--list');
-    medicalItemList.innerHTML = ''; // Clear the list
+function displayEventItems(eventItems) {
+    const eventItemList = document.querySelector('.event-items__names--list');
+    eventItemList.innerHTML = ''; // Clear the list
 
-    medicalItems.forEach(item => {
+    eventItems.forEach(item => {
         const listItem = document.createElement('div');
-        listItem.className = 'medical-items__names--item';
+        listItem.className = 'event-items__names--item';
         // Create the content of the list item based on your JSON structure
         listItem.innerHTML = `
-            <h4>${item.medical_supplier}</h4>
-            <p>SKU: ${item.medical_sku}</p>
-            <p>Checkup Required: ${item.medical_checkup === "Y" ? "Yes" : "No"}</p>
-            <p>Cost: $${item.medical_cost.toFixed(2)}</p>
-            <p>Status: ${item.medical_status === 1 ? "Active" : "Inactive"}</p>
-            <p>Quantity: ${item.medical_quantity}</p>
-            <p>ID: ${item.medical_id}</p>
-            <p>Expiry Date: ${item.medical_expiry_date}</p>
-            <p>Storage Location: ${item.medical_storage_location}</p>
+            <h4>${item.event_supplier}</h4>
+            <p>SKU: ${item.event_sku}</p>
+            <p>Checkup Required: ${item.event_checkup === "Y" ? "Yes" : "No"}</p>
+            <p>Cost: $${item.event_cost.toFixed(2)}</p>
+            <p>Status: ${item.event_status === 1 ? "Active" : "Inactive"}</p>
+            <p>Quantity: ${item.event_quantity}</p>
+            <p>ID: ${item.event_id}</p>
+            <p>Expiry Date: ${item.event_expiry_date}</p>
+            <p>Storage Location: ${item.event_storage_location}</p>
             <p>Vet ID: ${item.vet_id}</p>
         `;
         // Append the new list item to the list
-        medicalItemList.appendChild(listItem);
+        eventItemList.appendChild(listItem);
     });
 }
 
 (async function () { 
-	const data = await fetch("medicaldata.json"); 
+	const data = await fetch("eventdata.json"); 
 	const res = await data.json(); 
 
-	let medicalItems = res; 
-	let selectedMedicalItemId = medicalItems[0].medical_sku; 
-	let selectedMedicalItem = medicalItems[0]; 
+	let eventItems = res; 
+	let selectedEventItemId = eventItems[0].event_sku; 
+	let selectedEventItem = eventItems[0]; 
 
-	const medicalItemList = document.querySelector( 
-		".medical-items__names--list"
+	const eventItemList = document.querySelector( 
+		".event-items__names--list"
 	); 
-	const medicalItemInfo = document.querySelector( 
-		".medical-items__single--info"
-	); 
-
-	// Add Medical Item - START 
-	const createMedicalItem = document.querySelector( 
-		".createMedicalItem"
-	); 
-	const addMedicalItemModal = 
-		document.querySelector(".addMedicalItem"); 
-	const addMedicalItemForm = document.querySelector( 
-		".addMedicalItem_create"
+	const eventItemInfo = document.querySelector( 
+		".event-items__single--info"
 	); 
 
-	createMedicalItem.addEventListener("click", () => { 
-		addMedicalItemModal.style.display = "flex"; 
+	// Add Event Item - START 
+	const createEventItem = document.querySelector( 
+		".createEventItem"
+	); 
+	const addEventItemModal = 
+		document.querySelector(".addEventItem"); 
+	const addEventItemForm = document.querySelector( 
+		".addEventItem_create"
+	); 
+
+	createEventItem.addEventListener("click", () => { 
+		addEventItemModal.style.display = "flex"; 
 	}); 
 
-	addMedicalItemModal.addEventListener("click", (e) => { 
-		if (e.target.className === "addMedicalItem") { 
-			addMedicalItemModal.style.display = "none"; 
+	addEventItemModal.addEventListener("click", (e) => { 
+		if (e.target.className === "addEventItem") { 
+			addEventItemModal.style.display = "none"; 
 		} 
 	}); 
 
-	addMedicalItemForm.addEventListener("submit", (e) => { 
+	addEventItemForm.addEventListener("submit", (e) => { 
 		e.preventDefault(); 
-		const formData = new FormData(addMedicalItemForm); 
+		const formData = new FormData(addEventItemForm); 
 		const values = [...formData.entries()]; 
-		let medicalItemData = {}; 
+		let eventItemData = {}; 
 		values.forEach((val) => { 
-			medicalItemData[val[0]] = val[1]; 
+			eventItemData[val[0]] = val[1]; 
 		}); 
-		medicalItemData.medical_sku = 
-			medicalItems[medicalItems.length - 1].medical_sku + 1; 
-		medicalItems.push(medicalItemData); 
+		eventItemData.event_sku = 
+			eventItems[eventItems.length - 1].event_sku + 1; 
+		eventItems.push(eventItemData); 
     });
 })();
