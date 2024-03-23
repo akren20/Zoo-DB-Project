@@ -229,7 +229,7 @@ h3{
 .aboutpg-header{
     width: 100%;
     height: auto;
-    background-image: linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)), url(Gallery/sky.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)), url(Gallery/sav.jpg);
     background-position: center;
     background-size: cover;
 }
@@ -244,7 +244,7 @@ h3{
 
 .aboutpg-todo-col{
     flex-basis: 31%;
-    background: #faf5f5;
+    background: #faf5f5d2;
     border-radius: 10px;
     margin-bottom: 5%;
     padding: 20px 12px;
@@ -357,6 +357,14 @@ h3{
     text-align: center;
 }
 
+.ticketspg-header{
+    width: 100%;
+    height: auto;
+    background-image: linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)), url(Gallery/sav.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
 .ticketspg-t{
     min-height: 100vh;
     width: 100%;
@@ -366,6 +374,9 @@ h3{
     background-repeat: no-repeat;
     position: relative;
     margin-bottom: 25px;
+    opacity: 0.75;
+    border-radius: 20px;
+    width: auto;
 }
 
 .ticketspg-col{
@@ -403,7 +414,7 @@ h3{
     width: 80%;
     margin: auto;
     text-align: center;
-    padding-top: 0px;
+    padding-top: 25px;
 }
 
 .ticketspg p{
@@ -442,7 +453,7 @@ h3{
 
 .tickets-todo-col{
     flex-basis: 31%;
-    background: #fff3f3;
+    background: #faf5f5d2;
     border-radius: 10px;
     margin-bottom: 5%;
     padding: 20px 12px;
@@ -632,7 +643,8 @@ h3{
 }
 
 
-/*Footer*/
+/*Footer styling*/
+
 .content {
     padding: 20px;
   }
@@ -648,7 +660,7 @@ h3{
 }
   
 .footer{
-	background-color: #4b505a;
+	background-color: #848da1f8;
     padding-bottom: 35px;
     padding-top: 20px;
     max-height: 100%;
@@ -671,7 +683,7 @@ h3{
 	position: absolute;
 	left:0;
 	bottom: -10px;
-	background-color: #e91e63;
+	background-color: #1e7de9;
 	height: 2px;
 	box-sizing: border-box;
 	width: 50px;
