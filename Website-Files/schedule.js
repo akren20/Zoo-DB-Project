@@ -371,13 +371,16 @@ function openSubTab(evt, subTabName) {
     evt.currentTarget.className += " active";
 }
 
-// Optionally, automatically open the first sub-tab by default
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementsByClassName("subtablinks")[0].click();
-})
+// Load data from schedule.json
+async function loadScheduleData() {
+    const response = await fetch("schedule.json");
+    const data = await response.json();
+    return data;
+}
 
-function insertEmployeeSchedules() {
-    const tableBody = document.querySelector("#scheduleTable tbody");
+// Function to insert employee schedules into the table
+function insertEmployeeSchedules(employees) {
+    const tableBody = document.getElementById("scheduleTable").querySelector("tbody");
 
     // Clear existing rows
     tableBody.innerHTML = "";
@@ -387,7 +390,7 @@ function insertEmployeeSchedules() {
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${employee.id}</td>
-            <td>${employee.name}</td>
+            <td>${employee.firstName} ${employee.lastName}</td>
             <td>${employee.schedule.Monday}</td>
             <td>${employee.schedule.Tuesday}</td>
             <td>${employee.schedule.Wednesday}</td>
@@ -399,6 +402,14 @@ function insertEmployeeSchedules() {
         tableBody.appendChild(row);
     });
 }
+
+// Call the function to insert employee schedules when the page loads
+document.addEventListener("DOMContentLoaded", async function() {
+    const employees = await loadScheduleData();
+    insertEmployeeSchedules(employees);
+});
+
+
 
 // Call the function to insert employee schedules when the page loads
 window.addEventListener("load", insertEmployeeSchedules);
