@@ -183,21 +183,22 @@ function displayEventItems(eventItems) {
         listItem.className = 'event-items__names--item';
         // Create the content of the list item based on your JSON structure
         listItem.innerHTML = `
-            <h4>${item.event_supplier}</h4>
-            <p>SKU: ${item.event_sku}</p>
-            <p>Checkup Required: ${item.event_checkup === "Y" ? "Yes" : "No"}</p>
-            <p>Cost: $${item.event_cost.toFixed(2)}</p>
-            <p>Status: ${item.event_status === 1 ? "Active" : "Inactive"}</p>
-            <p>Quantity: ${item.event_quantity}</p>
+            <h4>${item.event_name}</h4>
             <p>ID: ${item.event_id}</p>
-            <p>Expiry Date: ${item.event_expiry_date}</p>
-            <p>Storage Location: ${item.event_storage_location}</p>
-            <p>Vet ID: ${item.vet_id}</p>
+            <p>Start Date: ${item.event_start_date}</p>
+            <p>End Date: ${item.event_end_date}</p>
+            <p>Organizer: ${item.event_organizer}</p>
+            <p>Registration Deadline: ${item.event_registration_deadline}</p>
+            <p>Start Time: ${item.event_start_time}</p>
+            <p>End Time: ${item.event_end_time}</p>
+            <p>Status: ${item.event_status === 1 ? "Active" : "Inactive"}</p>
+            <p>Employee ID: ${item.event_employee_id}</p>
         `;
         // Append the new list item to the list
         eventItemList.appendChild(listItem);
     });
 }
+
 
 (async function () { 
 	const data = await fetch("eventdata.json"); 
