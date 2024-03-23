@@ -12,7 +12,7 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 
     // Load content specific to the tab
-    if (tabName === 'MedicalInformation') {
+    if (tabName === 'Medical') {
         loadCustomerData();
     }
 }

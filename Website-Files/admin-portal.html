@@ -28,29 +28,30 @@
 </div>
 
 <div id="EmployeeSchedules" class="tabcontent">
-    <h3>Employee Schedules</h3>
-    <div class="employee-subtabs">
-        <button class="subtablinks" onclick="openSubTab(event, 'EmployeeInformation')">Employee Information</button>
-        <button class="subtablinks" onclick="openSubTab(event, 'EmployeeScheduling')">Employee Scheduling</button>
-        <button class="subtablinks" onclick="openSubTab(event, 'EmployeeSalary')">Employee Salary</button>
-        <div id="EmployeeInformation" class="subtabcontent">
-            <h4>Employee Information</h4>
-            <button class="createEmployee">Add New Employee</button>
-            <div class="employees__names--list"></div>
-            <div class="employees__single--info"></div>
-            <div class="addEmployee" style="display:none;">
-    <form class="addEmployee_create">
-        <input type="text" name="firstName" placeholder="First Name" required>
-        <input type="text" name="lastName" placeholder="Last Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="tel" name="contactNumber" placeholder="Contact Number" required>
-        <input type="text" name="address" placeholder="Address" required>
-        <input type="date" class="addEmployee_create--dob" name="dob" required>
-        <input type="url" name="imageUrl" placeholder="Image URL">
-        <button type="submit">Add Employee</button>
-    </form>
+        <h3>Employee Schedules</h3>
+        <div class="employee-subtabs">
+            <button class="subtablinks" onclick="openSubTab(event, 'EmployeeInformation')">Employee Information</button>
+            <button class="subtablinks" onclick="openSubTab(event, 'EmployeeScheduling')">Employee Scheduling</button>
+            <button class="subtablinks" onclick="openSubTab(event, 'EmployeeSalary')">Employee Salary</button>
+            <div id="EmployeeInformation" class="subtabcontent">
+                <h4>Employee Information</h4>
+                <button class="createEmployee">Add New Employee</button>
+                <div class="employees__names--list"></div>
+                <div class="employees__single--info"></div>
+                <div class="addEmployee" style="display:none;"></div>
+            </div>
+        <form class="addEmployee_create">
+            <input type="text" name="firstName" placeholder="First Name" required>
+            <input type="text" name="lastName" placeholder="Last Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="contactNumber" placeholder="Contact Number" required>
+            <input type="text" name="address" placeholder="Address" required>
+            <input type="date" class="addEmployee_create--dob" name="dob" required>
+            <input type="url" name="imageUrl" placeholder="Image URL">
+            <button type="submit">Add Employee</button>
+        </form>
+    </div>
 </div>
-        </div>
         <div id="EmployeeScheduling" class="subtabcontent">
             <h4>Employee Scheduling</h4>
             <!-- Schedule timetable and roles can go here -->
@@ -61,7 +62,6 @@
             <!-- Employee salary information can go here -->
             <p>Employee salary content...</p>
         </div>
-
 
 <script src="employee.js"></script> 
 
@@ -82,7 +82,8 @@
             <button class="createSku">Add New Sku</button>
             <div class="medical_sku--list"></div>
             <div class="medical_sku--info"></div>
-            <div class="addSku" style="display:none;">
+            <div class="addSku" style="display:none;"></div>
+        </div>
     <form class="addSku_create">
         <input type="text" name="firstName" placeholder="First Name" required>
         <input type="text" name="lastName" placeholder="Last Name" required>
@@ -93,6 +94,7 @@
         <input type="url" name="imageUrl" placeholder="Image URL">
         <button type="submit">Add Sku</button>
     </form>
+
 
 <script src="medical.js"></script> 
 

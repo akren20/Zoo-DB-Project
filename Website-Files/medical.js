@@ -156,6 +156,45 @@
     document.head.appendChild(styleSheet);
 })();
 
+document.addEventListener('DOMContentLoaded', () => {
+    loadAndDisplayMedicalItems();
+});
+
+async function loadAndDisplayMedicalItems() {
+    try {
+        const response = await fetch('medicaldata.json');
+        const medicalItems = await response.json();
+        displayMedicalItems(medicalItems);
+    } catch (error) {
+        console.error('Could not load medical items:', error);
+    }
+}
+
+function displayMedicalItems(medicalItems) {
+    const medicalItemList = document.querySelector('.medical-items__names--list');
+    medicalItemList.innerHTML = ''; // Clear the list
+
+    medicalItems.forEach(item => {
+        const listItem = document.createElement('div');
+        listItem.className = 'medical-items__names--item';
+        // Create the content of the list item based on your JSON structure
+        listItem.innerHTML = `
+            <h4>${item.medical_supplier}</h4>
+            <p>SKU: ${item.medical_sku}</p>
+            <p>Checkup Required: ${item.medical_checkup === "Y" ? "Yes" : "No"}</p>
+            <p>Cost: $${item.medical_cost.toFixed(2)}</p>
+            <p>Status: ${item.medical_status === 1 ? "Active" : "Inactive"}</p>
+            <p>Quantity: ${item.medical_quantity}</p>
+            <p>ID: ${item.medical_id}</p>
+            <p>Expiry Date: ${item.medical_expiry_date}</p>
+            <p>Storage Location: ${item.medical_storage_location}</p>
+            <p>Vet ID: ${item.vet_id}</p>
+        `;
+        // Append the new list item to the list
+        medicalItemList.appendChild(listItem);
+    });
+}
+
 (async function () { 
 	const data = await fetch("medicaldata.json"); 
 	const res = await data.json(); 
