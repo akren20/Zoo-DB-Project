@@ -11,6 +11,7 @@
     background-size: cover;
 }
 
+
 nav{
     display: flex;
     padding: 2%;
@@ -118,4 +119,70 @@ h5{
 
 }
 
-/*Grassland Animals*/
+/*Arctic Animals*/
+
+.container1 {
+    margin-top: 1px;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)), url(Gallery/arctic.jpeg);
+    background-position: center;
+    background-size: cover;
+    padding-top: 0px;
+}
+
+
+.card11 {
+    background-image: url(Gallery/polar-bear.jpg);
+}
+
+.card12 {
+    background-image: url(Gallery/seal.jpg);
+}
+
+.card13 {
+    background-image: url(Gallery/snowy-owl.jpg);
+}
+
+.card14 {
+    background-image: url(Gallery/reindeer.jpg);
+}
+
+
+/*Tropical Animals*/
+
+.container2 {
+    margin-top: 1px;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)), url(Gallery/rainforest.jpg);
+    background-position: center;
+    background-size: cover;
+    padding-top: 0px;
+}
+
+.container2 h5{
+    margin-left: 5px;
+    margin-top: 200px;
+    color: aliceblue;
+    text-shadow: 0 0 5px #999;
+    font-size: 25px;
+    align-items: center;
+
+}
+
+.card21 {
+    background-image: url(Gallery/tree-frogs.jpg);
+}
+
+.card22 {
+    background-image: url(Gallery/iguana.jpg);
+}
+
+.card23 {
+    background-image: url(Gallery/jaguar.jpg);
+}
+
+.card24 {
+    background-image: url(Gallery/red-howler-monkey.jpeg);
+}
