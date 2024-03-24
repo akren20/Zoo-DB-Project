@@ -1,0 +1,14 @@
+[
+    { "customerName": "Alice", "email": "alice@example.com", "purchase": "Burger", "amount": "$10.00" },
+    { "customerName": "Bob", "email": "bob@example.com", "purchase": "Fries", "amount": "$5.00" },
+    { "customerName": "Janice", "email": "janice@example.com", "purchase": "Shake, Burger", "amount": "$13.00" },
+    { "customerName": "Luke", "email": "luke@example.com", "purchase": "Fries", "amount": "$5" },
+  
+    { "customerName": "Carl", "email": "Carl@example.com", "purchase": "Soda", "amount": "$2.00" },
+    { "customerName": "Jenny", "email": "jenny@example.com", "purchase": "Animal Feed", "amount": "$3.00" }
+  
+
+
+
+]
+  
