@@ -52,11 +52,28 @@
         </form>
     </div>
 
-        <div id="EmployeeScheduling" class="subtabcontent">
-            <h4>Employee Scheduling</h4>
-            <!-- Schedule timetable and roles can go here -->
-            <p>Schedule timetable and roles content...</p>
-        </div>
+    <div id="EmployeeScheduling" class="subtabcontent">
+        <h4>Employee Scheduling</h4>
+        <!-- Scheduling Table -->
+        <table id="scheduleTable">
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Name</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                    <th>Sunday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Employee schedules will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
         <div id="EmployeeSalary" class="subtabcontent">
             <h4>Employee Salary</h4>
             <!-- Employee salary information can go here -->
@@ -127,29 +144,97 @@
 
 <div id="Revenue" class="tabcontent">
     <h3>Revenue</h3>
-    <div>
+    <div class="revenue-subtabs">
+        <button class="subtablinks" onclick="openSubTab(event, 'FoodShops')">Food Shops</button>
+        <button class="subtablinks" onclick="openSubTab(event, 'GiftShops')">Gift Shops</button>
+    </div>
+    <div id="FoodShops" class="subtabcontent">
         <h4>Food Shop Revenue</h4>
-        <p>Details on food shop revenue.</p>
+        <div id="foodShopTable"></div>
+    </div>
+    <div id="GiftShops" class="subtabcontent">
         <h4>Gift Shop Revenue</h4>
-        <p>Details on gift shop revenue.</p>
+        <div id="giftShopTable"></div>
     </div>
 </div>
-<!--add revenue.js with stylings-->
+<script src="revenue.js"></script>
+
 
 <div id="CustomerInfo" class="tabcontent">
     <h3>Customer Info</h3>
     <p>View customer information and insights here.</p>
-    <div id="customerTable"></div>  
+    <div class="customer-subtabs">
+        <button class="subtablinks" onclick="openSubTab(event, 'CustomerTable')">View Customers</button>
+        <div id="CustomerTable" class="subtabcontent">
+            <!-- Dynamic customer table will be injected here -->
+        </div>
+    </div>
 </div>
-
-<script src="customerinfo.js"></script> 
+<script src="customerinfo.js"></script>
 
 <div id="Transactions" class="tabcontent">
     <h3>Transactions</h3>
     <p>Review transaction history and details here.</p>
+
+    <!-- Subtabs for different transaction types -->
+    <div class="transaction-subtabs">
+        <button class="subtablinks" onclick="openSubTab(event, 'FoodGiftShopTransactions')">Food and Gift Shop</button>
+        <button class="subtablinks" onclick="openSubTab(event, 'MedicalTransactions')">Medical</button>
+    </div>
+
+    <!-- Food and Gift Shop Transactions Table -->
+    <div id="FoodGiftShopTransactions" class="subtabcontent">
+        <h4>Food and Gift Shop Transactions</h4>
+        <table id="foodGiftShopTable">
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Email</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be inserted here by JavaScript -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="2">Total</th>
+                    <th id="foodGiftShopTotal"></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    
+    <!-- Medical Transactions Table -->
+    <div id="MedicalTransactions" class="subtabcontent">
+        <h4>Medical Transactions</h4>
+        <table id="medicalTable">
+            <thead>
+                <tr>
+                    <th>Supplier Name</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be inserted here by JavaScript -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Total Medical Cost</th>
+                    <th id="medicalTotal"></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 </div>
-<!--add transactions.js with stylings-->
-<!--script src="transactions.js"></script--> 
+
+<script src="transactions.js"></script>
+
+
+
+
+
+
 
 <div id="Events" class="tabcontent">
     <h3>Upcoming Events</h3>
