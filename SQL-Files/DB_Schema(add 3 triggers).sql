@@ -241,7 +241,7 @@ DROP TRIGGER IF EXISTS `UpdateAnimalHealthStatus`;
 DELIMITER ;;
 CREATE TRIGGER `UpdateAnimalHealthStatus` AFTER INSERT ON medical FOR EACH ROW BEGIN
     UPDATE animal
-    SET snimal_health = NEW.medical_status
+    SET animal_health = NEW.medical_status
     WHERE animal_id = NEW.animal_id
 END;
 
