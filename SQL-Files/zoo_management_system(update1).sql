@@ -277,8 +277,6 @@ INSERT INTO `administrator` VALUES (4, 'dd', '13655556666', 'female', '22', 'ddd
 INSERT INTO `administrator` VALUES (5, 'ee', '13533334444', 'male', '35', 'eee', 'access567');
 INSERT INTO `administrator` VALUES (6, 'test', '1234567890', 'male', '30', 'test1', 'test123');
 
-
-
 -- ----------------------------
 -- Table structure for gftshop inventory
 -- ----------------------------
@@ -296,6 +294,25 @@ CREATE TABLE `gftshop_inventory` (
 -- Records of shop inventory
 -- ----------------------------
 INSERT INTO `gftshop_inventory` VALUES (1, 1, 'Penguin Toy', '50', '19.99');
+
+
+-- ----------------------------
+-- Table structure for fdshop inventory
+-- ----------------------------
+DROP TABLE IF EXISTS `fdshop_inventory`;
+CREATE TABLE `fdshop_inventory` (
+  `inventory_id` int(11) NOT NULL AUTO_INCREMENT,
+  `fdshop_id` int(11) NOT NULL,
+  `product_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`inventory_id`),
+  FOREIGN KEY (`fdshop_id`) REFERENCES `food_shop` (`fdshop_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+-- ----------------------------
+-- Records of shop inventory
+-- ----------------------------
+INSERT INTO `fdshop_inventory` VALUES (1, 1, 'Hambuger', '50', '5.99');
 
 
 -- ----------------------------
@@ -323,6 +340,22 @@ SELECT animal_id,
   animal_status,
   animal_name
 FROM animal;
+
+-- ----------------------------
+-- View structure for customer contact
+-- ----------------------------
+DROP ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW IF EXISTS `customer_contact_view`;
+CREATE VIEW `customer_contact_view` AS
+SELECT 
+    customer_id,
+    customer_name,
+    customer_email,
+    customer_phone,
+    customer_address
+FROM 
+    customer;
+
+
 
 --------------------------------------------------------
 -- Trigger to automatically update animal health status
