@@ -3,6 +3,60 @@ SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
+-- Table structure for animal
+-- ----------------------------
+DROP TABLE IF EXISTS `animal`;
+CREATE TABLE `animal`  (
+  `animal_id` int NOT NULL AUTO_INCREMENT,
+  `animal_type` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `animal_dob` date NOT NULL,
+  `animal_habitat` int NOT NULL,
+  `animal_gender` int, -- 0 = male, 1 = female
+  `animal_health` int, -- 0 = healthy, 1 = not healthy
+  `animal_species` varchar(20) NOT NULL,
+  `animal_status` int, -- 0 = healthy
+  `animal_name` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`animal_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of animal
+-- ----------------------------
+INSERT INTO `animal` VALUES (1, 'Lion', '2010-01-01', 1, 'male','Healthy', 'Panthera Leo', 'Active', 'Leo');
+
+
+-- ----------------------------
+-- Table structure for employee
+-- ----------------------------
+DROP TABLE IF EXISTS `employee`;
+CREATE TABLE `employee`  (
+  `employee_id` int NOT NULL AUTO_INCREMENT,
+  `employee_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `employee_age` int check (employee_age >= 16),
+  `employee_gender` ENUM('Male', 'Female', 'Other') NOT NULL, --  
+  `employee_dob` date NOT NULL,
+  `employee_ssn` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci UNIQUE,
+  `employee_hours_worked` DECIMAL(10, 2) NOT NULL,
+  `employee_salary` int NOT NULL,
+  `hourly_rate` decimal(10,2),
+  `overtime_hours` decimal(10,2),
+  `overtime_pay` decimal(10,2),
+  `employee_dept` int(11) NOT NULL,
+  `employee_supe_id` int,
+  `employee_type` varchar(250),
+  `employee_role` int,
+  
+  PRIMARY KEY (`employee_id`) USING BTREE
+  FOREIGN KEY(`employee_supe_id`) REFERENCES `employee` (`employee_id`) ON DELETE CASCADE ON UPDATE CASCADE
+
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of employee
+-- ----------------------------
+
+
+-- ----------------------------
 -- Table structure for administrator
 -- ----------------------------
 DROP TABLE IF EXISTS `administrator`;
@@ -27,44 +81,25 @@ INSERT INTO `administrator` VALUES (4, 'dd', '13655556666', 'female', '22', 'ddd
 INSERT INTO `administrator` VALUES (5, 'ee', '13533334444', 'male', '35', 'eee', 'access567');
 INSERT INTO `administrator` VALUES (6, 'test', '1234567890', 'male', '30', 'test1', 'test123');
 
--- ----------------------------
--- Table structure for animal
--- ----------------------------
-DROP TABLE IF EXISTS `animal`;
-CREATE TABLE `animal`  (
-  `animal_id` int(11) NOT NULL AUTO_INCREMENT,
-  `animal_type` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `animal_dob` date NOT NULL,
-  `animal_habitat` int NOT NULL,
-  `animal_gender` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `animal_health` varchar(25) NOT NULL,
-  `animal_species` varchar(20) NOT NULL,
-  `animal_status` varchar(25) NOT NULL,
-  `animal_name` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`animal_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of animal
--- ----------------------------
-INSERT INTO `animal` VALUES (1, 'Lion', '2010-01-01', 1, 'male','Healthy', 'Panthera Leo', 'Active', 'Leo');
 
 -- ----------------------------
 -- Table structure for medical
 -- ----------------------------
 DROP TABLE IF EXISTS `medical`;
 CREATE TABLE `medical`(
-  `medical_sku` int(11) NOT NULL AUTO_INCREMENT,
-  `medical_checkup` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `meidical_cost` double NOT NULL,
+  `medical_sku` int NOT NULL AUTO_INCREMENT,
+  `medical_checkup` tinyint,
+  `medical_cost` decimal(10,2),
   `medical_status` int NOT NULL,
   `medical_quantity` int NOT NULL,
-  `animal_id` int(11) NOT NULL,
-  `medical_supplier` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `medical_expiry_date` date NOT NULL,
+  `medical_id` int NOT NULL,
+  `medical_supplier` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `medical_expiry_date` date,
   `medical_storage_location` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `vet_id` int,
   PRIMARY KEY (`medical_sku`) USING BTREE,
-  FOREIGN KEY(`animal_id`) REFERENCES `animal` (`animal_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  FOREIGN KEY(`vet_id`) REFERENCES `employee` (`employee_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY(`medical_id`) REFERENCES `animal` (`animal_id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 -- ----------------------------
 -- Records of medical
@@ -133,29 +168,6 @@ INSERT INTO `weather` (`weather_date`,`temperature`,`description`, `is_open` ) V
 
 
 
--- ----------------------------
--- Table structure for staff
--- ----------------------------
-DROP TABLE IF EXISTS `employee`;
-CREATE TABLE `employee`  (
-  `employee_id` int(11) NOT NULL AUTO_INCREMENT,
-  `employee_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `employee_age` varchar(3) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `employee_gender` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `employee_dob` date NOT NULL,
-  `employee_ssn` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `employee_worked` double NOT NULL,
-  `employee_salary` int(11) NOT NULL,
-  `employee_dept` int(11) NOT NULL,
-  `employee_supe` varchar(250),
-  `employee_role` int (11) NOT NULL,
-  
-  PRIMARY KEY (`employee_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of staff
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for ticket
