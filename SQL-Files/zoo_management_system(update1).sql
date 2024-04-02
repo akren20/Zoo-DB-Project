@@ -17,7 +17,8 @@ CREATE TABLE `animal`  (
   `animal_status` int, -- 0 = healthy
   `animal_name` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`animal_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+  FOREIGN KEY `animal_habitat` REFERENCES `habitat`(`habitat_id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of animal
@@ -49,37 +50,11 @@ CREATE TABLE `employee`  (
   PRIMARY KEY (`employee_id`) USING BTREE
   FOREIGN KEY(`employee_supe_id`) REFERENCES `employee` (`employee_id`) ON DELETE CASCADE ON UPDATE CASCADE
 
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of employee
 -- ----------------------------
-
-
--- ----------------------------
--- Table structure for administrator
--- ----------------------------
-DROP TABLE IF EXISTS `administrator`;
-CREATE TABLE `administrator`  (
-  `adm_id` int(11) NOT NULL AUTO_INCREMENT,
-  `adm_username` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `adm_phone` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `adm_gender` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `adm_age` int(3) NOT NULL,
-  `adm_name` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `adm_password` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`adm_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of administrator
--- ----------------------------
-INSERT INTO `administrator` VALUES (1, 'aa', '13812345678', 'male', '25', 'aaa', 'password123');
-INSERT INTO `administrator` VALUES (2, 'bb', '13987654321', 'female', '30', 'bbb', 'admin456');
-INSERT INTO `administrator` VALUES (3, 'cc', '13711112222', 'male', '28', 'ccc', 'pass987');
-INSERT INTO `administrator` VALUES (4, 'dd', '13655556666', 'female', '22', 'ddd', 'secure789');
-INSERT INTO `administrator` VALUES (5, 'ee', '13533334444', 'male', '35', 'eee', 'access567');
-INSERT INTO `administrator` VALUES (6, 'test', '1234567890', 'male', '30', 'test1', 'test123');
 
 
 -- ----------------------------
@@ -105,16 +80,38 @@ CREATE TABLE `medical`(
 -- Records of medical
 -- ----------------------------
 
+
+-- ----------------------------
+-- Table structure for health
+-- ----------------------------
+DROP TABLE IF EXISTS `health`;
+CREATE TABLE `health`  (
+  `health_id` int(11) AUTO_INCREMENT,
+  `animal_id` int NOT NULL,
+  `health_status` int NOT NULL,
+  `recovery_status` int,
+  `health_weight` double CHECK (health_weight >= 0),
+  `health_height` double CHECK (health_height >= 0),
+  `health_species` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`health_id`) USING BTREE
+  FOREIGN KEY('animal_id') REDERENCES `animal`(`animal_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of health
+-- ----------------------------
+
+
 -- ----------------------------
 -- Table structure for customer
 -- ----------------------------
 DROP TABLE IF EXISTS `customer`;
 CREATE TABLE `customer`  (
-  `customer_id` int(11) NOT NULL AUTO_INCREMENT,
-  `customer_telephone` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `customer_id` int NOT NULL AUTO_INCREMENT,
+  `customer_phone` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci UNIQUE,
   `membership_type` int NOT NULL,
-  `customer_age` int NOT NULL,
-  `customer_email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `customer_age` int CHECK (customer_age >= 0),
+  `customer_email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL UNIQUE,
   `customer_address` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `customer_name` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY(`customer_id`) USING BTREE
@@ -124,81 +121,66 @@ CREATE TABLE `customer`  (
 -- ----------------------------
 
 
+
 -- ----------------------------
--- Table structure for habitat
+-- Table structure for closure
 -- ----------------------------
-DROP TABLE IF EXISTS `habitat`;
-CREATE TABLE `habitat`  (
-  `habitat_id` int(11) NOT NULL AUTO_INCREMENT,
-  `habitat_size` double NOT NULL,
-  `habitat_location` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `habitat_temp` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `habitat_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `habitat_condition` int(11) NOT NULL,
-  `habitat_humidity` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `habitat_security` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `habitat_status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`habitat_id`) USING BTREE
+DROP TABLE IF EXISTS `closure`;
+CREATE TABLE `closure` (
+  `closure_id` int  NOT NULL AUTO_INCREMENT,
+  `temperature` double NOT NULL,
+  `precipitation_chance` int CHECK (precipitation_change >= 0 AND precipitation_change <= 100),
+  `weather_status` ENUM(`sunny`, `cloudy`, `raining`),
+  `days_closed` int,
+  `days_open` int,
+  `hours_open` int,
+  `hours_closed` int,
+  `number_visitors` int NOT NULL,
+  `number_employees` int NOT NULL,
+  `contact_email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`closure_id
+  FOREIGN KEY (`customer_email`) REFERENCES `customer`(`customer_email`)  ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+-- ----------------------------
+-- Records of closure
+-- ----------------------------
+
+
+
+
+-- ----------------------------
+-- Table structure for transaction
+-- ----------------------------
+DROP TABLE IF EXISTS `transaction`;
+CREATE TABLE `transaction`  (
+  `transaction_id` int NOT NULL AUTO_INCREMENT,
+  `transaction_type` ENUM(`ticket`, `food`, `gift`) NOT NULL,
+  `transaction_time` datetime NOT NULL,
+  `transaction_price` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`transaction_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Records of habitat
+-- Records of transaction
 -- ----------------------------
-
--- ----------------------------
--- Table structure for weather
--- ----------------------------
-DROP TABLE IF EXISTS `weather`;
-CREATE TABLE `weather` (
-	`weather_id` int(11)  NOT NULL AUTO_INCREMENT,
-    `weather_date` datetime NULL DEFAULT NULL,
-    `temperature` float NOT NULL,
-    `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-    `is_open` tinyint(1) NOT NULL,
-    PRIMARY KEY (`weather_id`)
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
--- ----------------------------
--- Records of place
--- ----------------------------
-INSERT INTO `weather` (`weather_date`,`temperature`,`description`, `is_open` ) VALUES
-('2024-02-20', 25, 'Sunny', 1),
-('2024-02-21', 15, 'Rainy', 0),
-('2024-02-22', 22, 'Cloudy', 1),
-('2024-02-23', 35, 'HOT', 1);
 
 
 
-
--- ----------------------------
--- Table structure for ticket
--- ----------------------------
-DROP TABLE IF EXISTS `ticket`;
-CREATE TABLE `ticket`  (
-  `ticket_id` int(11) NOT NULL AUTO_INCREMENT,
-  `ticket_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `ticket_time`datetime NOT NULL,
-  `ticket_price` double NOT NULL,
-  `ticket_date` date NOT NULL,
-  PRIMARY KEY (`ticket_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of ticket
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for gift shop
 -- ----------------------------
 DROP TABLE IF EXISTS `gift_shop`;
 CREATE TABLE `gift_shop` (
-  `gftshop_id` int(11) NOT NULL AUTO_INCREMENT,
-  `gftshop_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `gftshop_location` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `gftshop_capacity` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `gftshop_inventory` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `gftshop_contact_info` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `gftshop_manager_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `gftshop_id` int NOT NULL AUTO_INCREMENT,
+  `gftshop_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `gftshop_location` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `gftshop_capacity` int,
+  `gftshop_inventory` int,
+  `gftshop_contact_info` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `gftshop_manager_id` int,
   PRIMARY KEY (`gftshop_id`)
+  FOREIGN KEY(`gftshop_manager_id`) REFERENCES `employee`(`employee_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 -- ----------------------------
 -- Records of gift shop
@@ -209,18 +191,93 @@ CREATE TABLE `gift_shop` (
 -- ----------------------------
 DROP TABLE IF EXISTS `food_shop`;
 CREATE TABLE `food_shop` (
-  `fdshop_id` int(11) NOT NULL AUTO_INCREMENT,
-  `fdshop_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `fdshop_location` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `fdshop_capacity` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `fdshop_inventory` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `fdshop_contact_info` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `fdshop_manager_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `fdshop_id` int NOT NULL AUTO_INCREMENT,
+  `fdshop_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `fdshop_location` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `fdshop_capacity` int,
+  `fdshop_inventory` int,
+  `fdshop_contact_info` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `fdshop_manager_id` int,
   PRIMARY KEY (`fdshop_id`)
+  FOREIGN KEY (`fdshop_manager_id`) REFERENCES `employee`(`employee_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 -- ----------------------------
 -- Records of shop
 -- ----------------------------
+
+
+
+
+-- ----------------------------
+-- Table structure for habitat
+-- ----------------------------
+DROP TABLE IF EXISTS `habitat`;
+CREATE TABLE `habitat`  (
+  `habitat_id` int NOT NULL AUTO_INCREMENT,
+  `habitat_size` double,
+  `habitat_location` int,
+  `habitat_temp` double NOT NULL,
+  `habitat_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `habitat_condition` int,
+  `habitat_humidity` double,
+  `habitat_security` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`habitat_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of habitat
+-- ----------------------------
+
+
+
+-- ----------------------------
+-- Table structure for the event
+-- ----------------------------
+DROP TABLE IF EXISTS `event`;
+CREATE TABLE `event`  (
+  `event_id` int NOT NULL AUTO_INCREMENT,
+  `event_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `event_start_date` datetime NOT NULL,
+  `event_end_date` datetime NOT NULL,
+  `event_organizer` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `event_registration_deadline` date NOT NULL,
+  `event_status` int NOT NULL,
+  `event_employee_id` int(11) NOT NULL,
+  PRIMARY KEY (`event_id`) USING BTREE,
+  FOREIGN KEY(`event_employee_id`) REFERENCES `employee` (`employee_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+
+-- ----------------------------
+-- Records of event
+-- ----------------------------
+
+
+
+-- ----------------------------
+-- Table structure for administrator
+-- ----------------------------
+DROP TABLE IF EXISTS `administrator`;
+CREATE TABLE `administrator`  (
+  `adm_id` int NOT NULL AUTO_INCREMENT,
+  `adm_username` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL UNIQUE,
+  `adm_phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL UNIQUE,
+  `adm_gender` ENUM(`Male`, `Female`, `Other`) NOT NULL,
+  `adm_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `adm_password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`adm_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of administrator
+-- ----------------------------
+INSERT INTO `administrator` VALUES (1, 'aa', '13812345678', 'male', '25', 'aaa', 'password123');
+INSERT INTO `administrator` VALUES (2, 'bb', '13987654321', 'female', '30', 'bbb', 'admin456');
+INSERT INTO `administrator` VALUES (3, 'cc', '13711112222', 'male', '28', 'ccc', 'pass987');
+INSERT INTO `administrator` VALUES (4, 'dd', '13655556666', 'female', '22', 'ddd', 'secure789');
+INSERT INTO `administrator` VALUES (5, 'ee', '13533334444', 'male', '35', 'eee', 'access567');
+INSERT INTO `administrator` VALUES (6, 'test', '1234567890', 'male', '30', 'test1', 'test123');
+
+
 
 -- ----------------------------
 -- Table structure for gftshop inventory
@@ -240,34 +297,15 @@ CREATE TABLE `gftshop_inventory` (
 -- ----------------------------
 INSERT INTO `gftshop_inventory` VALUES (1, 1, 'Penguin Toy', '50', '19.99');
 
--- ----------------------------
--- Table structure for the event
--- ----------------------------
-DROP TABLE IF EXISTS `event`;
-CREATE TABLE `event`  (
-  `event_id` int(11) NOT NULL AUTO_INCREMENT,
-  `event_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `event_start_date` date NOT NULL,
-  `event_end_date` date NOT NULL,
-  `event_organizer` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `event_registration_deadline` date NOT NULL,
-  `event_start_time` time NOT NULL,
-  `event_end_time` time NOT NULL,
-  `event_status` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `employee_id` int(11) NOT NULL,
-  PRIMARY KEY (`event_id`) USING BTREE,
-  FOREIGN KEY(`employee_id`) REFERENCES `employee` (`employee_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
-
--- ----------------------------
--- Records of event
--- ----------------------------
 
 -- ----------------------------
 -- View structure for admin_view
 -- ----------------------------
 DROP VIEW IF EXISTS `admin_view`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `admin_view` AS SELECT adm_id, adm_username, adm_telephone, adm_sex, adm_age, adm_name
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `admin_view` AS 
+SELECT adm_id, 
+  adm_username, 
+  adm_name
 FROM administrator ;
 
 -- ----------------------------
@@ -277,184 +315,45 @@ DROP VIEW IF EXISTS `animal_view`;
 CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `animal_view` AS 
 SELECT animal_id, 
   animal_type, 
-  animal_gender, 
   animal_dob, 
-  animal_name,
+  animal_habitat, 
+  animal_gender,
+  animal_health,
   animal_species,
   animal_status,
-  animal_health,
-  animal_habitat
+  animal_name
 FROM animal;
 
-
--- ----------------------------
--- View structure for announcement_view
--- ----------------------------
-DROP VIEW IF EXISTS `announcement_view`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `announcement_view` AS SELECT ann_id, ann_title, ann_content, ann_date
-FROM announcement ;
-
--- ----------------------------
--- View structure for place_view
--- ----------------------------
-DROP VIEW IF EXISTS `place_view`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `place_view` AS SELECT pl_type, pl_capacity, pl_time
-FROM place ;
-
--- ----------------------------
--- Procedure structure for InsertAdministrator
--- ----------------------------
-DROP PROCEDURE IF EXISTS `InsertAdministrator`;
-delimiter ;;
-CREATE PROCEDURE `InsertAdministrator`(IN p_username VARCHAR(10),
-    IN p_telephone VARCHAR(15),
-    IN p_sex VARCHAR(2),
-    IN p_age VARCHAR(3),
-    IN p_name VARCHAR(5),
-    IN p_password VARCHAR(15))
-BEGIN
-    INSERT INTO administrator (adm_username, adm_telephone, adm_sex, adm_age, adm_name, adm_password)
-    VALUES (p_username, p_telephone, p_sex, p_age, p_name, p_password);
-END
-;;
-delimiter ;
-
--- ----------------------------
--- Procedure structure for InsertAnimal
--- ----------------------------
-DROP PROCEDURE IF EXISTS `InsertAnimal`;
-delimiter ;;
-CREATE PROCEDURE `InsertAnimal`(
-	IN p_animal_type VARCHAR(25),
-    IN p_animal_dob date,
-    IN p_animal_habitat int,
-    IN p_animal_gender VARCHAR(10),
-    IN p_animal_health VARCHAR(25),
-    IN p_animal_species VARCHAR(20),
-    IN p_animal_status VARCHAR(25),
-    IN p_animal_name VARCHAR(25)
-)
-BEGIN
-    INSERT INTO animal (
-	  animal_type, 
-      animal_dob, 
-      animal_habitat, 
-      animal_gender, 
-      animal_health, 
-      animal_species, 
-      animal_status, 
-      animal_nam)
-    VALUES (p_animal_type, 
-      p_animal_dob, 
-      p_animal_habitat, 
-      p_animal_gender, 
-      p_animal_health, 
-      p_animal_species, 
-      p_animal_status, 
-      p_animal_name
-);
-END
-;;
-delimiter ;
-
--- ----------------------------
--- Procedure structure for InsertAnnouncement
--- ----------------------------
-DROP PROCEDURE IF EXISTS `InsertAnnouncement`;
-delimiter ;;
-CREATE PROCEDURE `InsertAnnouncement`(IN p_title VARCHAR(100),
-    IN p_content TEXT,
-    IN p_date DATETIME)
-BEGIN
-    INSERT INTO announcement (ann_title, ann_content, ann_date)
-    VALUES (p_title, p_content, p_date);
-END
-;;
-delimiter ;
-
--- ----------------------------
--- Procedure structure for InsertPlace
--- ----------------------------
-DROP PROCEDURE IF EXISTS `InsertPlace`;
-delimiter ;;
-CREATE PROCEDURE `InsertPlace`(IN p_type VARCHAR(5),
-    IN p_capacity VARCHAR(15),
-    IN p_time VARCHAR(50))
-BEGIN
-    INSERT INTO place (pl_type, pl_capacity, pl_time)
-    VALUES (p_type, p_capacity, p_time);
-END
-;;
-delimiter ;
-
--- ----------------------------
--- Procedure structure for AssNewshop
--- ----------------------------
-DROP PROCEDURE IF EXISTS `AddNewShop`;
+--------------------------------------------------------
+-- Trigger to automatically update animal health status
+--------------------------------------------------------
+DROP TRIGGER IF EXISTS `UpdateAnimalHealthStatus`;
 DELIMITER ;;
-CREATE PROCEDURE `AddNewShop`(
-    IN p_shop_name VARCHAR(50),
-    IN p_shop_location VARCHAR(100),
-    IN p_shop_telephone VARCHAR(15),
-    IN p_opening_hours VARCHAR(50)
-)
-BEGIN
-    INSERT INTO shop (shop_name, shop_location, shop_telephone, opening_hours)
-    VALUES (p_shop_name, p_shop_location, p_shop_telephone, p_opening_hours);
-END;;
-DELIMITER ;
--- ----------------------------
--- Procedure structure for UpdateInventory
--- ----------------------------
-DROP PROCEDURE IF EXISTS `UpdateInventory`;
-DELIMITER ;;
-CREATE PROCEDURE `UpdateInventory`(
-    IN p_shop_id INT,
-    IN p_product_name VARCHAR(50),
-    IN p_quantity INT,
-    IN p_price DECIMAL(10,2)
-)
-BEGIN
-    INSERT INTO shop_inventory (shop_id, product_name, quantity, price)
-    VALUES (p_shop_id, p_product_name, p_quantity, p_price)
-    ON DUPLICATE KEY UPDATE quantity = p_quantity, price = p_price;
-END;;
+CREATE TRIGGER `UpdateAnimalHealthStatus` AFTER INSERT ON medical FOR EACH ROW BEGIN
+    UPDATE animal
+    SET animal_health = NEW.medical_status
+    WHERE animal_id = NEW.animal_id
+END;
+
 DELIMITER ;
 
+------------------------------------
+-- Trigger to log data changes
+------------------------------------
+DROP TRIGGER IF EXISTS `LogAdminChanges`;
+DELIMITER ;;
+CREATE TRIGGER `LogAdminChanges` AFTER UPDATE ON administrator FOR EACH ROW BEGIN
+	INSERT INTO admin_changes_log(admin_id, operation_type, operation_time)
+    VALUES (NEW.adm_id, 'UPDATE', NOW())
+END;
+DELIMITER ;
 
--- ----------------------------
--- Triggers structure for table announcement
--- ----------------------------
-DROP TRIGGER IF EXISTS `set_announcement_date`;
-delimiter ;;
-CREATE TRIGGER `set_announcement_date` BEFORE INSERT ON `announcement` FOR EACH ROW BEGIN
-    IF NEW.ann_date IS NULL THEN
-        SET NEW.ann_date = NOW();
-    END IF;
-END
-;;
-delimiter ;
-
-
-
--- ----------------------------
--- Triggers structure for table ticket
--- ----------------------------
-DROP TRIGGER IF EXISTS `update_ticket_last_modified`;
-delimiter ;;
-CREATE TRIGGER `update_ticket_last_modified` BEFORE INSERT ON `ticket` FOR EACH ROW BEGIN
-    SET NEW.last_modified = NOW();
-END
-;;
-delimiter ;
-
--- ----------------------------
--- Triggers structure for table tourists
--- ----------------------------
-DROP TRIGGER IF EXISTS `update_tourist_last_modified`;
-delimiter ;;
-CREATE TRIGGER `update_tourist_last_modified` AFTER UPDATE ON `tourists` FOR EACH ROW UPDATE tourists SET last_modified = NOW() WHERE tou_id = NEW.tou_id
-;;
-delimiter ;
-
-SET FOREIGN_KEY_CHECKS = 1;
+--------------------------------------------------------
+-- Trigger to automatically calculate employee salaries
+--------------------------------------------------------
+DROP TRIGGER IF EXISTS `CalculateEmployeeSalary`;
+DELIMITER ;;
+CREATE TRIGGER `CalculateEmployeeSalary` AFTER UPDATE ON employee FOR EACH ROW BEGIN
+  SET NEW.employee_salary = NEW.employee_hours_worked * NEW.employee_hourly_rate;
+END;
+DELIMITER ;
