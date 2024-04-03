@@ -125,15 +125,23 @@ function populateTable(tableId, data, isMedical = false) {
 document.addEventListener('DOMContentLoaded', populateTables);
 
 // Subtab switching logic
-function openSubTab(evt, subTabName) {
-    const subtabcontent = document.getElementsByClassName('subtabcontent');
-    for (let i = 0; i < subtabcontent.length; i++) {
-        subtabcontent[i].style.display = 'none';
+function openSubTabTransactions(evt, subTabName) {
+    // Similar logic as 'openTab' for handling display of subtab content
+    var i, subtabcontent, subtablinks;
+    subtabcontent = document.getElementsByClassName("subtabcontent-transactions");
+    for (i = 0; i < subtabcontent.length; i++) {
+        subtabcontent[i].style.display = "none";
     }
-    const subtablinks = document.getElementsByClassName('subtablinks');
-    for (let i = 0; i < subtablinks.length; i++) {
-        subtablinks[i].className = subtablinks[i].className.replace(' active', '');
+    subtablinks = document.getElementsByClassName("subtablinks-transactions");
+    for (i = 0; i < subtablinks.length; i++) {
+        subtablinks[i].className = subtablinks[i].className.replace(" active", "");
     }
-    document.getElementById(subTabName).style.display = 'block';
-    evt.currentTarget.className += ' active';
+    document.getElementById(subTabName).style.display = "block";
+    evt.currentTarget.className += " active";
+
+    if (subTabName === 'FoodGiftShopTransactions' || subTabName === 'MedicalTransactions') {
+        // Fetch and populate tables when either FoodGiftShopTransactions or MedicalTransactions subtab is selected
+        populateTables();
+    }
 }
+
