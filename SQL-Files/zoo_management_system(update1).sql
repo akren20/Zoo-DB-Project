@@ -355,7 +355,133 @@ SELECT
 FROM 
     customer;
 
+-- ----------------------------
+-- View structure for Employee Details
+-- ----------------------------
+DROP VIEW IF EXISTS `employee_details_view`;
+CREATE VIEW `employee_details_view` AS
+SELECT 
+    employee_id,
+    employee_name,
+    employee_age,
+    CASE 
+        WHEN employee_gender = 0 THEN 'Male' 
+        ELSE 'Female' 
+    END AS gender,
+    employee_dob,
+    employee_salary,
+    hours_worked,
+    hourly_rate,
+    weekly_hours
+FROM 
+    employee;
 
+-- ----------------------------
+-- View structure for Event Overview
+-- ----------------------------
+DROP VIEW IF EXISTS `event_overview_view`;
+CREATE VIEW `event_overview_view` AS
+SELECT 
+    event_id,
+    event_name,
+    event_start_date,
+    event_end_date,
+    event_start_time,
+    event_end_time,
+    event_status
+FROM 
+    event;
+
+-- ----------------------------
+-- View structure for animal_health_report_view
+-- ----------------------------
+DROP VIEW IF EXISTS `animal_health_report_view`;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `animal_health_report_view` AS 
+SELECT 
+    a.animal_id,
+    a.animal_name,
+    a.animal_species,
+    CASE 
+        WHEN a.animal_health = 0 THEN 'Healthy'
+        WHEN a.animal_health = 1 THEN 'Not Healthy'
+        ELSE 'Unknown'
+    END AS health_status,
+    m.medical_checkup,
+    m.medical_cost,
+    m.medical_status,
+    m.medical_expiry_date AS next_checkup_due
+FROM 
+    animal a
+INNER JOIN 
+    medical m ON a.animal_id = m.medical_id;
+
+DROP PROCEDURE IF EXISTS `AddEmployee`;
+delimiter ;;
+CREATE PROCEDURE 'AddEmployee'(
+    IN p_name VARCHAR(100),
+    IN p_age INT,
+    IN p_gender INT,
+    IN p_dob DATE,
+    IN p_ssn VARCHAR(11),
+    IN p_dept INT)
+BEGIN
+    INSERT INTO employee (employee_name, employee_age, employee_gender, employee_dob, employee_ssn, employee_dept)
+    VALUES (p_name, p_age, p_gender, p_dob, p_ssn, p_dept);
+END;
+--Add employee.
+--exp: CALL AddEmployee('xxx xxx', 30, 0, '1999-01-01', '123-45-6789'. 1);
+
+
+DROP PROCEDURE IF EXISTS `DeleteAnimal`;
+delimiter ;;
+CREATE PROCEDURE 'DeleteAnimal'(
+    IN p_animal_id INT)
+BEGIN
+    DELETE FROM animal
+    WHERE animal_id = p_animal_id;
+END;
+--delete animal with animal_id
+--exp: CALL DeleteAnimal(2)
+
+DROP PROCEDURE IF EXISTS `GenerateMonthlyReport`;
+delimiter ;;
+CREATE PROCEDURE 'GenerateMonthlyReport'(
+    IN p_month INT,
+    IN p_year INT)
+BEGIN
+    SELECT a.animal_id, a.animal_name, m.medical_checkup, m.medical_status
+    FROM animal a
+    JOIN medical m ON a.animal_id = m.medical_id
+    WHERE MONTH(m.medical_checkup) = p_month AND YEAR(m.medical_checkup) = p_year;
+END;
+
+
+--Generate monthly report of animal's health.
+--exp: CALL GenerateMonthlyReport(4,2023);
+
+-- ----------------------------
+-- Procedure structure for InsertAnimal
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `InsertAnimal`;
+delimiter ;;
+CREATE PROCEDURE `InsertAnimal`(
+    IN p_animal_name VARCHAR(25),
+    IN p_animal_dob DATE,
+    IN p_animal_habitat INT,
+    IN p_animal_gender INT,
+    IN p_animal_health INT,
+    IN p_animal_species VARCHAR(20),
+    IN p_medical_status INT)
+BEGIN
+    INSERT INTO animal (animal_name, animal_dob, animal_habitat, animal_gender, animal_health, animal_species, medical_status)
+    VALUES (p_animal_name, p_animal_dob, p_animal_habitat, p_animal_gender, p_animal_health, p_animal_species, p_medical_status);
+END
+;;
+delimiter ;
+
+--This procedure accepts the animal's name, birth date, habitat number, gender, health status, species, and 
+--medical status as input parameters and inserts this into the animal table.
+--exp: CALL InsertAnimal('Zebra','2024-03-03',2,0,0,'Equus quagga', 0);
 
 --------------------------------------------------------
 -- Trigger to automatically update animal health status
