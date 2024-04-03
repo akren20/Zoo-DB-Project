@@ -1,0 +1,122 @@
+[
+    {
+        "medical_sku": 1001,
+        "medical_checkup": "Y",
+        "medical_cost": 120.50,
+        "medical_status": 1,
+        "medical_quantity": 50,
+        "medical_id": 2001,
+        "medical_supplier": "HealthyPets Inc.",
+        "medical_expiry_date": "06-30-2025",
+        "medical_storage_location": "Storage Room A",
+        "vet_id": 3001
+    },
+    {
+        "medical_sku": 1002,
+        "medical_checkup": "N",
+        "medical_cost": 75.80,
+        "medical_status": 0,
+        "medical_quantity": 100,
+        "medical_id": 2002,
+        "medical_supplier": "Vet Supplies Co.",
+        "medical_expiry_date": "12-15-2024",
+        "medical_storage_location": "Storage Room B",
+        "vet_id": 3002
+    },
+    {
+        "medical_sku": 1003,
+        "medical_checkup": "Y",
+        "medical_cost": 200.25,
+        "medical_status": 1,
+        "medical_quantity": 30,
+        "medical_id": 2003,
+        "medical_supplier": "Animal Health Ltd.",
+        "medical_expiry_date": "11-20-2024",
+        "medical_storage_location": "Storage Room C",
+        "vet_id": 3003
+    },
+    {
+        "medical_sku": 1004,
+        "medical_checkup": "N",
+        "medical_cost": 90.00,
+        "medical_status": 0,
+        "medical_quantity": 80,
+        "medical_id": 2004,
+        "medical_supplier": "PetCare Solutions",
+        "medical_expiry_date": "03-15-2025",
+        "medical_storage_location": "Storage Room D",
+        "vet_id": 3004
+    },
+    {
+        "medical_sku": 1005,
+        "medical_checkup": "Y",
+        "medical_cost": 150.00,
+        "medical_status": 1,
+        "medical_quantity": 20,
+        "medical_id": 2005,
+        "medical_supplier": "Animal Wellness Co.",
+        "medical_expiry_date": "08-10-2025",
+        "medical_storage_location": "Storage Room E",
+        "vet_id": 3005
+    },
+    {
+        "medical_sku": 1006,
+        "medical_checkup": "N",
+        "medical_cost": 80.50,
+        "medical_status": 0,
+        "medical_quantity": 60,
+        "medical_id": 2006,
+        "medical_supplier": "PetVet Supplies",
+        "medical_expiry_date": "10-25-2024",
+        "medical_storage_location": "Storage Room F",
+        "vet_id": 3006
+    },
+    {
+        "medical_sku": 1007,
+        "medical_checkup": "Y",
+        "medical_cost": 135.75,
+        "medical_status": 1,
+        "medical_quantity": 45,
+        "medical_id": 2007,
+        "medical_supplier": "HealthyPets Inc.",
+        "medical_expiry_date": "05-05-2025",
+        "medical_storage_location": "Storage Room G",
+        "vet_id": 3007
+    },
+    {
+        "medical_sku": 1008,
+        "medical_checkup": "N",
+        "medical_cost": 95.25,
+        "medical_status": 0,
+        "medical_quantity": 70,
+        "medical_id": 2008,
+        "medical_supplier": "Vet Supplies Co.",
+        "medical_expiry_date": "09-20-2024",
+        "medical_storage_location": "Storage Room H",
+        "vet_id": 3008
+    },
+    {
+        "medical_sku": 1009,
+        "medical_checkup": "Y",
+        "medical_cost": 180.00,
+        "medical_status": 1,
+        "medical_quantity": 25,
+        "medical_id": 2009,
+        "medical_supplier": "Animal Health Ltd.",
+        "medical_expiry_date": "01-30-2025",
+        "medical_storage_location": "Storage Room I",
+        "vet_id": 3009
+    },
+    {
+        "medical_sku": 1010,
+        "medical_checkup": "N",
+        "medical_cost": 85.00,
+        "medical_status": 0,
+        "medical_quantity": 90,
+        "medical_id": 2010,
+        "medical_supplier": "PetCare Solutions",
+        "medical_expiry_date": "07-15-2024",
+        "medical_storage_location": "Storage Room J",
+        "vet_id": 3010
+    }
+]
