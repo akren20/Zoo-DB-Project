@@ -1,0 +1,11 @@
+Hello team, 
+
+Please do not delete the "Michael_commits" branch, so that I can upload my files in one place, without having to remake a new branch each time. 
+
+Obviously this allows you to merge my commits, but this way I can send all my stuff while keeping it organized. 
+
+
+Thanks. 
+
+
+
