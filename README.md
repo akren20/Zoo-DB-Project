@@ -8,6 +8,8 @@ Enjoy!
 ------------------------------------------
 EDITS:
 
+Team, edit this as you see fit. Some terms like Employee vs. Staff may be changed in the tables, and we may want to reflect that here. 
+
 
 
 # Zoo Database - COSC 3380 Spring 2024
