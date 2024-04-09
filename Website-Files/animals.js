@@ -183,19 +183,21 @@ function displayAnimalItems(animalItems) {
         listItem.className = 'animal-items__names--item';
         // Create the content of the list item based on your JSON structure
         listItem.innerHTML = `
-            <h4>${item.animal_name}</h4>
-            <p>ID: ${item.animal_id}</p>
+            <h4>ID: ${item.animal_id}</h4>
+            <p>Animal Type: ${item.animal_type}</p>
             <p>Date of Birth: ${item.animal_dob}</p>
             <p>Habitat: ${item.animal_habitat}</p>
             <p>Gender: ${item.animal_gender === 0 ? "Male" : "Female"}</p>
             <p>Health: ${item.animal_health === 0 ? "Healthy" : "Not Healthy"}</p>
             <p>Species: ${item.animal_species}</p>
             <p>Status: ${item.animal_status === 0 ? "Healthy" : "Not Healthy"}</p>
+            <p>Animal Name:${item.animal_name}</p>
         `;
         // Append the new list item to the list
-        animalItemList.appendChild(listItem);    
+        animalItemList.appendChild(listItem);
     });
 }
+
     
     (async function () { 
         const data = await fetch("animaldata.json"); 
