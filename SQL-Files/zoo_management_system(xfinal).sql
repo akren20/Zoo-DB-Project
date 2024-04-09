@@ -16,14 +16,13 @@ CREATE TABLE `animal`  (
   `animal_species` varchar(20) NOT NULL,
   `animal_status` int, -- 0 = healthy
   `animal_name` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`animal_id`) USING BTREE
-  FOREIGN KEY `animal_habitat` REFERENCES `habitat`(`habitat_id`)
+  PRIMARY KEY (`animal_id`) USING BTREE,
+  FOREIGN KEY (`animal_habitat`) REFERENCES `habitat`(`habitat_id`)
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of animal
 -- ----------------------------
-INSERT INTO `animal` VALUES (1, 'Lion', '2010-01-01', 1, 'male','Healthy', 'Panthera Leo', 'Active', 'Leo');
 
 
 -- ----------------------------
@@ -34,7 +33,7 @@ CREATE TABLE `employee`  (
   `employee_id` int NOT NULL AUTO_INCREMENT,
   `employee_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `employee_age` int check (employee_age >= 16),
-  `employee_gender` ENUM('Male', 'Female', 'Other') NOT NULL, --  
+  `employee_gender` ENUM('Male', 'Female', 'Other') NOT NULL,
   `employee_dob` date NOT NULL,
   `employee_ssn` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci UNIQUE,
   `employee_hours_worked` DECIMAL(10, 2) NOT NULL,
@@ -46,8 +45,10 @@ CREATE TABLE `employee`  (
   `employee_supe_id` int,
   `employee_type` varchar(250),
   `employee_role` int,
-  
-  PRIMARY KEY (`employee_id`) USING BTREE
+  `employee_phone` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci UNIQUE,
+  `employee_email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL UNIQUE,
+  `employee_address` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`employee_id`) USING BTREE,
   FOREIGN KEY(`employee_supe_id`) REFERENCES `employee` (`employee_id`) ON DELETE CASCADE ON UPDATE CASCADE
 
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
@@ -55,6 +56,19 @@ CREATE TABLE `employee`  (
 -- ----------------------------
 -- Records of employee
 -- ----------------------------
+INSERT INTO `employee` 
+(`employee_name`, `employee_age`, `employee_gender`, `employee_dob`, `employee_ssn`, `employee_hours_worked`, `employee_salary`, `hourly_rate`, `overtime_hours`, `overtime_pay`, `employee_dept`, `employee_supe_id`, `employee_type`, `employee_role`, `employee_phone`, `employee_email`, `employee_address`) 
+VALUES 
+('Thomas Leannon', 43, 'Male', '1979-08-26', 'SSN-001', 40, 3000, 25.00, 0, 0, 1, NULL, 'Type', 1, '4121091095', 'Thomas.Leannon@gfg.com', 'Address1'),
+('Faye Sauer', 60, 'Male', '1962-06-28', 'SSN-002', 40, 3200, 25.00, 0, 0, 1, NULL, 'Type', 1, '4914696673', 'Faye.Sauer@gfg.com', 'Address2'),
+('John Doe', 35, 'Male', '1989-05-15', 'SSN-003', 40, 2800, 25.00, 0, 0, 1, NULL, 'Type', 1, '1234567890', 'John.Doe@gfg.com', 'Address3'),
+('Alice Smith', 28, 'Female', '1996-11-20', 'SSN-004', 40, 2600, 25.00, 0, 0, 1, NULL, 'Type', 1, '9876543210', 'Alice.Smith@gfg.com', 'Address4'),
+('Michael Johnson', 45, 'Male', '1979-03-10', 'SSN-005', 40, 3100, 25.00, 0, 0, 1, NULL, 'Type', 1, '2468013579', 'Michael.Johnson@gfg.com', 'Address5'),
+('Emily Brown', 31, 'Female', '1993-09-02', 'SSN-006', 40, 2700, 25.00, 0, 0, 1, NULL, 'Type', 1, '3692581470', 'Emily.Brown@gfg.com', 'Address6'),
+('David Wilson', 52, 'Other', '1972-07-18', 'SSN-007', 40, 3300, 25.00, 0, 0, 1, NULL, 'Type', 1, '7531902468', 'David.Wilson@gfg.com', 'Address7'),
+('Jessica Taylor', 40, 'Female', '1984-04-30', 'SSN-008', 40, 3000, 25.00, 0, 0, 1, NULL, 'Type', 1, '1593574802', 'Jessica.Taylor@gfg.com', 'Address8'),
+('Daniel Anderson', 37, 'Male', '1987-02-14', 'SSN-009', 40, 2850, 25.00, 0, 0, 1, NULL, 'Type', 1, '8024671359', 'Daniel.Anderson@gfg.com', 'Address9'),
+('Jennifer Martinez', 48, 'Female', '1976-12-05', 'SSN-010', 40, 3150, 25.00, 0, 0, 1, NULL, 'Type', 1, '4679135820', 'Jennifer.Martinez@gfg.com', 'Address10');
 
 
 -- ----------------------------
@@ -62,6 +76,7 @@ CREATE TABLE `employee`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `medical`;
 CREATE TABLE `medical`(
+  `medical_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci,
   `medical_sku` int NOT NULL AUTO_INCREMENT,
   `medical_checkup` tinyint,
   `medical_cost` decimal(10,2),
@@ -79,6 +94,19 @@ CREATE TABLE `medical`(
 -- ----------------------------
 -- Records of medical
 -- ----------------------------
+INSERT INTO `medical` 
+(`medical_name`, `medical_sku`, `medical_checkup`, `medical_cost`, `medical_status`, `medical_quantity`, `medical_id`, `medical_expiry_date`, `medical_storage_location`, `vet_id`) 
+VALUES 
+('HealthyPets Inc.', 1001, 1, 120.50, 1, 50, 2001, '2025-06-30', 'Storage Room A', 3001),
+('Vet Supplies Co.', 1002, 0, 75.80, 0, 100, 2002, '2024-12-15', 'Storage Room B', 3002),
+('Animal Health Ltd.', 1003, 1, 200.25, 1, 30, 2003, '2024-11-20', 'Storage Room C', 3003),
+('PetCare Solutions', 1004, 0, 90.00, 0, 80, 2004, '2025-03-15', 'Storage Room D', 3004),
+('Animal Wellness Co.', 1005, 1, 150.00, 1, 20, 2005, '2025-08-10', 'Storage Room E', 3005),
+('PetVet Supplies', 1006, 0, 80.50, 0, 60, 2006, '2024-10-25', 'Storage Room F', 3006),
+('HealthyPets Inc.', 1007, 1, 135.75, 1, 45, 2007, '2025-05-05', 'Storage Room G', 3007),
+('Vet Supplies Co.', 1008, 0, 95.25, 0, 70, 2008, '2024-09-20', 'Storage Room H', 3008),
+('Animal Health Ltd', 1009, 1, 180.00, 1, 25, 2009, '2025-01-30', 'Storage Room I', 3009),
+('PetCare Solutions', 1010, 0, 85.00, 0, 90, 2010, '2024-07-15', 'Storage Room J', 3010);
 
 
 -- ----------------------------
@@ -93,8 +121,8 @@ CREATE TABLE `health`  (
   `health_weight` double CHECK (health_weight >= 0),
   `health_height` double CHECK (health_height >= 0),
   `health_species` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`health_id`) USING BTREE
-  FOREIGN KEY('animal_id') REDERENCES `animal`(`animal_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`health_id`) USING BTREE,
+  FOREIGN KEY(`animal_id`) REFERENCES `animal`(`animal_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -109,7 +137,7 @@ DROP TABLE IF EXISTS `customer`;
 CREATE TABLE `customer`  (
   `customer_id` int NOT NULL AUTO_INCREMENT,
   `customer_phone` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci UNIQUE,
-  `membership_type` int NOT NULL,
+  `membership_type` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `customer_age` int CHECK (customer_age >= 0),
   `customer_email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL UNIQUE,
   `customer_address` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -119,6 +147,11 @@ CREATE TABLE `customer`  (
 -- ----------------------------
 -- Records of customer
 -- ----------------------------
+INSERT INTO `customer`
+(`customer_name`, `customer_email`, `customer_phone`, `customer_address`, `membership_type`) 
+VALUES 
+('John Doe', 'john@example.com', '123-456-7890', '123 Main St', 'Gold');
+
 
 
 
@@ -127,10 +160,10 @@ CREATE TABLE `customer`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `closure`;
 CREATE TABLE `closure` (
-  `closure_id` int  NOT NULL AUTO_INCREMENT,
+  `closure_id` int NOT NULL AUTO_INCREMENT,
   `temperature` double NOT NULL,
-  `precipitation_chance` int CHECK (precipitation_change >= 0 AND precipitation_change <= 100),
-  `weather_status` ENUM(`sunny`, `cloudy`, `raining`),
+  `precipitation_chance` int CHECK (precipitation_chance >= 0 AND precipitation_chance <= 100),
+  `weather_status` ENUM('sunny', 'cloudy', 'raining'),
   `days_closed` int,
   `days_open` int,
   `hours_open` int,
@@ -138,14 +171,13 @@ CREATE TABLE `closure` (
   `number_visitors` int NOT NULL,
   `number_employees` int NOT NULL,
   `contact_email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`closure_id
-  FOREIGN KEY (`customer_email`) REFERENCES `customer`(`customer_email`)  ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`closure_id`),
+  FOREIGN KEY (`contact_email`) REFERENCES `customer`(`customer_email`)  ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
 -- ----------------------------
 -- Records of closure
 -- ----------------------------
-
-
 
 
 -- ----------------------------
@@ -154,15 +186,29 @@ CREATE TABLE `closure` (
 DROP TABLE IF EXISTS `transaction`;
 CREATE TABLE `transaction`  (
   `transaction_id` int NOT NULL AUTO_INCREMENT,
-  `transaction_type` ENUM(`ticket`, `food`, `gift`) NOT NULL,
+  `transaction_type` ENUM('ticket', 'food', 'gift') NOT NULL,
   `transaction_time` datetime NOT NULL,
   `transaction_price` decimal(10,2) NOT NULL,
   PRIMARY KEY (`transaction_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+ALTER TABLE `transaction`
+ADD COLUMN `customer_name` VARCHAR(255),
+ADD COLUMN `customer_email` VARCHAR(255);
 
 -- ----------------------------
 -- Records of transaction
 -- ----------------------------
+INSERT INTO `transaction` 
+(`transaction_type`, `transaction_time`, `transaction_price`, `customer_name`, `customer_email`) 
+VALUES 
+('food', NOW(), 10.00, 'Alice', 'alice@example.com'),
+('food', NOW(), 5.00, 'Bob', 'bob@example.com'),
+('food', NOW(), 13.00, 'Janice', 'janice@example.com'),
+('food', NOW(), 5.00, 'Luke', 'luke@example.com'),
+('food', NOW(), 2.00, 'Carl', 'Carl@example.com'),
+('food', NOW(), 3.00, 'Jenny', 'jenny@example.com'),
+('gift', NOW(), 10.00, 'Alice', 'alice@example.com'),
+('gift', NOW(), 5.00, 'Bob', 'bob@example.com');
 
 
 
@@ -179,7 +225,7 @@ CREATE TABLE `gift_shop` (
   `gftshop_inventory` int,
   `gftshop_contact_info` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `gftshop_manager_id` int,
-  PRIMARY KEY (`gftshop_id`)
+  PRIMARY KEY (`gftshop_id`),
   FOREIGN KEY(`gftshop_manager_id`) REFERENCES `employee`(`employee_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 -- ----------------------------
@@ -198,7 +244,7 @@ CREATE TABLE `food_shop` (
   `fdshop_inventory` int,
   `fdshop_contact_info` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `fdshop_manager_id` int,
-  PRIMARY KEY (`fdshop_id`)
+  PRIMARY KEY (`fdshop_id`),
   FOREIGN KEY (`fdshop_manager_id`) REFERENCES `employee`(`employee_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 -- ----------------------------
@@ -227,6 +273,19 @@ CREATE TABLE `habitat`  (
 -- ----------------------------
 -- Records of habitat
 -- ----------------------------
+INSERT INTO `habitat` 
+(`habitat_size`, `habitat_location`, `habitat_temp`, `habitat_type`, `habitat_condition`, `habitat_humidity`, `habitat_security`) 
+VALUES 
+(150.5, 101, 25.5, 'Forest', 3, 70.5, 'Fenced perimeter'),
+(200.3, 102, 20.8, 'Aquarium', 4, 80.2, 'Underwater cameras'),
+(180.2, 103, 28, 'Savanna', 2, 60, 'Ranger patrols'),
+(120.8, 104, 18.5, 'Tundra', 1, 45.3, 'Barbed wire fence'),
+(250, 105, 30.2, 'Desert', 3, 20, 'Security cameras'),
+(190.7, 106, 22.6, 'Rainforest', 4, 85, 'Tree canopy observation'),
+(130.4, 107, 17.8, 'Arctic', 2, 55.8, 'Remote sensors'),
+(220.6, 108, 27.3, 'Grassland', 3, 75.6, 'Perimeter fence'),
+(160.9, 109, 21.9, 'Wetland', 2, 65.4, 'Marshland surveillance'),
+(140.2, 110, 19.7, 'Mountain', 3, 40.2, 'Mountain ranger patrols');
 
 
 
@@ -239,6 +298,8 @@ CREATE TABLE `event`  (
   `event_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `event_start_date` datetime NOT NULL,
   `event_end_date` datetime NOT NULL,
+  `event_start_time` time NOT NULL,
+  `event_end_time` time NOT NULL,
   `event_organizer` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `event_registration_deadline` date NOT NULL,
   `event_status` int NOT NULL,
@@ -250,6 +311,19 @@ CREATE TABLE `event`  (
 -- ----------------------------
 -- Records of event
 -- ----------------------------
+INSERT INTO `event` 
+(`event_id`, `event_name`, `event_start_date`, `event_end_date`, `event_organizer`, `event_registration_deadline`, `event_status`, `event_employee_id`, `event_start_time`, `event_end_time`) 
+VALUES 
+(1, 'Conference A', '2024-04-10', '2024-04-12', 'Organizer A', '2024-04-05', 1, 101, '09:00:00', '17:00:00'),
+(2, 'Seminar B', '2024-05-15', '2024-05-15', 'Organizer B', '2024-05-10', 1, 102, '10:00:00', '13:00:00'),
+(3, 'Workshop C', '2024-06-20', '2024-06-22', 'Organizer C', '2024-06-15', 1, 103, '13:00:00', '18:00:00'),
+(4, 'Training D', '2024-07-05', '2024-07-07', 'Organizer D', '2024-06-30', 1, 104, '09:30:00', '16:30:00'),
+(5, 'Convention E', '2024-08-12', '2024-08-14', 'Organizer E', '2024-08-05', 1, 105, '08:00:00', '18:00:00'),
+(6, 'Exhibition F', '2024-09-25', '2024-09-27', 'Organizer F', '2024-09-20', 1, 106, '10:00:00', '16:00:00'),
+(7, 'Symposium G', '2024-10-08', '2024-10-10', 'Organizer G', '2024-10-01', 1, 107, '09:00:00', '17:00:00'),
+(8, 'Forum H', '2024-11-15', '2024-11-16', 'Organizer H', '2024-11-10', 1, 108, '11:00:00', '16:00:00'),
+(9, 'Summit I', '2024-12-20', '2024-12-22', 'Organizer I', '2024-12-15', 1, 109, '09:30:00', '17:30:00'),
+(10, 'Conference J', '2025-01-10', '2025-01-12', 'Organizer J', '2025-01-05', 1, 110, '08:30:00', '16:30:00');
 
 
 
@@ -261,7 +335,7 @@ CREATE TABLE `administrator`  (
   `adm_id` int NOT NULL AUTO_INCREMENT,
   `adm_username` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL UNIQUE,
   `adm_phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL UNIQUE,
-  `adm_gender` ENUM(`Male`, `Female`, `Other`) NOT NULL,
+  `adm_gender` ENUM('Male', 'Female', 'Other') NOT NULL,
   `adm_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `adm_password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`adm_id`) USING BTREE
@@ -270,12 +344,10 @@ CREATE TABLE `administrator`  (
 -- ----------------------------
 -- Records of administrator
 -- ----------------------------
-INSERT INTO `administrator` VALUES (1, 'aa', '13812345678', 'male', '25', 'aaa', 'password123');
-INSERT INTO `administrator` VALUES (2, 'bb', '13987654321', 'female', '30', 'bbb', 'admin456');
-INSERT INTO `administrator` VALUES (3, 'cc', '13711112222', 'male', '28', 'ccc', 'pass987');
-INSERT INTO `administrator` VALUES (4, 'dd', '13655556666', 'female', '22', 'ddd', 'secure789');
-INSERT INTO `administrator` VALUES (5, 'ee', '13533334444', 'male', '35', 'eee', 'access567');
-INSERT INTO `administrator` VALUES (6, 'test', '1234567890', 'male', '30', 'test1', 'test123');
+INSERT INTO `administrator` 
+(`adm_id`, `adm_username`, `adm_phone`, `adm_gender`, `adm_name`, `adm_password`)
+VALUES 
+(1, 'a', '13812345678', 'Other', 'group11', 'a');
 
 -- ----------------------------
 -- Table structure for gftshop inventory
@@ -293,7 +365,6 @@ CREATE TABLE `gftshop_inventory` (
 -- ----------------------------
 -- Records of shop inventory
 -- ----------------------------
-INSERT INTO `gftshop_inventory` VALUES (1, 1, 'Penguin Toy', '50', '19.99');
 
 
 -- ----------------------------
@@ -344,8 +415,8 @@ FROM animal;
 -- ----------------------------
 -- View structure for customer contact
 -- ----------------------------
-DROP ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW IF EXISTS `customer_contact_view`;
-CREATE VIEW `customer_contact_view` AS
+DROP VIEW IF EXISTS `customer_contact_view`;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `customer_contact_view` AS
 SELECT 
     customer_id,
     customer_name,
@@ -359,7 +430,7 @@ FROM
 -- View structure for Employee Details
 -- ----------------------------
 DROP VIEW IF EXISTS `employee_details_view`;
-CREATE VIEW `employee_details_view` AS
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `employee_details_view` AS
 SELECT 
     employee_id,
     employee_name,
@@ -370,9 +441,9 @@ SELECT
     END AS gender,
     employee_dob,
     employee_salary,
-    hours_worked,
+    employee_hours_worked,
     hourly_rate,
-    weekly_hours
+    overtime_hours
 FROM 
     employee;
 
@@ -380,7 +451,7 @@ FROM
 -- View structure for Event Overview
 -- ----------------------------
 DROP VIEW IF EXISTS `event_overview_view`;
-CREATE VIEW `event_overview_view` AS
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `event_overview_view` AS
 SELECT 
     event_id,
     event_name,
@@ -417,7 +488,7 @@ INNER JOIN
 
 DROP PROCEDURE IF EXISTS `AddEmployee`;
 delimiter ;;
-CREATE PROCEDURE 'AddEmployee'(
+CREATE PROCEDURE `AddEmployee`(
     IN p_name VARCHAR(100),
     IN p_age INT,
     IN p_gender INT,
@@ -434,7 +505,7 @@ END;
 
 DROP PROCEDURE IF EXISTS `DeleteAnimal`;
 delimiter ;;
-CREATE PROCEDURE 'DeleteAnimal'(
+CREATE PROCEDURE `DeleteAnimal`(
     IN p_animal_id INT)
 BEGIN
     DELETE FROM animal
@@ -445,7 +516,7 @@ END;
 
 DROP PROCEDURE IF EXISTS `GenerateMonthlyReport`;
 delimiter ;;
-CREATE PROCEDURE 'GenerateMonthlyReport'(
+CREATE PROCEDURE `GenerateMonthlyReport`(
     IN p_month INT,
     IN p_year INT)
 BEGIN
@@ -456,36 +527,12 @@ BEGIN
 END;
 
 
---Generate monthly report of animal's health.
---exp: CALL GenerateMonthlyReport(4,2023);
+-- Generate monthly report of animal's health.
+-- exp: CALL GenerateMonthlyReport(4,2023);
 
--- ----------------------------
--- Procedure structure for InsertAnimal
--- ----------------------------
-DROP PROCEDURE IF EXISTS `InsertAnimal`;
-delimiter ;;
-CREATE PROCEDURE `InsertAnimal`(
-    IN p_animal_name VARCHAR(25),
-    IN p_animal_dob DATE,
-    IN p_animal_habitat INT,
-    IN p_animal_gender INT,
-    IN p_animal_health INT,
-    IN p_animal_species VARCHAR(20),
-    IN p_medical_status INT)
-BEGIN
-    INSERT INTO animal (animal_name, animal_dob, animal_habitat, animal_gender, animal_health, animal_species, medical_status)
-    VALUES (p_animal_name, p_animal_dob, p_animal_habitat, p_animal_gender, p_animal_health, p_animal_species, p_medical_status);
-END
-;;
-delimiter ;
-
---This procedure accepts the animal's name, birth date, habitat number, gender, health status, species, and 
---medical status as input parameters and inserts this into the animal table.
---exp: CALL InsertAnimal('Zebra','2024-03-03',2,0,0,'Equus quagga', 0);
-
---------------------------------------------------------
+-- ------------------------------------------------------
 -- Trigger to automatically update animal health status
---------------------------------------------------------
+-- ------------------------------------------------------
 DROP TRIGGER IF EXISTS `UpdateAnimalHealthStatus`;
 DELIMITER ;;
 CREATE TRIGGER `UpdateAnimalHealthStatus` AFTER INSERT ON medical FOR EACH ROW BEGIN
@@ -496,9 +543,9 @@ END;
 
 DELIMITER ;
 
-------------------------------------
+-- ----------------------------------
 -- Trigger to log data changes
-------------------------------------
+-- ----------------------------------
 DROP TRIGGER IF EXISTS `LogAdminChanges`;
 DELIMITER ;;
 CREATE TRIGGER `LogAdminChanges` AFTER UPDATE ON administrator FOR EACH ROW BEGIN
@@ -507,9 +554,9 @@ CREATE TRIGGER `LogAdminChanges` AFTER UPDATE ON administrator FOR EACH ROW BEGI
 END;
 DELIMITER ;
 
---------------------------------------------------------
+-- ------------------------------------------------------
 -- Trigger to automatically calculate employee salaries
---------------------------------------------------------
+-- ------------------------------------------------------
 DROP TRIGGER IF EXISTS `CalculateEmployeeSalary`;
 DELIMITER ;;
 CREATE TRIGGER `CalculateEmployeeSalary` AFTER UPDATE ON employee FOR EACH ROW BEGIN
