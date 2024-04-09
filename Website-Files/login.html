@@ -61,10 +61,10 @@
                 <i class='bx bxs-lock-alt'></i>
             </div>
 
-            <div class="remember-forgot">
+            <!-- <div class="remember-forgot">
                 <label><input type = "checkbox">Remember Me</label>
                 <a href="#">Forgot Password</a>
-            </div>
+            </div> -->
 
             <button type="submit" class="btn">Login</button>
             
@@ -164,6 +164,8 @@
         var employeePassword = 'e';
         var adminUsername = 'a';
         var adminPassword = 'a';
+        var custUsername = 'demo123@gmail.com';
+        var custPassword = 'UMADB123';
 
         // Check if the credentials match the employee account
         if(username === employeeUsername && password === employeePassword) {
@@ -174,6 +176,10 @@
         else if(username === adminUsername && password === adminPassword) {
             console.log("Admin credentials match, redirecting...");
             window.location.href = 'admin-portal.html'; // Redirect to the admin portal
+        } 
+        else if(username === custUsername && password === custPassword) {
+            console.log("Customer credentials match, redirecting...");
+            window.location.href = 'customer-portal.html'; // Redirect to the admin portal
         } 
         else {
             alert('Incorrect username or password!');

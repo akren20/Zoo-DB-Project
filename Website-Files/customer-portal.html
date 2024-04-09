@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Portal</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .tab { overflow: hidden; border: 1px solid #ccc; background-color: #f1f1f1; }
+        .tab button { background-color: inherit; float: left; border: none; outline: none; cursor: pointer; padding: 14px 16px; transition: 0.3s; }
+        .tab button:hover { background-color: #ddd; }
+        .tab button.active { background-color: #ccc; }
+        .tabcontent { display: none; padding: 6px 12px; border: 1px solid #ccc; border-top: none; }
+    </style>
+</head>
+<body>
+
+<h2>Customer Portal</h2>
+
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Information')">My Information</button>
+    <button class="tablinks" onclick="openTab(event, 'Purchase')">For Purchase</button>
+    <button class="tablinks" onclick="openTab(event, 'Cart')">Shopping Cart</button>
+</div>
+
+<div id="Information" class="tabcontent">
+    <h3>Employee Schedule</h3>
+    <p>Employee schedules for the week will be displayed here.</p>
+    <table id="scheduleTable">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Employee schedules will be dynamically inserted here -->
+            <div class="table">
+                <div class="employees__names--item"></div>
+            </div>
+        </tbody>
+    </table>
+</div>
+<script src="schedule.js">
+    // Call the function to insert employee schedules when the page loads
+    window.addEventListener("load", insertEmployeeSchedules);
+</script>
+
+
+<div id="Purchase" class="tabcontent">
+    <h3>Upcoming Events</h3>
+    <p>View and Manage all Upcoming events here.</p>
+    <div class="event-subtabs">
+        <button class="subtablinks" onclick="openSubTab(event, 'EventInformation')">Event Information Report</button>
+        <div id="EventInformation" class="subtabcontent">
+            <div class="addEventItem" style="display:none;"></div>
+            <div class="event-items__names--list"></div>
+            <div class="addSku" style="display:none;"></div>
+        </div>
+    </div>
+    <form class="addHabitatItem_create">
+        <input type="text" name="habitatID" placeholder="Habitat ID" required>
+        <input type="text" name="habitatSize" placeholder="Habitat Size (In Square Feet)" required>
+        <input type="text" name="HabitatLoc" placeholder="Habitat Location" required>
+        <input type="text" name="HabitatTemp" placeholder="Habitat Temperature" required>
+        <input type="text" name="habitatType" placeholder="Habitat Type" required>
+        <input type="text" name="habitatCond" placeholder="Habitat Condition (Number)" required>
+        <input type="text" name="HabitatHumid" placeholder="Habitat Humidity Temperature" required>
+        <input type="text" name="HabitatSecure" placeholder="Habitat Security" required>
+        <button type="submit">Add Habitat Information</button>
+    </form>    
+</div>
+<script src="event.js"></script> 
+
+
+<div id="Cart" class="tabcontent">
+    <h3>Habitat Status</h3>
+    <p>Habitat status of animals will be displayed here.</p>
+    <div class="habitat-subtabs">
+        <button class="subtablinks" onclick="openSubTab(event, 'HabitatInformation')">Habitat Information Report</button>
+        <div id="HabitatInformation" class="subtabcontent">
+            <div class="addHabitatItem" style="display:none;"></div>
+            <div class="habitat-items__names--list"></div>
+            <div class="addSku" style="display:none;"></div>
+        </div>
+    </div>
+    <form class="addHabitatItem_create">
+        <input type="text" name="habitatID" placeholder="Habitat ID" required>
+        <input type="text" name="habitatSize" placeholder="Habitat Size (In Square Feet)" required>
+        <input type="text" name="HabitatLoc" placeholder="Habitat Location" required>
+        <input type="text" name="HabitatTemp" placeholder="Habitat Temperature" required>
+        <input type="text" name="habitatType" placeholder="Habitat Type" required>
+        <input type="text" name="habitatCond" placeholder="Habitat Condition (Number)" required>
+        <input type="text" name="HabitatHumid" placeholder="Habitat Humidity Temperature" required>
+        <input type="text" name="HabitatSecure" placeholder="Habitat Security" required>
+        <button type="submit">Add Habitat Information</button>
+    </form>    
+</div>
+<script src="habitat.js"></script> 
+
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Open the first tab by default
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementsByClassName("tablinks")[0].click();
+    });
+</script>
+
+</body>
+</html>
