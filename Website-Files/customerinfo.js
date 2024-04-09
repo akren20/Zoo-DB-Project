@@ -27,6 +27,16 @@ function generateCustomerTable() {
     // Assuming 'customers' array is filled with your customer data
     const customers = [
         { name: "John Doe", email: "john@example.com", phone: "123-456-7890", address: "123 Main St", membershipType: "Gold" },
+        { name: "Alice Smith", email: "alice@example.com", phone: "987-654-3210", address: "456 Elm St", membershipType: "Silver" },
+        { name: "Bob Johnson", email: "bob@example.com", phone: "555-555-5555", address: "789 Oak St", membershipType: "Bronze" },
+        { name: "Emily Brown", email: "emily@example.com", phone: "777-777-7777", address: "101 Pine St", membershipType: "Gold" },
+        { name: "Michael Wilson", email: "michael@example.com", phone: "444-444-4444", address: "202 Maple St", membershipType: "Silver" },
+        { name: "Sophia Lee", email: "sophia@example.com", phone: "666-666-6666", address: "303 Cedar St", membershipType: "Bronze" },
+        { name: "James Taylor", email: "james@example.com", phone: "222-222-2222", address: "404 Birch St", membershipType: "Gold" },
+        { name: "Olivia Martinez", email: "olivia@example.com", phone: "888-888-8888", address: "505 Walnut St", membershipType: "Silver" },
+        { name: "William Anderson", email: "william@example.com", phone: "333-333-3333", address: "606 Cherry St", membershipType: "Bronze" },
+        { name: "Isabella Garcia", email: "isabella@example.com", phone: "999-999-9999", address: "707 Spruce St", membershipType: "Gold" }
+        
         // Add more customers as needed
     ];
 

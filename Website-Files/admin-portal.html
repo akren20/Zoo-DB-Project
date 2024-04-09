@@ -19,6 +19,7 @@
 
 <div class="tab">
     <button class="tablinks" onclick="openTab(event, 'EmployeeSchedules')">Employee Schedules</button>
+    <button class="tablinks" onclick="openTab(event, 'Animals')">Animals</button>
     <button class="tablinks" onclick="openTab(event, 'Habitat')">Habitat</button>
     <button class="tablinks" onclick="openTab(event, 'Medical')">Medical</button>
     <button class="tablinks" onclick="openTab(event, 'Revenue')">Revenue</button>
@@ -26,6 +27,32 @@
     <button class="tablinks" onclick="openTab(event, 'Transactions')">Transactions</button>
     <button class="tablinks" onclick="openTab(event, 'Events')">Events</button>
 </div>
+
+<div id="Animals" class="tabcontent">
+    <h3>Animal Status</h3>
+    <p>All the animals in the Zoo will be displayed here.</p>
+    <div class="animals-subtabs">
+        <button class="subtablinks" onclick="openSubTab(event, 'AnimalInformation')">Animal Information</button>
+        <div id="AnimalInformation" class="subtabcontent">
+            <div class="addAnimalItem" style="display:none;"></div>
+            <div class="animal-items__names--list"></div>
+            <div class="addSku" style="display:none;"></div>
+        </div>
+    </div>
+    <form class="addAnimalItem_create">
+        <input type="text" name="animalID" placeholder="Animal ID" required>
+        <input type="text" name="animalType" placeholder="Animal Type" required>
+        <input type="text" name="animalDOB" placeholder="Animal Date of Birth" required>
+        <input type="text" name="animalHabitat" placeholder="Animal Habitat" required>
+        <input type="text" name="animalGender" placeholder="Animal Gender" required>
+        <input type="text" name="animalHealth" placeholder="Animal Health" required>
+        <input type="text" name="animalSpecies" placeholder="Animal Species" required>
+        <input type="text" name="animalStatus" placeholder="Animal Status" required>
+        <input type="text" name="animalName" placeholder="Animal Name" required>
+        <button type="submit">Add Animal Information</button>
+    </form>    
+</div>
+<script src="animals.js"></script> 
 
 <div id="EmployeeSchedules" class="tabcontent">
         <h3>Employee Schedules</h3>
