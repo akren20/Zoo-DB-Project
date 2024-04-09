@@ -387,10 +387,12 @@ function insertEmployeeSchedules(employees) {
 
     // Iterate over each employee
     employees.forEach(employee => {
+        const fullName = `${employee.firstName} ${employee.lastName}`;
+
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${employee.id}</td>
-            <td>${employee.firstName} ${employee.lastName}</td>
+            <td>${employee.firstName}</td>
             <td>${employee.schedule.Monday}</td>
             <td>${employee.schedule.Tuesday}</td>
             <td>${employee.schedule.Wednesday}</td>
@@ -402,6 +404,7 @@ function insertEmployeeSchedules(employees) {
         tableBody.appendChild(row);
     });
 }
+
 
 // Call the function to insert employee schedules when the page loads
 document.addEventListener("DOMContentLoaded", async function() {

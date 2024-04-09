@@ -116,7 +116,7 @@
     <h3>Habitat Status</h3>
     <p>Habitat status of animals will be displayed here.</p>
     <div class="habitat-subtabs">
-        <button class="subtablinks" onclick="openSubTab(event, 'HabitatInformation')">Habitat Information</button>
+        <button class="subtablinks" onclick="openSubTab(event, 'HabitatInformation')">Habitat Information Report</button>
         <div id="HabitatInformation" class="subtabcontent">
             <div class="addHabitatItem" style="display:none;"></div>
             <div class="habitat-items__names--list"></div>
@@ -141,7 +141,7 @@
     <h3>Medical</h3>
     <p>Access medical records, status updates, and current Medical Inventory.</p>
     <div class="medical-subtabs">
-        <button class="subtablinks" onclick="openSubTab(event, 'MedicalInformation')">Medical Information</button>
+        <button class="subtablinks" onclick="openSubTab(event, 'MedicalInformation')">Medical Information Report</button>
         <div id="MedicalInformation" class="subtabcontent">
             <h4>Medical Information</h4>
             <button class="createSku">Add New Sku</button>
@@ -192,7 +192,7 @@
     <h3>Customer Info</h3>
     <p>View customer information and insights here.</p>
     <div class="customer-subtabs">
-        <button class="subtablinks" onclick="openSubTab(event, 'CustomerTable')">View Customers</button>
+        <button class="subtablinks" onclick="openSubTab(event, 'CustomerTable')">Customer Report</button>
         <div id="CustomerTable" class="subtabcontent">
             <!-- Dynamic customer table will be injected here -->
             <div id="customer-table"></div>
@@ -202,7 +202,7 @@
 <script src="customerinfo.js"></script>
 
 <div id="Transactions" class="tabcontent">
-    <h3>Transactions</h3>
+    <h3>Transaction Reports</h3>
     <p>Review transaction history and details here.</p>
 
     <!-- Subtabs for different transaction types -->
@@ -236,7 +236,7 @@
     
     <!-- Medical Transactions Table -->
     <div id="MedicalTransactions" class="subtabcontent">
-        <h4>Medical Transactions</h4>
+        <h4>Medical Transaction Report</h4>
         <table id="medicalTable">
             <thead>
                 <tr>
@@ -269,7 +269,7 @@
     <h3>Upcoming Events</h3>
     <p>View and Manage all Upcoming events here.</p>
     <div class="event-subtabs">
-        <button class="subtablinks" onclick="openSubTab(event, 'EventInformation')">Event Information</button>
+        <button class="subtablinks" onclick="openSubTab(event, 'EventInformation')">Event Information Report</button>
         <div id="EventInformation" class="subtabcontent">
             <h4>Event Information</h4>
             <button class="createEvent">Add New Event</button>
