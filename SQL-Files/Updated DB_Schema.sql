@@ -547,6 +547,8 @@ END;
 -- ------------------------------------------------------
 -- Trigger to automatically update animal health status
 -- ------------------------------------------------------
+GRANT UPDATE, TRIGGER ON your_database.* TO 'admin';
+
 DROP TRIGGER IF EXISTS `UpdateAnimalHealthStatus`;
 DELIMITER ;;
 CREATE TRIGGER `UpdateAnimalHealthStatus` AFTER INSERT ON medical FOR EACH ROW BEGIN
@@ -558,7 +560,6 @@ CREATE TRIGGER `UpdateAnimalHealthStatus` AFTER INSERT ON medical FOR EACH ROW B
 END;
 ;;
 DELIMITER ;
-
 
 -- Trigger to log data changes
 DROP TRIGGER IF EXISTS `LogAdminChanges`;
@@ -577,4 +578,7 @@ CREATE TRIGGER `CalculateEmployeeSalary` BEFORE UPDATE ON employee FOR EACH ROW 
 END;
 ;;
 DELIMITER ;
+
+
+
 
