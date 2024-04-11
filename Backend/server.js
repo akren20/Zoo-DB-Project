@@ -1,14 +1,98 @@
-const express = require('express')
-const app = express()
-const port = 8383
+// backend/server.js
+import http from 'http';
+import url from 'url';
+//const cors = require('cors');
 
-app.use[express.static('public')]
+import animalRoute from './routes/animalRoute.js';
+import closureRoute from './routes/closureRoute.js';
+import customerRoute from './routes/customerRoute.js';
+import employeeRoute from './routes/employeeRoute.js';
+import eventRoute from './routes/eventRoute.js';
+import foodRoute from './routes/foodRoute.js';
+import giftRoute from './routes/giftRoute.js';
+import habitatRoute from './routes/habitatRoute.js';
+import healthRoute from './routes/healthRoute.js';
+import medicalRoute from './routes/medicalRoute.js';
+import transactionRoute from './routes/transactionRoute.js';
+import fadminRoute from './routes/adminRoute.js';
 
-app.get('/', (req,res) => {
-    res.status(200).send('Hello')
-})
+//const corsMiddleware = cors();
+const server = http.createServer(async (req, res) => {
+  //corsMiddleware(req, res, () => {
+  const path = url.parse(req.url, true).path;
+  const method = req.method;
 
-app.listen(port,() => console.log(`Server has started on port: ${port}`))
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*'); // Allows all origins
+  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST'); // Specifies the methods allowed when accessing the resource
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type', 'Authorization'); // Indicates which headers can be used during the actual request
+
+  console.log(`Route hit: ${path}`);
+  console.log(method);
+
+  if (method === 'OPTIONS') {
+    res.writeHead(200);
+    res.end();
+    return;
+
+  } else if (path.includes('/api/admin')) {
+    ItemsRoute(req, res, path, method);
+
+    // add books, ebooks, dvds, and more items
+
+
+    // add printers, laptops, and more ultilies
+
+
+
+  } else if (path.includes('/api/animals')) {
+
+  } else if (path.includes('/api/closure')) {
+
+  } else if (path.includes('/api/customer')) {
+
+  } else if (path.includes('/api/closure')) {
+
+  } else if (path.includes('/api/customer')) {
+
+}
+
+    else if (path.includes('/api/employee')) {
+
+    
+      } 
+    else if (path.includes('/api/event')) {
+    }
+    else if (path.includes('/api/food')) {
+
+    }
+    else if (path.includes('/api/gift')) {
+
+    }
+    else if (path.includes('/api/habitat')) {
+
+    }
+    else if (path.includes('/api/health')) {
+
+    }
+    else if (path.includes('/api/medical')) {
+
+    }
+    else if (path.includes('/api/transaction')) {
+
+    }
+    else {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ message: 'Route Not Found' }));
+
+    }
+});
+
+//});
+
+const PORT = process.env.PORT || 5000;
+
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
 

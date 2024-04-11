@@ -2,7 +2,7 @@
   "name": "backend",
   "private": true,
   "version": "1.0.0",
-  "type": "commonjs", 
+  "type": "module",
   "scripts": {
     "dev": "nodemon server.js",
     "build": "nodemon server.js",
@@ -19,6 +19,7 @@
     "jsonwebtoken": "^9.0.2",
     "mssql": "^10.0.2",
     "mysql2": "^3.9.2",
+    "nodeman": "^1.1.2",
     "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
