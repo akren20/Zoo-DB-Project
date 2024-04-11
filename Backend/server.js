@@ -4,7 +4,6 @@ import url from 'url';
 //const cors = require('cors');
 
 import animalRoute from './routes/animalRoute.js';
-import closureRoute from './routes/closureRoute.js';
 import customerRoute from './routes/customerRoute.js';
 import employeeRoute from './routes/employeeRoute.js';
 import eventRoute from './routes/eventRoute.js';
@@ -51,11 +50,9 @@ const server = http.createServer(async (req, res) => {
 
   } else if (path.includes('/api/customer')) {
 
-  } else if (path.includes('/api/closure')) {
-
   } else if (path.includes('/api/customer')) {
 
-}
+  }
 
     else if (path.includes('/api/employee')) {
 
