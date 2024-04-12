@@ -1,7 +1,7 @@
 // backend/controllers/animalController.js
-import EmployeesModel from '../models/employeeModel.js';
+const EmployeesModel = require( '../models/employeeModel.js');
 
-class EmployeeController {
+class EmployeesController {
   // @desc  Gets All Items
   // @route GET /api/items
   static async getAllEmployees(req, res) {
@@ -26,4 +26,4 @@ class EmployeeController {
 
 }
 
-export default EmployeesController;
+module.exports.default  = EmployeesController;

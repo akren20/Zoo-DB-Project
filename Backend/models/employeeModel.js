@@ -1,5 +1,5 @@
 // backend/models/itemsModel.js
-import pool from '../zoodb.js';
+const pool = require( '../zoodb.js');
 
 class EmployeesModel {
   static async findAllEmployees() {
@@ -13,4 +13,4 @@ class EmployeesModel {
   }
 }
 
-export default EmployeesModel;
+module.exports.default  = EmployeesModel;

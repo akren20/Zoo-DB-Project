@@ -1,5 +1,5 @@
 // backend/routes/adminRoute.js include admin controller file down below
-import FoodController from '../controllers/animalController.js';
+const FoodController =  require('../controllers/foodController.js');
 
 function foodRoute(req, res, path, method) {
   if (path === '/api/admin/food' && method === 'GET') {
@@ -20,4 +20,4 @@ function foodRoute(req, res, path, method) {
   }
 }
   
-export default foodRoute;
+module.exports.default = foodRoute;

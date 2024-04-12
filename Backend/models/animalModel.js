@@ -1,7 +1,7 @@
 // backend/models/itemsModel.js
-import pool from '../zoodb.js';
+const pool = require( '../zoodb.js');
 
-class AnimalsModel {
+class AnimalModel {
   static async findAllAnimals() {
     try {
       const [result] = await pool.query(`SELECT * FROM animal;`);
@@ -13,4 +13,4 @@ class AnimalsModel {
   }
 }
 
-export default AnimalsModel;
+module.exports.default  = AnimalModel;

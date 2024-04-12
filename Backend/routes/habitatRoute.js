@@ -1,15 +1,15 @@
 // backend/routes/adminRoute.js include admin controller file down below
-import HabitatController from '../controllers/habitatController.js';
+const HabitatController = require('../controllers/habitatController.js');
 
 function habitatRoute(req, res, path, method) {
-  if (path === '/api/admin/animal' && method === 'GET') {
+  if (path === '/api/admin/habitat' && method === 'GET') {
     HabitatController.getAllHabitats(req,res);
   } 
-  else if (path === '/api/animal' && method === 'POST') {
+  else if (path === '/api/habitat' && method === 'POST') {
     const itemData = JSON.parse(req.body);
     HabitatController.createItem(req,res,itemData);
   } 
-  else if (path === '/api/animal' && method === 'DELETE') {
+  else if (path === '/api/habitat' && method === 'DELETE') {
     const itemData = JSON.parse(req.body);
     HabitatController.createItem(req,res,itemData);
   }
@@ -20,4 +20,4 @@ function habitatRoute(req, res, path, method) {
   }
 }
   
-export default habitatRoute;
+module.exports.default = habitatRoute;

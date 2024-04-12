@@ -1,12 +1,12 @@
 // backend/controllers/animalController.js
-import AnimalsModel from '../models/animalModel.js';
+const HealthsModel = require('../models/animalModel.js');
 
-class AnimalsController {
+class HealthsController {
   // @desc  Gets All Items
   // @route GET /api/items
-  static async getAllAnimals(req, res) {
+  static async getAllHealths(req, res) {
     try {
-      const items = await AnimalsModel.findAllAnimals();
+      const items = await HealthsModel.findAllHealths();
 
       res.writeHead(200, {
         'Content-Type': 'application/json',
@@ -26,4 +26,4 @@ class AnimalsController {
 
 }
 
-export default AnimalsController;
+module.exports.default  = HealthsController;

@@ -1,5 +1,5 @@
 // backend/controllers/animalController.js
-import CustomersModel from '../models/customerModel.js';
+const CustomersModel =  require('../models/customerModel.js');
 
 class CustomersController {
   // @desc  Gets All Items
@@ -26,4 +26,4 @@ class CustomersController {
 
 }
 
-export default CustomersController;
+module.exports.default = CustomersController;

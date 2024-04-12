@@ -1,5 +1,5 @@
 // backend/routes/adminRoute.js include admin controller file down below
-import CustomerController from '../controllers/customerController.js';
+const CustomerController =  require('../controllers/customerController.js');
 
 function customerRoute(req, res, path, method) {
   if (path === '/api/admin/customer' && method === 'GET') {
@@ -20,4 +20,4 @@ function customerRoute(req, res, path, method) {
   }
 }
   
-export default customerRoute;
+module.exports.default = customerRoute;

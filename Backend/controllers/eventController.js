@@ -1,5 +1,5 @@
 // backend/controllers/animalController.js
-import EventsModel from '../models/animalModel.js';
+const EventsModel = require('../models/animalModel.js');
 
 class EventsController {
   // @desc  Gets All Items
@@ -26,4 +26,4 @@ class EventsController {
 
 }
 
-export default EventsController;
+module.exports.default = EventsController;

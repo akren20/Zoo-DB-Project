@@ -1,5 +1,5 @@
 // backend/controllers/animalController.js
-import AnimalsModel from '../models/animalModel.js';
+const animalModel = require('../models/animalModel.js') ;
 
 class AnimalsController {
   // @desc  Gets All Items
@@ -41,6 +41,6 @@ class AnimalsController {
   }
 }
 
-export default AnimalsController;
+module.exports.default = AnimalsController;
 
 //add insert and delete, update

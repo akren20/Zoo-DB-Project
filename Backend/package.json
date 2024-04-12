@@ -2,13 +2,13 @@
   "name": "backend",
   "private": true,
   "version": "1.0.0",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
-    "dev": "nodemon server.js",
-    "build": "nodemon server.js",
+    "dev": "nodemon server.cjs",
+    "build": "nodemon server.cjs",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "node backend/server.js"
+    "start": "node backend/server.cjs"
   },
   "dependencies": {
     "axios": "^1.6.7",

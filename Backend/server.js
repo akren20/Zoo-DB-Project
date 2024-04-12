@@ -1,20 +1,49 @@
 // backend/server.js
-import http from 'http';
-import url from 'url';
+// import http from 'http';
+const http = require('http');
+// import url from 'url';
+const url = require('url');
 //const cors = require('cors');
 
-import animalRoute from './routes/animalRoute.js';
-import customerRoute from './routes/customerRoute.js';
-import employeeRoute from './routes/employeeRoute.js';
-import eventRoute from './routes/eventRoute.js';
-import foodRoute from './routes/foodRoute.js';
-import giftRoute from './routes/giftRoute.js';
-import habitatRoute from './routes/habitatRoute.js';
-import healthRoute from './routes/healthRoute.js';
-import medicalRoute from './routes/medicalRoute.js';
-import transactionRoute from './routes/transactionRoute.js';
-import fadminRoute from './routes/adminRoute.js';
-import AnimalsController from './controllers/animalController.js';
+// import animalRoute from './routes/animalRoute.js';
+// import customerRoute from './routes/customerRoute.js';
+// import employeeRoute from './routes/employeeRoute.js';
+// import eventRoute from './routes/eventRoute.js';
+// import foodRoute from './routes/foodRoute.js';
+// import giftRoute from './routes/giftRoute.js';
+// import habitatRoute from './routes/habitatRoute.js';
+// import healthRoute from './routes/healthRoute.js';
+// import medicalRoute from './routes/medicalRoute.js';
+// import transactionRoute from './routes/transactionRoute.js';
+// import adminRoute from './routes/adminRoute.js';
+// import AnimalsController from './controllers/animalController.js';
+// import AdminController from './controllers/adminController.js';
+// import CustomersController from './controllers/customerController.js';
+// import AdminsController from './controllers/adminController.js';
+// import EmployeesController from './controllers/employeeController.js';
+// import EventsController from './controllers/eventController.js';
+
+const animalRoute = require('./routes/animalRoute.js');
+const customerRoute = require('./routes/customerRoute.js');
+const employeeRoute = require('./routes/employeeRoute.js');
+const eventRoute = require('./routes/eventRoute.js');
+const foodRoute = require('./routes/foodRoute.js');
+const giftRoute = require('./routes/giftRoute.js');
+const habitatRoute = require('./routes/habitatRoute.js');
+const healthRoute = require('./routes/healthRoute.js');
+const medicalRoute = require('./routes/medicalRoute.js');
+const transactionRoute = require('./routes/transactionRoute.js');
+const adminRoute = require('./routes/adminRoute.js');
+
+const AnimalsController = require('./controllers/animalController.js');
+const AdminController = require('./controllers/adminController.js');
+const CustomersController = require('./controllers/customerController.js');
+const AdminsController = require('./controllers/adminController.js');
+const EmployeesController = require('./controllers/employeeController.js');
+const EventsController = require('./controllers/eventController.js');
+const { default: HabitatsController } = require('./controllers/habitatController.js');
+const { default: HealthsController } = require('./controllers/healthController.js');
+const { default: MedicalsController } = require('./controllers/medicalController.js');
 
 //const corsMiddleware = cors();
 const server = http.createServer(async (req, res) => {
@@ -36,58 +65,51 @@ const server = http.createServer(async (req, res) => {
     return;
 
   } else if (path.includes('/api/admin')) {
-    ItemsRoute(req, res, path, method);
-
-    // add books, ebooks, dvds, and more items
+    if(method =='GET') AdminsController.getAllAdmins(req,res);
 
 
-    // add printers, laptops, and more ultilies
+  } 
+  else if (path.includes('/api/animals')) {
+    if(method =='GET') AnimalsController.getAllAnimals(req,res);
 
+  } 
 
-
-  } else if (path.includes('/api/animals')) {
-    if(method=='GET') AnimalsController.getAllAnimals(req,res);
-
-  } else if (path.includes('/api/closure')) {
-
-  } else if (path.includes('/api/customer')) {
-
-  } else if (path.includes('/api/customer')) {
-
+  else if (path.includes('/api/customer')) {
+    if(method =='GET') CustomersController.getAllCustomers(req,res);
   }
 
-    else if (path.includes('/api/employee')) {
-
+  else if (path.includes('/api/employee')) {
+    if(method =='GET') EmployeesController.getAllEmployees(req,res);
     
-      } 
-    else if (path.includes('/api/event')) {
-    }
-    else if (path.includes('/api/food')) {
-
-    }
-    else if (path.includes('/api/gift')) {
-
-    }
-    else if (path.includes('/api/habitat')) {
-
-    }
-    else if (path.includes('/api/health')) {
-
-    }
-    else if (path.includes('/api/medical')) {
-
-    }
-    else if (path.includes('/api/transaction')) {
-
-    }
-    else {
+    } 
+  else if (path.includes('/api/event')) {
+    if(method =='GET') EventsController.getAllEvents(req,res);
+  }
+  else if (path.includes('/api/food')) {
+    if(method =='GET') FoodsController.getAllFoods(req,res);
+  }
+  else if (path.includes('/api/gift')) {
+    if(method =='GET') GiftsController.getAllGifts(req,res);
+  }
+  else if (path.includes('/api/habitat')) {
+    if(method =='GET') HabitatsController.getAllHabitats(req,res);
+  }
+  else if (path.includes('/api/health')) {
+    if(method =='GET') HealthsController.getAllHealths(req,res);
+  }
+  else if (path.includes('/api/medical')) {
+    if(method =='GET') MedicalsController.getAllMedicals(req,res);
+  }
+  else if (path.includes('/api/transaction')) {
+    if(method =='GET') TransactionsController.getAllTransactions(req,res);
+  }
+  else {
         res.writeHead(404, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ message: 'Route Not Found' }));
 
     }
 });
 
-//});
 
 const PORT = process.env.PORT || 5000;
 

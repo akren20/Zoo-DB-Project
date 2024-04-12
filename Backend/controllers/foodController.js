@@ -1,12 +1,12 @@
 // backend/controllers/animalController.js
-import foodModel from '../models/animalModel.js';
+const FoodsModel = require('../models/foodModel.js');
 
-class foodController {
+class FoodsController {
   // @desc  Gets All Items
   // @route GET /api/items
   static async getAllFoods(req, res) {
     try {
-      const items = await AnimalsModel.findAllFoods();
+      const items = await FoodsModel.findAllFoods();
 
       res.writeHead(200, {
         'Content-Type': 'application/json',
@@ -26,4 +26,4 @@ class foodController {
 
 }
 
-export default FoodsController;
+module.exports.default  = FoodsController;

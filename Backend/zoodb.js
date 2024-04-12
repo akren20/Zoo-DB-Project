@@ -20,4 +20,4 @@ pool.getConnection((err, connection) => {
     }
 });
 
-export default pool;
+module.exports.default  = pool;

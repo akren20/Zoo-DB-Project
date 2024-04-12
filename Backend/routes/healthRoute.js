@@ -1,17 +1,17 @@
 // backend/routes/adminRoute.js include admin controller file down below
-import AnimalController from '../controllers/animalController.js';
+const HealthController = require('../controllers/healthController.js');
 
-function animalRoute(req, res, path, method) {
-  if (path === '/api/admin/animal' && method === 'GET') {
-    AnimalController.getAllAnimals(req,res);
+function healthRoute(req, res, path, method) {
+  if (path === '/api/admin/health' && method === 'GET') {
+    HealthController.getAllHealths(req,res);
   } 
-  else if (path === '/api/animal' && method === 'POST') {
+  else if (path === '/api/health' && method === 'POST') {
     const itemData = JSON.parse(req.body);
-    AnimalController.createItem(req,res,itemData);
+    HealthController.createItem(req,res,itemData);
   } 
-  else if (path === '/api/animal' && method === 'DELETE') {
+  else if (path === '/api/health' && method === 'DELETE') {
     const itemData = JSON.parse(req.body);
-    AnimalController.createItem(req,res,itemData);
+    HealthController.createItem(req,res,itemData);
   }
   else {
     // Handle other HTTP methods if needed
@@ -20,4 +20,4 @@ function animalRoute(req, res, path, method) {
   }
 }
   
-export default animalRoute;
+module.exports.default  = healthRoute;

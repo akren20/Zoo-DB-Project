@@ -1,5 +1,5 @@
 // backend/routes/adminRoute.js include admin controller file down below
-import EventController from '../controllers/eventController.js';
+const EventController = require('../controllers/eventController.js');
 
 function eventRoute(req, res, path, method) {
   if (path === '/api/admin/event' && method === 'GET') {
@@ -20,4 +20,4 @@ function eventRoute(req, res, path, method) {
   }
 }
   
-export default eventRoute;
+module.exports.default = eventRoute;
