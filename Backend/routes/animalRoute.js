@@ -2,6 +2,11 @@
 import AnimalController from '../controllers/animalController.js';
 
 function animalRoute(req, res, path, method) {
+  res.writeHead(200, {
+    'Content-Type': 'application/json',
+    "Access-Control-Allow-Origin": "*"
+  });
+  
   if (path === '/api/admin/animal' && method === 'GET') {
     AnimalController.getAllAnimals(req,res);
   } 

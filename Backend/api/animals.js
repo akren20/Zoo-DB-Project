@@ -3,7 +3,7 @@ function get_animals(req,res,db){
         
     })    
 }
-function post_animals(){
+function post_animals(req,res,db){
 
 }
 function put_animals(){

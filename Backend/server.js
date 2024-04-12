@@ -14,6 +14,7 @@ import healthRoute from './routes/healthRoute.js';
 import medicalRoute from './routes/medicalRoute.js';
 import transactionRoute from './routes/transactionRoute.js';
 import fadminRoute from './routes/adminRoute.js';
+import AnimalsController from './controllers/animalController.js';
 
 //const corsMiddleware = cors();
 const server = http.createServer(async (req, res) => {
@@ -45,6 +46,7 @@ const server = http.createServer(async (req, res) => {
 
 
   } else if (path.includes('/api/animals')) {
+    if(method=='GET') AnimalsController.getAllAnimals(req,res);
 
   } else if (path.includes('/api/closure')) {
 
