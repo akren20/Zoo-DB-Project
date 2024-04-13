@@ -1,5 +1,5 @@
 // backend/controllers/animalController.js
-const EventsModel = require('../models/animalModel.js');
+const EventsModel = require('../models/eventModel.js');
 
 class EventsController {
   // @desc  Gets All Items

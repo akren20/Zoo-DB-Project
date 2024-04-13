@@ -1,5 +1,5 @@
 // backend/controllers/animalController.js
-const MedicalsModel = require('../models/animalModel.js');
+const MedicalsModel = require('../models/medicalModel.js');
 
 class MedicalsController {
   // @desc  Gets All Items

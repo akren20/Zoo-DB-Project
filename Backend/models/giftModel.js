@@ -1,7 +1,7 @@
 // backend/models/itemsModel.js
 const pool = require( '../zoodb.js');
 
-class AnimalsModel {
+class GiftsModel {
   static async findAllGifts() {
     try {
       const [result] = await pool.query(`SELECT * FROM gift_shop;`);
