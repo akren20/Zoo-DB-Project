@@ -1,7 +1,7 @@
 // backend/routes/adminRoute.js include admin controller file down below
 //import AnimalController from '../controllers/animalController.js';
 
-const AnimalController = require('./routes/animalRoute.js');
+import AnimalController from './routes/animalController.js';
 
 function animalRoute(req, res, path, method) {
   res.writeHead(200, {
@@ -27,4 +27,4 @@ function animalRoute(req, res, path, method) {
   }
 }
   
-module.exports.default = animalRoute;
+export default animalRoute;

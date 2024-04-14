@@ -1,5 +1,5 @@
 // backend/controllers/animalController.js
-const MedicalsModel = require('../models/medicalModel.js');
+import MedicalsModel from '../models/medicalModel.js';
 
 class MedicalsController {
   // @desc  Gets All Items
@@ -41,6 +41,6 @@ class MedicalsController {
   }
 }
 
-module.exports.default  = MedicalsController;
+export default MedicalsController;
 
 //add insert and delete, update

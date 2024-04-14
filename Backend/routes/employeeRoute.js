@@ -1,5 +1,5 @@
 // backend/routes/adminRoute.js include admin controller file down below
-const EmployeeController = require( '../controllers/employeeController.js');
+import EmployeeController from  '../controllers/employeeController.js';
 
 function employeeRoute(req, res, path, method) {
   if (path === '/api/admin/employee' && method === 'GET') {
@@ -20,4 +20,4 @@ function employeeRoute(req, res, path, method) {
   }
 }
   
-module.exports.default  = employeeRoute;
+export default employeeRoute;

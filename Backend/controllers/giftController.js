@@ -1,5 +1,5 @@
 // backend/controllers/animalController.js
-const GiftsModel = require('../models/giftModel.js');
+import GiftsModel from '../models/giftModel.js';
 
 class GiftsController {
   // @desc  Gets All Items
@@ -26,4 +26,4 @@ class GiftsController {
 
 }
 
-module.exports.default  = GiftsController;
+export default GiftsController;

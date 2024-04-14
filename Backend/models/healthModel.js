@@ -13,4 +13,4 @@ class HealthsModel {
   }
 }
 
-module.exports.default  = HealthsModel;
+export default HealthsModel;

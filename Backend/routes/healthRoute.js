@@ -1,5 +1,5 @@
 // backend/routes/adminRoute.js include admin controller file down below
-const HealthController = require('../controllers/healthController.js');
+import HealthController from '../controllers/healthController.js';
 
 function healthRoute(req, res, path, method) {
   if (path === '/api/admin/health' && method === 'GET') {
@@ -20,4 +20,4 @@ function healthRoute(req, res, path, method) {
   }
 }
   
-module.exports.default  = healthRoute;
+export default healthRoute;

@@ -199,31 +199,6 @@ VALUES
 
 
 
-
--- ----------------------------
--- Table structure for closure
--- ----------------------------
-DROP TABLE IF EXISTS `closure`;
-CREATE TABLE `closure` (
-  `closure_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `temperature` double NOT NULL,
-  `precipitation_chance` int CHECK (precipitation_chance >= 0 AND precipitation_chance <= 100),
-  `weather_status` ENUM('sunny', 'cloudy', 'raining'),
-  `days_closed` int,
-  `days_open` int,
-  `hours_open` int,
-  `hours_closed` int,
-  `number_visitors` int NOT NULL,
-  `number_employees` int NOT NULL,
-  `contact_email` varchar(50) NOT NULL,
-  FOREIGN KEY (`contact_email`) REFERENCES `customer`(`customer_email`) ON DELETE CASCADE ON UPDATE CASCADE
-);
-
--- ----------------------------
--- Records of closure
--- ----------------------------
-
-
 -- ----------------------------
 -- Table structure for transaction
 -- ----------------------------
@@ -560,6 +535,7 @@ CREATE TRIGGER `UpdateAnimalHealthStatus` AFTER INSERT ON medical FOR EACH ROW B
 END;
 ;;
 DELIMITER ;
+
 
 -- Trigger to log data changes
 DROP TRIGGER IF EXISTS `LogAdminChanges`;

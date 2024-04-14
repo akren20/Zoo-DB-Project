@@ -13,4 +13,4 @@ class CustomersModel {
   }
 }
 
-module.exports.default = CustomersModel;
+export default CustomersModel;

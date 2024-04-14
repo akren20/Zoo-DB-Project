@@ -13,4 +13,4 @@ class FoodsModel {
   }
 }
 
-module.exports.default = FoodsModel;
+export default FoodsModel;

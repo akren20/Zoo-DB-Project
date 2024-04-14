@@ -1,5 +1,5 @@
 // backend/controllers/animalController.js
-const TransactionsModel = require('../models/transactionModel.js');
+import TransactionsModel from '../models/transactionModel.js';
 
 class TransactionsController {
   // @desc  Gets All Items
@@ -41,6 +41,6 @@ class TransactionsController {
   }
 }
 
-module.exports.default  = TransactionsController;
+export default TransactionsController;
 
 //add insert and delete, update

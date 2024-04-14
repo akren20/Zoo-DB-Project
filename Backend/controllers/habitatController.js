@@ -1,5 +1,5 @@
 // backend/controllers/animalController.js
-const HabitatsModel = require('../models/habitatModel.js') ;
+import HabitatsModel from '../models/habitatModel.js' ;
 
 class HabitatsController {
   // @desc  Gets All Items
@@ -26,4 +26,4 @@ class HabitatsController {
 
 }
 
-module.exports.default = HabitatsController;
+export default HabitatsController;

@@ -13,4 +13,4 @@ class HabitatsModel {
   }
 }
 
-module.exports.default  = HabitatsModel;
+export default HabitatsModel;

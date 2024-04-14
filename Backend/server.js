@@ -1,9 +1,7 @@
 // backend/server.js
-// import http from 'http';
-const http = require('http');
-// import url from 'url';
-const url = require('url');
-//const cors = require('cors');
+import http from 'http';
+import url from 'url';
+import cors from 'cors';
 
 import animalRoute from './routes/animalRoute.js';
 import customerRoute from './routes/customerRoute.js';
@@ -16,34 +14,17 @@ import healthRoute from './routes/healthRoute.js';
 import medicalRoute from './routes/medicalRoute.js';
 import transactionRoute from './routes/transactionRoute.js';
 import adminRoute from './routes/adminRoute.js';
+
 import AnimalsController from './controllers/animalController.js';
-//import AdminController from './controllers/adminController.js';
+import AdminController from './controllers/adminController.js';
 import CustomersController from './controllers/customerController.js';
 import AdminsController from './controllers/adminController.js';
 import EmployeesController from './controllers/employeeController.js';
 import EventsController from './controllers/eventController.js';
+import HabitatsController from './controllers/habitatController.js';
+import HealthsController from './controllers/healthController.js';
+import MedicalsController from './controllers/medicalController.js';
 
-const animalRoute = require('./routes/animalRoute.js');
-const customerRoute = require('./routes/customerRoute.js');
-const employeeRoute = require('./routes/employeeRoute.js');
-const eventRoute = require('./routes/eventRoute.js');
-const foodRoute = require('./routes/foodRoute.js');
-const giftRoute = require('./routes/giftRoute.js');
-const habitatRoute = require('./routes/habitatRoute.js');
-const healthRoute = require('./routes/healthRoute.js');
-const medicalRoute = require('./routes/medicalRoute.js');
-const transactionRoute = require('./routes/transactionRoute.js');
-const AdminRoute = require('./routes/adminRoute.js');
-
-const AnimalsController = require('./controllers/animalController.js');
-const AdminsController = require('./controllers/adminController.js');
-const CustomersController = require('./controllers/customerController.js');
-const AdminsController = require('./controllers/adminController.js');
-const EmployeesController = require('./controllers/employeeController.js');
-const EventsController = require('./controllers/eventController.js');
-const { default: HabitatsController } = require('./controllers/habitatController.js');
-const { default: HealthsController } = require('./controllers/healthController.js');
-const { default: MedicalsController } = require('./controllers/medicalController.js');
 
 //const corsMiddleware = cors();
 const server = http.createServer(async (req, res) => {

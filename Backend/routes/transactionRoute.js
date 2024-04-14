@@ -1,5 +1,5 @@
 // backend/routes/adminRoute.js include admin controller file down below
-const TransactionController = require('../controllers/transactionController.js') ;
+import TransactionController from '../controllers/transactionController.js' ;
 
 function transactionRoute(req, res, path, method) {
   res.writeHead(200, {
@@ -25,4 +25,4 @@ function transactionRoute(req, res, path, method) {
   }
 }
   
-module.exports.default  = transactionRoute;
+export default transactionRoute;

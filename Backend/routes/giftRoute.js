@@ -1,5 +1,5 @@
 // backend/routes/adminRoute.js include admin controller file down below
-const GiftController =  require('../controllers/giftController.js');
+import GiftController from '../controllers/giftController.js';
 
 function giftRoute(req, res, path, method) {
   if (path === '/api/admin/gift' && method === 'GET') {
@@ -20,4 +20,4 @@ function giftRoute(req, res, path, method) {
   }
 }
   
-module.exports.default  = giftRoute;
+export default giftRoute;

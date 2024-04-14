@@ -1,5 +1,5 @@
 // backend/controllers/animalController.js
-const HealthsModel = require('../models/healthModel.js');
+import HealthsModel from '../models/healthModel.js';
 
 class HealthsController {
   // @desc  Gets All Items
@@ -26,4 +26,4 @@ class HealthsController {
 
 }
 
-module.exports.default  = HealthsController;
+export default HealthsController;

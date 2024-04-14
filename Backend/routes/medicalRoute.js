@@ -1,5 +1,5 @@
 // backend/routes/adminRoute.js include admin controller file down below
-const MedicalController =  require('../controllers/medicalController.js');
+import MedicalController from'../controllers/medicalController.js';
 
 function medicalRoute(req, res, path, method) {
   res.writeHead(200, {
@@ -25,4 +25,4 @@ function medicalRoute(req, res, path, method) {
   }
 }
   
-module.exports.default  = medicalRoute;
+export default medicalRoute;

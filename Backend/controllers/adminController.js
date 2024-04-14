@@ -1,5 +1,5 @@
 // backend/controllers/animalController.js
-const AdminsModel = require('../models/adminModel.js');
+import AdminsModel from '../models/adminModel.js';
 
 class AdminsController {
   // @desc  Gets All Items
@@ -26,4 +26,4 @@ class AdminsController {
 
 }
 
-module.exports.default = AdminsController;
+export default AdminsController;

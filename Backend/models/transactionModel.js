@@ -13,4 +13,4 @@ class TransactionsModel {
   }
 }
 
-module.exports.default  = TransactionsModel;
+export default TransactionsModel;

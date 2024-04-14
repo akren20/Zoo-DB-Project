@@ -13,4 +13,4 @@ class AdminsModel {
   }
 }
 
-module.exports.default = AdminsModel;
+export default AdminsModel;

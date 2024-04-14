@@ -13,4 +13,4 @@ class EmployeesModel {
   }
 }
 
-module.exports.default  = EmployeesModel;
+export default EmployeesModel;

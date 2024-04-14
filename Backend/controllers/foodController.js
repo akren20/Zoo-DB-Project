@@ -1,5 +1,5 @@
 // backend/controllers/animalController.js
-const FoodsModel = require('../models/foodModel.js');
+import FoodsModel from '../models/foodModel.js';
 
 class FoodsController {
   // @desc  Gets All Items
@@ -26,4 +26,4 @@ class FoodsController {
 
 }
 
-module.exports.default  = FoodsController;
+export default FoodsController;

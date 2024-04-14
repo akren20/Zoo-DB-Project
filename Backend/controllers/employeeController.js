@@ -1,5 +1,5 @@
 // backend/controllers/animalController.js
-const EmployeesModel = require( '../models/employeeModel.js');
+import EmployeesModel from '../models/employeeModel.js';
 
 class EmployeesController {
   // @desc  Gets All Items
@@ -26,4 +26,4 @@ class EmployeesController {
 
 }
 
-module.exports.default  = EmployeesController;
+export default EmployeesController;

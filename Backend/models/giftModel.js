@@ -13,4 +13,4 @@ class GiftsModel {
   }
 }
 
-module.exports.default  = GiftsModel;
+export default GiftsModel;
