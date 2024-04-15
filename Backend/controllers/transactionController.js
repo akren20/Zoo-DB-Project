@@ -40,6 +40,50 @@ class TransactionsController {
 
     }
   }
+  static async updateTransaction(req, res) {
+    try {
+      // Extract transaction data from request body
+      const { transactionId, updatedData } = req.body;
+  
+      // Construct the SQL UPDATE statement
+      const sql = `UPDATE transaction SET ? WHERE transaction_id = ?`;
+  
+      // Execute the SQL statement with the provided transaction data and ID
+      await pool.query(sql, [updatedData, transactionId]);
+  
+      // Send success response
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ message: "Transaction updated successfully" }));
+    } catch(err) {
+      // Set error status code and content-type
+      res.writeHead(500, { "Content-Type": "application/json" });
+      // Send error response
+      res.end(JSON.stringify({ message: err.message }));
+    }
+  }
+  
+  static async deleteTransaction(req, res) {
+    try {
+      // Assuming the transaction_id is provided in the req.params object
+      const transactionId = req.params.transactionId;
+  
+      // Construct the SQL DELETE statement
+      const sql = `DELETE FROM transaction WHERE transaction_id = ?`;
+  
+      // Execute the SQL statement with the provided transaction_id
+      await pool.query(sql, [transactionId]);
+  
+      // Send success response
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ message: "Transaction deleted successfully" }));
+    } catch(err) {
+      // Set error status code and content-type
+      res.writeHead(500, { "Content-Type": "application/json" });
+      // Send error response
+      res.end(JSON.stringify({ message: err.message }));
+    }
+  }
+  
 }
 
 export default TransactionsController;

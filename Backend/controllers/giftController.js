@@ -23,6 +23,47 @@ class GiftsController {
 
     }
   }
+  static async updateGiftShopItem(req, res) {
+    try {
+      const { id } = req.params;
+      const updatedItem = await GiftShopModel.updateGiftShopItem(id, req.body);
+
+      res.writeHead(200, {
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*"
+      });
+      
+      res.end(JSON.stringify(updatedItem));
+
+    } catch(err) {
+      // Set error status code and content-type
+      res.writeHead(500, { "Content-Type": "application/json" });
+      // Send error message
+      res.end(JSON.stringify({ message: err.message }));
+    }
+  }
+
+  // @desc  Delete Gift Shop Item
+  // @route DELETE /api/gift-shop/:id
+  static async deleteGiftShopItem(req, res) {
+    try {
+      const { id } = req.params;
+      const deletedItem = await GiftShopModel.deleteGiftShopItem(id);
+
+      res.writeHead(200, {
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*"
+      });
+      
+      res.end(JSON.stringify(deletedItem));
+
+    } catch(err) {
+      // Set error status code and content-type
+      res.writeHead(500, { "Content-Type": "application/json" });
+      // Send error message
+      res.end(JSON.stringify({ message: err.message }));
+    }
+  }
 
 }
 

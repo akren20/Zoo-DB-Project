@@ -11,11 +11,27 @@
         .tab button:hover { background-color: #ddd; }
         .tab button.active { background-color: #ccc; }
         .tabcontent { display: none; padding: 6px 12px; border: 1px solid #ccc; border-top: none; }
+        /* Styles for logout button */
+        .logout-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: grey;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            border-bottom: 50px;
+        }
+        .logout-btn:hover {
+            background-color: #d32f2f;
+        }
     </style>
 </head>
 <body>
 
 <h2>Employee Portal</h2>
+<a href="login.html" class="logout-btn">Logout</a>
 
 <div class="tab">
     <button class="tablinks" onclick="openTab(event, 'Schedule')">Employee Schedule</button>
@@ -66,17 +82,20 @@
             <div class="addSku" style="display:none;"></div>
         </div>
     </div>
-    <form class="addHabitatItem_create">
-        <input type="text" name="habitatID" placeholder="Habitat ID" required>
-        <input type="text" name="habitatSize" placeholder="Habitat Size (In Square Feet)" required>
-        <input type="text" name="HabitatLoc" placeholder="Habitat Location" required>
-        <input type="text" name="HabitatTemp" placeholder="Habitat Temperature" required>
-        <input type="text" name="habitatType" placeholder="Habitat Type" required>
-        <input type="text" name="habitatCond" placeholder="Habitat Condition (Number)" required>
-        <input type="text" name="HabitatHumid" placeholder="Habitat Humidity Temperature" required>
-        <input type="text" name="HabitatSecure" placeholder="Habitat Security" required>
-        <button type="submit">Add Habitat Information</button>
-    </form>    
+    <form class="addEventItem_create">
+        <input type="text" name="eventID" placeholder="Event ID Number" required>
+        <input type="text" name="eventName" placeholder="Event Name" required>
+        <input type="date" name="eventStartDate" placeholder="Event Start Date" required>
+        <input type="date" name="eventEndDate" placeholder="Event End Date" required>
+        <input type="text" name="eventOrganizer" placeholder="Event Organizer" required>
+        <input type="date" name="eventRegisterDeadline" placeholder="Registration Deadline" required>
+        <input type="time" name="eventStartTime" placeholder="Start Time" required>
+        <input type="time" name="eventEndTime" placeholder="End Time" required>
+        <input type="text" name="eventStatus" placeholder="Event Status: Early, On Time, or Late" required>
+        <input type="text" name="eventEmployeeID" placeholder="ID Number of Employee Working the Event" required>
+        <button type="submit">Add Event Information</button>
+
+    </form>   
 </div>
 <script src="event.js"></script> 
 

@@ -8,27 +8,29 @@ const port = 5000
 // import url from 'url';
 // import cors from 'cors';
 
-// import animalRoute from './routes/animalRoute.js';
-// import customerRoute from './routes/customerRoute.js';
-// import employeeRoute from './routes/employeeRoute.js';
-// import eventRoute from './routes/eventRoute.js';
-// import foodRoute from './routes/foodRoute.js';
-// import giftRoute from './routes/giftRoute.js';
-// import habitatRoute from './routes/habitatRoute.js';
-// import healthRoute from './routes/healthRoute.js';
-// import medicalRoute from './routes/medicalRoute.js';
-// import transactionRoute from './routes/transactionRoute.js';
-// import adminRoute from './routes/adminRoute.js';
+import animalRoute from './routes/animalRoute.js';
+import customerRoute from './routes/customerRoute.js';
+import employeeRoute from './routes/employeeRoute.js';
+import eventRoute from './routes/eventRoute.js';
+import foodRoute from './routes/foodRoute.js';
+import giftRoute from './routes/giftRoute.js';
+import habitatRoute from './routes/habitatRoute.js';
+import healthRoute from './routes/healthRoute.js';
+import medicalRoute from './routes/medicalRoute.js';
+import transactionRoute from './routes/transactionRoute.js';
+import adminRoute from './routes/adminRoute.js';
 
-// import AnimalsController from './controllers/animalController.js';
-// import AdminController from './controllers/adminController.js';
-// import CustomersController from './controllers/customerController.js';
-// import AdminsController from './controllers/adminController.js';
-// import EmployeesController from './controllers/employeeController.js';
-// import EventsController from './controllers/eventController.js';
-// import HabitatsController from './controllers/habitatController.js';
-// import HealthsController from './controllers/healthController.js';
-// import MedicalsController from './controllers/medicalController.js';
+import AnimalsController from './controllers/animalController.js';
+import CustomersController from './controllers/customerController.js';
+import AdminsController from './controllers/adminController.js';
+import EmployeesController from './controllers/employeeController.js';
+import EventsController from './controllers/eventController.js';
+import HabitatsController from './controllers/habitatController.js';
+import HealthsController from './controllers/healthController.js';
+import MedicalsController from './controllers/medicalController.js';
+import GiftsController from './controllers/giftController.js';
+import TransactionsController from './controllers/transactionController.js' ;
+import FoodsController from './controllers/foodController.js';
 
 
 app.get('/', (req, res) => {
@@ -92,6 +94,9 @@ app
   .route("api/animals")
   .get((req,res) => {AnimalsController.getAllAnimals(req,res)})
   .put((req,res) => {AnimalsController.getAllAnimals(req,res)});
+
+
+// app.delete('/api/customers/:id', Class.deleteTuple);
 
 
 //const corsMiddleware = cors();
