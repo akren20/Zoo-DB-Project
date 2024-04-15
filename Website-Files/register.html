@@ -46,9 +46,8 @@
 <section class="registerpg">
 <section class = "registerpg-body">
     <div class="wrapper">
-        <form action="">
+        <form class="register-form">
             <h1>Register</h1>
-
             <div class="input-box">
                 <input type="text" placeholder="First Name"required>
                 <i class='bx bxs-cool'></i>
@@ -75,17 +74,16 @@
                 <input type="password" placeholder="Password" required>
                 <i class='bx bxs-lock-alt'></i>
             </div>
-            
             <ul>
             <button type="submit"  class="btn" onclick="redirectToLogin()">Register</button>
-
+        </form>
             <script>
                 function redirectToLogin() {
                     window.location.href = "login.html";
                 }
             </script>
 
-        </form>
+        
 
     </div>
 </section>
