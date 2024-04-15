@@ -5,16 +5,24 @@
     <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
     <title>University of Houston Zoo</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.boostrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">   <!-- Fixed typo in link -->
     <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
 
 </head>
 
+
+
+
+
+
+
+
 <body>
 <section class="header">
+
+
     <nav>
         <div class="nav-links" id="navLinks">
-            <!--i class="fa fa-times" onclick="hideMenu()"></i> <--X sign-->
             <ul>
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="about.html">ABOUT</a></li>
@@ -23,10 +31,48 @@
                 <li><a href="register.html">REGISTER</a></li>
                 <li><a href="gallery.html">GALLERY</a></li>
             </ul>
-        </div>
-        <!--i class="fa fa-bars" onclick="showMenu()"></i>  <--three bars-->
+        <i class="fa fa-bars" id="hamburgerIcon"></i>
     </nav>
 
+<<<<<<< Updated upstream
+=======
+
+
+
+
+
+    <form id="dataForm">
+        <input type="text" name="data[]" placeholder="Enter some data" required />
+        <button type="button" onclick="addMoreFields()">Add More</button>
+        <input type="submit" value="Submit">
+    </form>
+    
+
+
+
+
+
+<!---Chatbot-->
+<script>
+    window.embeddedChatbotConfig = {
+    chatbotId: "hL_EiwYsI3bldEHwuo7a9",
+    domain: "www.chatbase.co"
+    }
+    </script>
+    <script
+    src="https://www.chatbase.co/embed.min.js"
+    chatbotId="hL_EiwYsI3bldEHwuo7a9"
+    domain="www.chatbase.co"
+    defer>
+    </script>
+<!---Chatbot-->
+
+
+
+
+
+
+>>>>>>> Stashed changes
 <div class="text-box">
     <h1>Welcome To The University of Houston Zoo</h1>
     <p>Where anything (within reason) is possible! Nestled in the heart of Houston, our Zoo offers an unforgettable experience for visitors of all ages. Get ready to embark on a wild adventure as you encounter fascinating creatures from around the globe. </p>
@@ -34,6 +80,14 @@
 </div>
 
 </section>
+
+
+
+
+
+
+
+
 
 <!------Things To Do------>
 <section class = "todo">
@@ -49,6 +103,9 @@
         <p>
 
         </p>
+
+
+        
 
     </div class="row">
         <div class="todo-col">
@@ -74,6 +131,15 @@
     </div>
 
 </section>
+
+
+
+
+
+
+
+
+
 
 <footer class="footer">
     <div class="container">
@@ -121,19 +187,51 @@
 </section-->
 
 
+
+
+
+
+
+
+
+
+
 <!------JavaScript for Toggle Menu------>
 <script>
-    var navLinks = document.getElementById("navLinks");
-    function showMenu(){
-        navLinks.style.right = "0";
+
+    // Ensure that your .fa-bars element exists and is correctly targeted
+    document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded and parsed");
+    const hamburgerIcon = document.getElementById("hamburgerIcon");
+    const navLinks = document.getElementById("navLinks");
+
+    if (hamburgerIcon) {
+        console.log("Hamburger icon found");
+        hamburgerIcon.addEventListener('click', () => {
+            console.log("Hamburger icon clicked");
+            toggleMenu();
+        });
+    } else {
+        console.log("Hamburger icon not found");
     }
 
-    function hideMenu(){
-        navLinks.style.right = "-200px";
+    function toggleMenu() {
+        console.log("toggleMenu function called");
+        if (navLinks) {
+            navLinks.classList.toggle('nav-active');
+            console.log("nav-active class toggled");
+        } else {
+            console.log("Hamburger nav links not found. Check if the ID is correct.");
+        }
     }
+});
+
 
 
 </script>
 
+
+
+
 </body>
-</html>
+</html> 
