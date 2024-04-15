@@ -212,6 +212,7 @@ CREATE TABLE `transaction`  (
   `transaction_price` decimal(10,2) NOT NULL
 );
 
+ALTER TABLE `transaction` ADD COLUMN `quantity_purchased` INT;
 
 -- ----------------------------
 -- Records of transaction
@@ -524,37 +525,48 @@ END;
 -- ------------------------------------------------------
 GRANT UPDATE, TRIGGER ON your_database.* TO 'admin';
 
-DROP TRIGGER IF EXISTS `UpdateAnimalHealthStatus`;
-DELIMITER ;;
-CREATE TRIGGER `UpdateAnimalHealthStatus` AFTER INSERT ON medical FOR EACH ROW BEGIN
-    DECLARE animal_id_val INT;
-    SELECT animal_id INTO animal_id_val FROM animal WHERE animal_id = NEW.medical_id;
-    UPDATE animal
-    SET animal_health = NEW.medical_status
-    WHERE animal_id = animal_id_val;
-END;
-;;
+DELIMITER //
+
+-- Trigger to Update Animal Status
+CREATE TRIGGER update_animal_status
+AFTER INSERT ON health
+FOR EACH ROW
+BEGIN
+    DECLARE animal_status_var INT;
+    SELECT animal_health INTO animal_status_var FROM animal WHERE animal_id = NEW.animal_id;
+    IF animal_status_var = 1 AND NEW.health_status = 0 THEN
+        UPDATE animal SET animal_status = 0 WHERE animal_id = NEW.animal_id;
+    END IF;
+END //
+
+CREATE TABLE `transaction_log` (
+  `transaction_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `transaction_type` ENUM('ticket', 'food', 'gift') NOT NULL,
+  `transaction_time` datetime NOT NULL,
+  `transaction_price` decimal(10,2) NOT NULL,
+  `customer_name` varchar(250) NOT NULL,
+  `customer_email` varchar(50) NOT NULL,
+   FOREIGN KEY (`transaction_id`) REFERENCES `transaction` (`transaction_id`)
+);
+
+-- Trigger to Track Transactions
+DELIMITER //
+
+CREATE TRIGGER track_transactions AFTER INSERT ON transaction 
+FOR EACH ROW 
+BEGIN 
+    INSERT INTO transaction_log (transaction_type, transaction_time, transaction_price, customer_name, customer_email) 
+    VALUES (NEW.transaction_type, NEW.transaction_time, NEW.transaction_price, NEW.customer_name, NEW.customer_email); 
+END //
+
 DELIMITER ;
+DELIMITER //
+
+DELIMITER //
+
+-- ALTER USER 'admin'@'70-138-67-151.lightspeed.hstntx.sbcglobal.net' IDENTIFIED BY 'umadb123!';
 
 
--- Trigger to log data changes
-DROP TRIGGER IF EXISTS `LogAdminChanges`;
-DELIMITER ;;
-CREATE TRIGGER `LogAdminChanges` AFTER UPDATE ON administrator FOR EACH ROW BEGIN
-	INSERT INTO admin_changes_log(admin_id, operation_type, operation_time)
-    VALUES (NEW.adm_id, 'UPDATE', NOW());
-END;
-;;
-DELIMITER ;
-
-DROP TRIGGER IF EXISTS `CalculateEmployeeSalary`;
-DELIMITER ;;
-CREATE TRIGGER `CalculateEmployeeSalary` BEFORE UPDATE ON employee FOR EACH ROW BEGIN
-  SET NEW.employee_salary = NEW.employee_hours_worked * NEW.hourly_rate;
-END;
-;;
-DELIMITER ;
-
-
+-- select * from employee;
 
 

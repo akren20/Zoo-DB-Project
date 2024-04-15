@@ -1,8 +1,9 @@
 // backend/server.js
 
-import express from 'express'
-const app = express()
-const port = 5000
+import express from 'express';
+import cors from 'cors';
+const app = express();
+const port = 5001;
 
 // import http from 'http';
 // import url from 'url';
@@ -84,11 +85,11 @@ app.get('/', (req, res) => {
         res.end(JSON.stringify({ message: 'Route Not Found' }));
 
     }
-})
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-})
+});
 
 app
   .route("api/animals")
