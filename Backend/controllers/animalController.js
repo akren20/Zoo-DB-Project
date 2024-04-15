@@ -68,8 +68,7 @@ class AnimalsController {
       // Send error response
       res.end(JSON.stringify({ message: err.message }));
     }
-  }
-  
+  } 
   
 }
 

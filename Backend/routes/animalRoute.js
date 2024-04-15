@@ -9,14 +9,14 @@ function animalRoute(req, res, path, method) {
     "Access-Control-Allow-Origin": "*"
   });
   
-  if (path === '/api/animal' && method === 'GET') {
+  if (path === '/animal' && method === 'GET') {
     AnimalController.getAllAnimals(req,res);
   } 
-  else if (path === '/api/animal' && method === 'POST') {
+  else if (path === '/animal' && method === 'POST') {
     const itemData = JSON.parse(req.body);
     AnimalController.createItem(req,res,itemData);
   } 
-  else if (path === '/api/animal' && method === 'DELETE') {
+  else if (path === '/animal' && method === 'DELETE') {
     const itemData = JSON.parse(req.body);
     AnimalController.createItem(req,res,itemData);
   }

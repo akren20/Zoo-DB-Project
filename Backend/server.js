@@ -32,74 +32,92 @@ import TransactionsController from './controllers/transactionController.js' ;
 import FoodsController from './controllers/foodController.js';
 
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-  // if (method === 'OPTIONS') {
-  //   res.writeHead(200);
-  //   res.end();
-  //   return;
+// app.get('/', (req, res) => {
+//   res.send('Hello World!')
+//   // if (method === 'OPTIONS') {
+//   //   res.writeHead(200);
+//   //   res.end();
+//   //   return;
 
-  // } 
-  if (path.includes('/api/admin/GET')) {
-    if(method =='GET') {AdminsController.getAllAdmins(req,res)};
-    if(method =='POST') {AdminsController.getAllAdmins(req,res)};
+//   // } 
+//   if (path.includes('/api/admin/GET')) {
+//     if(method =='GET') {AdminsController.getAllAdmins(req,res)};
+//     if(method =='POST') {AdminsController.getAllAdmins(req,res)};
 
-  } 
-  else if (path.includes('/api/animals')) {
-    if(method =='GET') AnimalsController.getAllAnimals(req,res);
+//   } 
+//   else if (path.includes('/api/animals')) {
+//     if(method =='GET') AnimalsController.getAllAnimals(req,res);
 
-  } 
+//   } 
 
-  else if (path.includes('/api/customer')) {
-    if(method =='GET') CustomersController.getAllCustomers(req,res);
-  }
+//   else if (path.includes('/api/customer')) {
+//     if(method =='GET') CustomersController.getAllCustomers(req,res);
+//   }
 
-  else if (path.includes('/api/employee')) {
-    if(method =='GET') EmployeesController.getAllEmployees(req,res);
+//   else if (path.includes('/api/employee')) {
+//     if(method =='GET') EmployeesController.getAllEmployees(req,res);
     
-    } 
-  else if (path.includes('/api/event')) {
-    if(method =='GET') EventsController.getAllEvents(req,res);
-  }
-  else if (path.includes('/api/food')) {
-    if(method =='GET') FoodsController.getAllFoods(req,res);
-  }
-  else if (path.includes('/api/gift')) {
-    if(method =='GET') GiftsController.getAllGifts(req,res);
-  }
-  else if (path.includes('/api/habitat')) {
-    if(method =='GET') HabitatsController.getAllHabitats(req,res);
-  }
-  else if (path.includes('/api/health')) {
-    if(method =='GET') HealthsController.getAllHealths(req,res);
-  }
-  else if (path.includes('/api/medical')) {
-    if(method =='GET') MedicalsController.getAllMedicals(req,res);
-  }
-  else if (path.includes('/api/transaction')) {
-    if(method =='GET') TransactionsController.getAllTransactions(req,res);
-  }
-  else {
-        res.writeHead(404, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ message: 'Route Not Found' }));
+//     } 
+//   else if (path.includes('/api/event')) {
+//     if(method =='GET') EventsController.getAllEvents(req,res);
+//   }
+//   else if (path.includes('/api/food')) {
+//     if(method =='GET') FoodsController.getAllFoods(req,res);
+//   }
+//   else if (path.includes('/api/gift')) {
+//     if(method =='GET') GiftsController.getAllGifts(req,res);
+//   }
+//   else if (path.includes('/api/habitat')) {
+//     if(method =='GET') HabitatsController.getAllHabitats(req,res);
+//   }
+//   else if (path.includes('/api/health')) {
+//     if(method =='GET') HealthsController.getAllHealths(req,res);
+//   }
+//   else if (path.includes('/api/medical')) {
+//     if(method =='GET') MedicalsController.getAllMedicals(req,res);
+//   }
+//   else if (path.includes('/api/transaction')) {
+//     if(method =='GET') TransactionsController.getAllTransactions(req,res);
+//   }
+//   else {
+//         res.writeHead(404, { 'Content-Type': 'application/json' });
+//         res.end(JSON.stringify({ message: 'Route Not Found' }));
 
-    }
-});
+//     }
+// });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Server started on port: ${port}, navigate to http://localhost:${port}/`);
 });
 
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/animals', animalRoute);
+//ROUTE INITIALIZER
+app.use('/animal', animalRoute);
+//TODO: Add another route initializer
+
+//Handle GET to root route
+app.get('/animals', (req, res) => {
+    //2. TODO: add key value pair to display a message in the response
+    res.send({ 'Route': 'Root', 'HTTP': 'GET' });
+    animroute = animalRoute.getAllAnimals(req,res);
+    res.send({'Route': 'animalRoute', 'HTTP': 'GET'});
+});
+
+//Error handler
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
+
+/*app.use('/api/animals', animalRoute);
 app.use('/api/customers', customerRoute);
 
 app
   .route('api/animals')
   .get((req,res) => {animalRoute.getAllAnimals(req,res)})
-  .put((req,res) => {AnimalsController.getAllAnimals(req,res)});
+  .put((req,res) => {AnimalsController.getAllAnimals(req,res)});*/
 
 
 // app.delete('/api/customers/:id', Class.deleteTuple);
