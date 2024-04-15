@@ -6,7 +6,7 @@ class HabitatsController {
   // @route GET /api/items
   static async getAllHabitats(req, res) {
     try {
-      const items = await AnimalsModel.findAllHabitats();
+      const items = await HabitatsModel.findAllHabitats();
 
       res.writeHead(200, {
         'Content-Type': 'application/json',

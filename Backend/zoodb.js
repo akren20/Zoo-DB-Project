@@ -1,4 +1,4 @@
-import mysql from 'mysql';
+import mysql from 'mysql2';
 
 const pool = mysql.createPool({
     connectionLimit: 10,
@@ -6,10 +6,10 @@ const pool = mysql.createPool({
     user: 'admin',
     password: 'UMADB123',
     database: 'UMADBPROJECT',
-    ssl: {
-        rejectUnauthorized: true
-    }
-});
+    // ssl: {
+    //     rejectUnauthorized: false
+    // }
+}).promise();
 
 pool.getConnection((err, connection) => {
     if (err) {

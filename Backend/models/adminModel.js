@@ -1,5 +1,5 @@
 // backend/models/itemsModel.js
-const pool = require('../zoodb.js');
+import pool from '../zoodb.js';
 
 class AdminsModel {
   static async findAllEmployees() {

@@ -1,5 +1,5 @@
 // backend/models/itemsModel.js
-const pool = require( '../zoodb.js');
+import pool from '../zoodb.js';
 
 class EventsModel {
   static async findAllAnimals() {
@@ -13,4 +13,4 @@ class EventsModel {
   }
 }
 
-module.exports.default  = EventsModel;
+export default EventsModel;

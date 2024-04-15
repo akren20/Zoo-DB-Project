@@ -1,53 +1,46 @@
 // backend/server.js
-import http from 'http';
-import url from 'url';
-import cors from 'cors';
 
-import animalRoute from './routes/animalRoute.js';
-import customerRoute from './routes/customerRoute.js';
-import employeeRoute from './routes/employeeRoute.js';
-import eventRoute from './routes/eventRoute.js';
-import foodRoute from './routes/foodRoute.js';
-import giftRoute from './routes/giftRoute.js';
-import habitatRoute from './routes/habitatRoute.js';
-import healthRoute from './routes/healthRoute.js';
-import medicalRoute from './routes/medicalRoute.js';
-import transactionRoute from './routes/transactionRoute.js';
-import adminRoute from './routes/adminRoute.js';
+import express from 'express'
+const app = express()
+const port = 5000
 
-import AnimalsController from './controllers/animalController.js';
-import AdminController from './controllers/adminController.js';
-import CustomersController from './controllers/customerController.js';
-import AdminsController from './controllers/adminController.js';
-import EmployeesController from './controllers/employeeController.js';
-import EventsController from './controllers/eventController.js';
-import HabitatsController from './controllers/habitatController.js';
-import HealthsController from './controllers/healthController.js';
-import MedicalsController from './controllers/medicalController.js';
+// import http from 'http';
+// import url from 'url';
+// import cors from 'cors';
+
+// import animalRoute from './routes/animalRoute.js';
+// import customerRoute from './routes/customerRoute.js';
+// import employeeRoute from './routes/employeeRoute.js';
+// import eventRoute from './routes/eventRoute.js';
+// import foodRoute from './routes/foodRoute.js';
+// import giftRoute from './routes/giftRoute.js';
+// import habitatRoute from './routes/habitatRoute.js';
+// import healthRoute from './routes/healthRoute.js';
+// import medicalRoute from './routes/medicalRoute.js';
+// import transactionRoute from './routes/transactionRoute.js';
+// import adminRoute from './routes/adminRoute.js';
+
+// import AnimalsController from './controllers/animalController.js';
+// import AdminController from './controllers/adminController.js';
+// import CustomersController from './controllers/customerController.js';
+// import AdminsController from './controllers/adminController.js';
+// import EmployeesController from './controllers/employeeController.js';
+// import EventsController from './controllers/eventController.js';
+// import HabitatsController from './controllers/habitatController.js';
+// import HealthsController from './controllers/healthController.js';
+// import MedicalsController from './controllers/medicalController.js';
 
 
-//const corsMiddleware = cors();
-const server = http.createServer(async (req, res) => {
-  //corsMiddleware(req, res, () => {
-  const path = url.parse(req.url, true).path;
-  const method = req.method;
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+  // if (method === 'OPTIONS') {
+  //   res.writeHead(200);
+  //   res.end();
+  //   return;
 
-  // Set CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*'); // Allows all origins
-  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST'); // Specifies the methods allowed when accessing the resource
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type', 'Authorization'); // Indicates which headers can be used during the actual request
-
-  console.log(`Route hit: ${path}`);
-  console.log(method);
-
-  if (method === 'OPTIONS') {
-    res.writeHead(200);
-    res.end();
-    return;
-
-  } else if (path.includes('/api/admin')) {
-    if(method =='GET') AdminsController.getAllAdmins(req,res);
-
+  // } 
+  if (path.includes('/api/admin')) {
+    if(method =='GET') {AdminsController.getAllAdmins(req,res)};
 
   } 
   else if (path.includes('/api/animals')) {
@@ -89,12 +82,86 @@ const server = http.createServer(async (req, res) => {
         res.end(JSON.stringify({ message: 'Route Not Found' }));
 
     }
-});
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+
+app
+  .route("api/animals")
+  .get((req,res) => {AnimalsController.getAllAnimals(req,res)})
+  .put((req,res) => {AnimalsController.getAllAnimals(req,res)});
 
 
-const PORT = process.env.PORT || 5000;
+//const corsMiddleware = cors();
+// const server = http.createServer(async (req, res) => {
+//   //corsMiddleware(req, res, () => {
+//   const path = url.parse(req.url, true).path;
+//   const method = req.method;
 
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+//   // Set CORS headers
+//   res.setHeader('Access-Control-Allow-Origin', '*'); // Allows all origins
+//   res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, DELETE'); // Specifies the methods allowed when accessing the resource
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type', 'Authorization'); // Indicates which headers can be used during the actual request
+
+//   console.log(`Route hit: ${path}`);
+//   console.log(method);
+
+  // if (method === 'OPTIONS') {
+  //   res.writeHead(200);
+  //   res.end();
+  //   return;
+
+  // } else if (path.includes('/api/admin')) {
+  //   if(method =='GET') AdminsController.getAllAdmins(req,res);
+
+  // } 
+  // else if (path.includes('/api/animals')) {
+  //   if(method =='GET') AnimalsController.getAllAnimals(req,res);
+
+  // } 
+
+  // else if (path.includes('/api/customer')) {
+  //   if(method =='GET') CustomersController.getAllCustomers(req,res);
+  // }
+
+  // else if (path.includes('/api/employee')) {
+  //   if(method =='GET') EmployeesController.getAllEmployees(req,res);
+    
+  //   } 
+  // else if (path.includes('/api/event')) {
+  //   if(method =='GET') EventsController.getAllEvents(req,res);
+  // }
+  // else if (path.includes('/api/food')) {
+  //   if(method =='GET') FoodsController.getAllFoods(req,res);
+  // }
+  // else if (path.includes('/api/gift')) {
+  //   if(method =='GET') GiftsController.getAllGifts(req,res);
+  // }
+  // else if (path.includes('/api/habitat')) {
+  //   if(method =='GET') HabitatsController.getAllHabitats(req,res);
+  // }
+  // else if (path.includes('/api/health')) {
+  //   if(method =='GET') HealthsController.getAllHealths(req,res);
+  // }
+  // else if (path.includes('/api/medical')) {
+  //   if(method =='GET') MedicalsController.getAllMedicals(req,res);
+  // }
+  // else if (path.includes('/api/transaction')) {
+  //   if(method =='GET') TransactionsController.getAllTransactions(req,res);
+  // }
+  // else {
+  //       res.writeHead(404, { 'Content-Type': 'application/json' });
+  //       res.end(JSON.stringify({ message: 'Route Not Found' }));
+
+  //   }
+// });
+
+
+// const PORT = process.env.PORT || 5000;
+
+// server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
 

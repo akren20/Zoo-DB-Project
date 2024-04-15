@@ -6,7 +6,8 @@ class AnimalsController {
   // @route GET /api/items
   static async getAllAnimals(req, res) {
     try {
-      const [results] = await pool.query(`SELECT * FROM animal;`);
+      // const [results] = await pool.query(`SELECT * FROM animal;`);
+      const items = await AnimalsModel.findAllAnimals();
 
       res.writeHead(200, {
         'Content-Type': 'application/json',

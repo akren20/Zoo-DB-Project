@@ -6,7 +6,8 @@ class MedicalsController {
   // @route GET /api/items
   static async getAllMedicals(req, res) {
     try {
-      const [results] = await pool.query(`SELECT * FROM medical;`);
+      // const [results] = await pool.query(`SELECT * FROM medical;`);
+      const items = await MedicalsModel.findAllMedicals();
 
       res.writeHead(200, {
         'Content-Type': 'application/json',

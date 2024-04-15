@@ -6,7 +6,8 @@ class TransactionsController {
   // @route GET /api/items
   static async getAllTransactions(req, res) {
     try {
-      const [results] = await pool.query(`SELECT * FROM transaction;`);
+      // const [results] = await pool.query(`SELECT * FROM transaction;`);
+      const items = await TransactionsModel.findAllTransactions();
 
       res.writeHead(200, {
         'Content-Type': 'application/json',

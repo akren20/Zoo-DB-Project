@@ -8,15 +8,15 @@ function medicalRoute(req, res, path, method) {
   });
   
   if (path === '/api/admin/medical' && method === 'GET') {
-    AnimalController.getAllMedicals(req,res);
+    MedicalController.getAllMedicals(req,res);
   } 
   else if (path === '/api/medical' && method === 'POST') {
     const itemData = JSON.parse(req.body);
-    AnimalController.createItem(req,res,itemData);
+    MedicalController.createItem(req,res,itemData);
   } 
   else if (path === '/api/medical' && method === 'DELETE') {
     const itemData = JSON.parse(req.body);
-    AnimalController.createItem(req,res,itemData);
+    MedicalController.createItem(req,res,itemData);
   }
   else {
     // Handle other HTTP methods if needed
