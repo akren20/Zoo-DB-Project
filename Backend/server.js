@@ -2,12 +2,10 @@
 
 import express from 'express';
 import cors from 'cors';
+// import { errorHandler } from './middleware/errorHandler.js';
+// import { notFoundHandler } from './middleware/notFoundHandler.js';
 const app = express();
 const port = 5001;
-
-// import http from 'http';
-// import url from 'url';
-// import cors from 'cors';
 
 import animalRoute from './routes/animalRoute.js';
 import customerRoute from './routes/customerRoute.js';
@@ -42,8 +40,9 @@ app.get('/', (req, res) => {
   //   return;
 
   // } 
-  if (path.includes('/api/admin')) {
+  if (path.includes('/api/admin/GET')) {
     if(method =='GET') {AdminsController.getAllAdmins(req,res)};
+    if(method =='POST') {AdminsController.getAllAdmins(req,res)};
 
   } 
   else if (path.includes('/api/animals')) {
@@ -91,9 +90,15 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 });
 
+app.use(cors());
+app.use(express.json());
+
+app.use('/api/animals', animalRoute);
+app.use('/api/customers', customerRoute);
+
 app
-  .route("api/animals")
-  .get((req,res) => {AnimalsController.getAllAnimals(req,res)})
+  .route('api/animals')
+  .get((req,res) => {animalRoute.getAllAnimals(req,res)})
   .put((req,res) => {AnimalsController.getAllAnimals(req,res)});
 
 

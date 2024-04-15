@@ -9,7 +9,7 @@ function animalRoute(req, res, path, method) {
     "Access-Control-Allow-Origin": "*"
   });
   
-  if (path === '/api/admin/animal' && method === 'GET') {
+  if (path === '/api/animal' && method === 'GET') {
     AnimalController.getAllAnimals(req,res);
   } 
   else if (path === '/api/animal' && method === 'POST') {
