@@ -2,10 +2,7 @@ runtime: php
 env: flex
 runtime_config:
   document_root: .
-
-# Assuming PHP 7.4
-runtime_config:
-  php_version: 7.4
+  php_version: 7.4  # Assuming PHP 7.4
 
 resources:
   cpu: 1
