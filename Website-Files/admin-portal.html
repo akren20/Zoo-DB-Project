@@ -76,8 +76,8 @@
         <h3>Employee Schedules</h3>
         <div class="employee-subtabs">
             <button class="subtablinks" onclick="openSubTab(event, 'EmployeeInformation')">Employee Information</button>
-            <button class="subtablinks" onclick="openSubTab(event, 'EmployeeScheduling')">Employee Scheduling</button>
-            <button class="subtablinks" onclick="openSubTab(event, 'EmployeeSalary')">Employee Salary</button>
+            <button class="subtablinks" onclick="openSubTab(event, 'Schedule')">Employee Scheduling</button>
+            <!-- <button class="subtablinks" onclick="openSubTab(event, 'EmployeeSalary')">Employee Salary</button> -->
             <div id="EmployeeInformation" class="subtabcontent">
                 <h4>Employee Information</h4>
                 <button class="createEmployee">Add New Employee</button>
@@ -96,38 +96,35 @@
             <button type="submit">Add Employee</button>
         </form>
     </div>
+    <script src="employee.js"></script> 
+</div>
 
-    <div id="EmployeeScheduling" class="subtabcontent">
-        <h4>Employee Scheduling</h4>
-        <!-- Scheduling Table -->
-        <table id="scheduleTable">
-            <thead>
-                <tr>
-                    <th>Employee ID</th>
-                    <th>Name</th>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                    <th>Saturday</th>
-                    <th>Sunday</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Employee schedules will be dynamically inserted here -->
-            </tbody>
-        </table>
-    </div>
-        <div id="EmployeeSalary" class="subtabcontent">
-            <h4>Employee Salary</h4>
-            <!-- Employee salary information can go here -->
-            <p>Employee salary content...</p>
-        </div>
-    </div> 
-<script src="employee.js"></script> 
-
-
+<div id="Schedule" class="tabcontent">
+    <h3>Employee Schedule</h3>
+    <p>Employee schedules for the week will be displayed here.</p>
+    <table id="scheduleTable">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Employee schedules will be dynamically inserted here -->
+            <div class="table">
+                <div class="employees__names--item"></div>
+            </div>
+        </tbody>
+    </table>
+</div>
+<script src="schedule.js"></script>
 
 <div id="Habitat" class="tabcontent">
     <h3>Habitat Status</h3>
