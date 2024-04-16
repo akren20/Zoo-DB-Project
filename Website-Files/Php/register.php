@@ -1,4 +1,7 @@
 <?php
+
+require_once 'phpconnect.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitize form data
     $firstname = mysqli_real_escape_string($conn, $_POST['fname']);

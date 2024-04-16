@@ -35,7 +35,8 @@
 <a href="login.html" class="logout-btn">Logout</a>
 
 <div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'EmployeeSchedules')">Employee Schedules</button>
+    <button class="tablinks" onclick="openTab(event, 'Employee')">Employee Information</button>
+    <button class="tablinks" onclick="openTab(event, 'Schedule')">Schedules</button>
     <button class="tablinks" onclick="openTab(event, 'Animals')">Animals</button>
     <button class="tablinks" onclick="openTab(event, 'Habitat')">Habitat</button>
     <button class="tablinks" onclick="openTab(event, 'Medical')">Medical</button>
@@ -72,11 +73,11 @@
 </div>
 <script src="animals.js"></script> 
 
-<div id="EmployeeSchedules" class="tabcontent">
-        <h3>Employee Schedules</h3>
+<div id="Employee" class="tabcontent">
+        <h3>Employee Information</h3>
         <div class="employee-subtabs">
             <button class="subtablinks" onclick="openSubTab(event, 'EmployeeInformation')">Employee Information</button>
-            <button class="subtablinks" onclick="openSubTab(event, 'Schedule')">Employee Scheduling</button>
+            <!-- <button class="subtablinks" onclick="openSubTab(event, 'Schedule')">Employee Scheduling</button> -->
             <!-- <button class="subtablinks" onclick="openSubTab(event, 'EmployeeSalary')">Employee Salary</button> -->
             <div id="EmployeeInformation" class="subtabcontent">
                 <h4>Employee Information</h4>
@@ -86,14 +87,18 @@
                 <div class="addEmployee" style="display:none;"></div>
             </div>
         <form class="addEmployee_create">
-            <input type="text" name="firstName" placeholder="First Name" required>
-            <input type="text" name="lastName" placeholder="Last Name" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="tel" name="contactNumber" placeholder="Contact Number" required>
-            <input type="text" name="address" placeholder="Address" required>
-            <input type="date" class="addEmployee_create--dob" name="dob" required>
-            <input type="url" name="imageUrl" placeholder="Image URL">
-            <button type="submit">Add Employee</button>
+            <form action="Php/admin-portal.php" method="post">
+                <input type="text" name="firstName" placeholder="First Name" required>
+                <input type="text" name="lastName" placeholder="Last Name" required>
+                <input type="text" name="Age" placeholder="Age" required>
+                <input type="text" name="Gender" placeholder="Gender" required>
+                <input type="date" class="addEmployee_create--dob" name="dob" required>
+                <input type="tel" name="phonenumber" placeholder="Phone Number" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="text" name="address" placeholder="Address" required>
+                <!-- <input type="url" name="imageUrl" placeholder="Image URL"> -->
+                <button type="submit">Add Employee</button>
+            </form>
         </form>
     </div>
     <script src="employee.js"></script> 
@@ -124,7 +129,11 @@
         </tbody>
     </table>
 </div>
-<script src="schedule.js"></script>
+<script src="schedule.js">
+    // Call the function to insert employee schedules when the page loads
+    // window.addEventListener("load", insertEmployeeSchedules);
+    window.addEventListener("load", insertEmployeeSchedules);
+</script>
 
 <div id="Habitat" class="tabcontent">
     <h3>Habitat Status</h3>

@@ -1,5 +1,8 @@
 <?php
 // Assuming you've already established a database connection and stored it in $conn
+require_once 'phpconnect.php';
+
+// Assuming you've already established a database connection and stored it in $conn
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve username and password from the form
@@ -18,23 +21,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             session_start();
             $_SESSION['username'] = $username;
             
-            // Redirect based on user type
-            $user_type = $row['register_type'];
-            switch ($user_type) {
-                case 'Employee':
-                    header("Location: https://zoo-db-project.onrender.com/employee-portal.html");
-                    break;
-                case 'Admin':
-                    header("Location: https://zoo-db-project.onrender.com/admin-portal.html");
-                    break;
-                case 'Customer':
-                    header("Location: https://zoo-db-project.onrender.com/customer-portal.html");
-                    break;
-                default:
-                    // Redirect to a generic dashboard or homepage
-                    header("Location: https://zoo-db-project.onrender.com/index.html");
+            // Redirect to admin portal if user is an admin
+            if ($row['register_type'] == 'Admin') {
+                header("Location: https://zoo-db-project.onrender.com/admin-portal.html");
+                exit(); // Stop further script execution
             }
-            exit();
+            
+            // Redirect to employee portal if user is an employee
+            if ($row['register_type'] == 'Employee') {
+                header("Location: https://zoo-db-project.onrender.com/employee-portal.html");
+                exit(); // Stop further script execution
+            }
+            
+            // Redirect to customer portal if user is a customer
+            if ($row['register_type'] == 'Customer') {
+                header("Location: https://zoo-db-project.onrender.com/customer-portal.html");
+                exit(); // Stop further script execution
+            }
         } else {
             // Password is incorrect
             echo "Invalid username or password.";
