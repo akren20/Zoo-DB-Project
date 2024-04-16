@@ -1,7 +1,8 @@
 <?php
 // Simple routing mechanism
-$path = $_SERVER['PHP_SELF'];
-if ($path == "/phpconnect.php" || $path == "/") {
+$path = basename($_SERVER['PHP_SELF']); // Use basename to get the filename from the path
+
+if ($path == "phpconnect.php" || $path == "index.php") {
     include("phpconnect.php");
 } else {
     // Handle other paths or show a 404 not found error
