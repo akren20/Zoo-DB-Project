@@ -22,17 +22,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user_type = $row['register_type'];
             switch ($user_type) {
                 case 'Employee':
-                    header("Location: employee-portal.html");
+                    header("Location: https://zoo-db-project.onrender.com/employee-portal.html");
                     break;
                 case 'Admin':
-                    header("Location: admin-portal.html");
+                    header("Location: https://zoo-db-project.onrender.com/admin-portal.html");
                     break;
                 case 'Customer':
-                    header("Location: customer-portal.html");
+                    header("Location: https://zoo-db-project.onrender.com/customer-portal.html");
                     break;
                 default:
                     // Redirect to a generic dashboard or homepage
-                    header("Location: index.html");
+                    header("Location: https://zoo-db-project.onrender.com/index.html");
             }
             exit();
         } else {

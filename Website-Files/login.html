@@ -46,29 +46,33 @@
 <section class = "loginpg-body">
     <div class="wrapper">
         <h1>Login</h1>
-    <form action="login.php" method="post">
-        <div class="input-box">
-            <input type="text" placeholder="Username" id="username" name="register_username" required>
-            <i class='bx bxs-user'></i>
-        </div>
+        <form action="Php/register.php" method="post">
+            <div class="input-box">
+                <input type="text" placeholder="Username" id="username" name="register_username" required>
+                <i class='bx bxs-user'></i>
+            </div>
 
-        <div class="input-box">
-            <input type="text" placeholder="User Type" id="Type" name="user-type" required>
-            <i class='bx bxs-user-account'></i>
-        </div>
+            <div class="input-box">
+                <input type="text" placeholder="User Type" id="Type" name="user-type" required>
+                <i class='bx bxs-user-account'></i>
+            </div>
 
-        <div class="input-box">
-            <input type="password" placeholder="Password" id="password" name="register_password" required>
-            <i class='bx bxs-lock-alt'></i>
-        </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" id="password" name="register_password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
 
-        <button type="submit" class="btn">Login</button>
-        
-        <div class="register-link">
-            <p>Don't have an account? <a href="register.html">Register</a></p>
-        </div>
-    </form>
-
+            <button type="submit" class="btn">Login</button>
+            
+            <div class="register-link">
+                <p>Don't have an account? <a href="register.html">Register</a></p>
+            </div>
+        </form>
+    <!-- <script>
+        function redirectToRegister() {
+            window.location.href = "register.html";
+        }
+    </script> -->
     </div>
 </section>
 
