@@ -1,6 +1,4 @@
 <?php
-// Assuming you've already established a database connection and stored it in $conn
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitize form data
     $firstname = mysqli_real_escape_string($conn, $_POST['fname']);
