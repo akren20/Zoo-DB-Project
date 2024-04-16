@@ -3,10 +3,11 @@
 <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootsrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.boostrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+
 </head>
 
 <!---Chatbot-->
@@ -42,37 +43,44 @@
     </nav>
 <section>
 
+
 <section class="loginpg">
 <section class = "loginpg-body">
     <div class="wrapper">
-        <h1>Login</h1>
-        <form action="Php/login.php" method="post">
+        <form onsubmit="return authenticate(event)">
+        
+    
+            <h1>Login</h1>
             <div class="input-box">
-                <input type="text" placeholder="Username" id="username" name="register_username" required>
+                <input type="text" placeholder="Username" id="username" required>
+            
                 <i class='bx bxs-user'></i>
             </div>
 
             <div class="input-box">
-                <input type="text" placeholder="User Type" id="Type" name="user-type" required>
-                <i class='bx bxs-user-account'></i>
-            </div>
-
-            <div class="input-box">
-                <input type="password" placeholder="Password" id="password" name="register_password" required>
+                <input type="password" placeholder="Password" id="password" required>
                 <i class='bx bxs-lock-alt'></i>
             </div>
+
+            <!-- <div class="remember-forgot">
+                <label><input type = "checkbox">Remember Me</label>
+                <a href="#">Forgot Password</a>
+            </div> -->
 
             <button type="submit" class="btn">Login</button>
             
             <div class="register-link">
-                <p>Don't have an account? <a href="register.html">Register</a></p>
+                <p>Don't have an account? <a href="#" onclick="redirectToRegister()">Register</a></p>
+            </div>
+            
+            <script>
+                function redirectToRegister() {
+                    window.location.href = "register.html";
+                }
+            </script>
             </div>
         </form>
-    <!-- <script>
-        function redirectToRegister() {
-            window.location.href = "register.html";
-        }
-    </script> -->
+
     </div>
 </section>
 
@@ -110,7 +118,7 @@
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Copyright</h4>
+                <h4>Membership</h4>
                 <ul>
                     <li><span class="unclickable">&copy; 2024 University of Houston Zoo. </span></li>
                     <li><span class="unclickable">All rights reserved.</span></li>
@@ -157,8 +165,8 @@
         var employeePassword = 'e';
         var adminUsername = 'admin';
         var adminPassword = 'a';
-        var custUsername = 'demo123@gmail.com';
-        var custPassword = 'UMADB123';
+        var custUsername = 'demo123';
+        var custPassword = 'umadb123';
 
         // Check if the credentials match the employee account
         if(username === employeeUsername && password === employeePassword) {
