@@ -47,43 +47,41 @@
 <section class = "registerpg-body">
     <div class="wrapper">
         <form class="register-form">
-            <h1>Register</h1>
-            <div class="input-box">
-                <input type="text" placeholder="First Name"required>
-                <i class='bx bxs-cool'></i>
-            </div>
-
-            <div class="input-box">
-                <input type="text" placeholder="Last name" 
-                required>
-                <i class='bx bxs-wink-smile'></i>   <!--boxicon logos-->
-            </div>
-
-            <div class="input-box">
-                <input type="text" placeholder="User Type" required>
-                <i class='bx bxs-user-account'></i>
-            </div>
-
-            <div class="input-box">
-                <input type="text" placeholder="Username" 
-                required>
-                <i class='bx bxs-user'></i>
-            </div>
-
-            <div class="input-box">
-                <input type="password" placeholder="Password" required>
-                <i class='bx bxs-lock-alt'></i>
-            </div>
-            <ul>
-            <button type="submit"  class="btn" onclick="redirectToLogin()">Register</button>
-        </form>
+            <form action="Php/register.php" method="post">
+                <h1>Register</h1>
+                <div class="input-box">
+                    <input type="text" id="fname" name="fname" placeholder="First Name" required><br>
+                    <i class='bx bxs-cool'></i>
+                </div>
+            
+                <div class="input-box">
+                    <input type="text" id="lname" name="lname" placeholder="Last Name" required><br>
+                    <i class='bx bxs-wink-smile'></i> <!-- boxicon logos -->
+                </div>
+            
+                <div class="input-box">
+                    <input type="text" name="user-type" placeholder="User Type" required>
+                    <i class='bx bxs-user-account'></i>
+                </div>
+            
+                <div class="input-box">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+            
+                <div class="input-box">
+                    <input type="password" name="password" placeholder="Password" required>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+            
+                <button type="submit" class="btn">Register</button>
+            </form>
+            
             <script>
                 function redirectToLogin() {
                     window.location.href = "login.html";
                 }
             </script>
-
-        
 
     </div>
 </section>
