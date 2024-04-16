@@ -1,13 +1,15 @@
 <?php
-$servername = "bubbly-domain-420411:us-south1:zoodb-uma3380";
-$username = "admin";
-$password = "admin123";
+$username = getenv("MYSQL_USER");   // Fetch from environment variables
+$password = getenv("MYSQL_PASSWORD");
 $dbname = "zoodb-uma3380";
+$socket = getenv("MYSQL_DSN");
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Create connection using UNIX socket
+$conn = new mysqli(null, $username, $password, $dbname, null, $socket);
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
 echo "Connected successfully";
+?>
