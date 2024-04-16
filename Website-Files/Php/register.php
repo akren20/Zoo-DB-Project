@@ -1,13 +1,17 @@
-
 <?php
+// Assuming you've already established a database connection and stored it in $conn
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitize form data
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $address = mysqli_real_escape_string($conn, $_POST['address']);
-    $birthdate = mysqli_real_escape_string($conn, $_POST['birthdate']);
+    $firstname = mysqli_real_escape_string($conn, $_POST['fname']);
+    $lastname = mysqli_real_escape_string($conn, $_POST['lname']);
+    $usertype = mysqli_real_escape_string($conn, $_POST['user-type']);
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
 
     // Construct SQL query
-    $sql = "INSERT INTO your_table_name (name, address, birthdate) VALUES ('$name', '$address', '$birthdate')";
+    $sql = "INSERT INTO register (register_fname, register_lname, register_type, register_username, register_password) 
+            VALUES ('$firstname', '$lastname', '$usertype', '$username', '$password')";
 
     // Execute SQL query
     if ($conn->query($sql) === TRUE) {
