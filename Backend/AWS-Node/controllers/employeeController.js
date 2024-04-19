@@ -1,72 +1,54 @@
-// backend/controllers/animalController.js
-import EmployeesModel from '../models/employeeModel.js';
+// backend/controllers/employeeController.js
+import EmployeesModel from '../models/employeesModel.js';
 
-class EmployeesController {
-  // @desc  Gets All Items
-  // @route GET /api/items
+class EmployeeController {
+  // GET all employees
   static async getAllEmployees(req, res) {
     try {
-      const items = await EmployeesModel.findAllEmployees();
-
-      res.writeHead(200, {
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "*"
-      });
-      
-      res.end(JSON.stringify(items));
-
-    } catch(err) {
-      // set error status code and content-type
-      res.writeHead(500, { "Content-Type": "application/json" });
-      // send error
-      res.end(JSON.stringify({ message: err.message }));
-
+      const employees = await EmployeesModel.findAllEmployees();
+      res.status(200).json(employees);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
   }
-  // @desc  Update Employee
-  // @route PUT /api/employees/:id
+
+  // POST a new employee
+  static async createEmployee(req, res) {
+    try {
+      const newEmployee = await EmployeesModel.createEmployee(req.body);
+      res.status(201).json({
+        message: "Employee created successfully",
+        data: newEmployee
+      });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
+
+  // PUT update an existing employee
   static async updateEmployee(req, res) {
     try {
-      const { id } = req.params;
-      const updatedEmployee = await EmployeeModel.updateEmployee(id, req.body);
-
-      res.writeHead(200, {
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "*"
+      const { id } = req.params;  // The ID should be part of the URL path
+      const updatedEmployee = await EmployeesModel.updateEmployee(id, req.body);
+      res.status(200).json({
+        message: "Employee updated successfully",
+        data: updatedEmployee
       });
-      
-      res.end(JSON.stringify(updatedEmployee));
-
-    } catch(err) {
-      // Set error status code and content-type
-      res.writeHead(500, { "Content-Type": "application/json" });
-      // Send error message
-      res.end(JSON.stringify({ message: err.message }));
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
   }
 
-  // @desc  Delete Employee
-  // @route DELETE /api/employees/:id
+  // DELETE an employee
   static async deleteEmployee(req, res) {
     try {
-      const { id } = req.params;
-      const deletedEmployee = await EmployeeModel.deleteEmployee(id);
-
-      res.writeHead(200, {
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "*"
-      });
-      
-      res.end(JSON.stringify(deletedEmployee));
-
-    } catch(err) {
-      // Set error status code and content-type
-      res.writeHead(500, { "Content-Type": "application/json" });
-      // Send error message
-      res.end(JSON.stringify({ message: err.message }));
+      const { id } = req.params;  // The ID should be part of the URL path
+      await EmployeesModel.deleteEmployee(id);
+      res.status(200).json({ message: "Employee deleted successfully" });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
   }
-
 }
 
-export default EmployeesController;
+export default EmployeeController;

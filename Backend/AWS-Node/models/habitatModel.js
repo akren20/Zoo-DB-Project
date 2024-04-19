@@ -1,14 +1,14 @@
-// backend/models/itemsModel.js
+// backend/models/habitatsModel.js
 import pool from '../zoodb.js';
 
 class HabitatsModel {
-  static async findAllhabitats() {
+  static async findAllHabitats() {
     try {
-      const [result] = await pool.query(`SELECT * FROM habitat;`);
-      return result;
+      const [results, _] = await pool.query(`SELECT * FROM habitat;`);
+      return results;
     } catch(err) {
       console.log(err);
-      throw new Error('Failed to retrieve all items');
+      throw new Error('Failed to retrieve all habitats');
     }
   }
 }

@@ -1,30 +1,11 @@
-// backend/routes/adminRoute.js include admin controller file down below
-//import AnimalController from '../controllers/animalController.js';
-
+// backend/routes/animalRoute.js
+import express from 'express';
 import AnimalController from '../controllers/animalController.js';
 
-function animalRoute(req, res, path, method) {
-  res.writeHead(200, {
-    'Content-Type': 'application/json',
-    "Access-Control-Allow-Origin": "*"
-  });
-  
-  if (path === '/animal' && method === 'GET') {
-    AnimalController.getAllAnimals(req,res);
-  } 
-  else if (path === '/animal' && method === 'POST') {
-    const itemData = JSON.parse(req.body);
-    AnimalController.createItem(req,res,itemData);
-  } 
-  else if (path === '/animal' && method === 'DELETE') {
-    const itemData = JSON.parse(req.body);
-    AnimalController.createItem(req,res,itemData);
-  }
-  else {
-    // Handle other HTTP methods if needed
-    res.writeHead(405, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ message: 'Method Not Allowed' }));
-  }
-}
-  
-export default animalRoute;
+const router = express.Router();
+
+router.get('/animals', AnimalController.getAllAnimals);
+router.post('/animals', AnimalController.createAnimal);
+router.delete('/animals/:id', AnimalController.deleteAnimal);
+
+export default router;

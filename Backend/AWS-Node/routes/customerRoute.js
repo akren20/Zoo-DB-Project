@@ -1,23 +1,21 @@
-// backend/routes/adminRoute.js include admin controller file down below
+// backend/routes/customerRoute.js
+import express from 'express';
 import CustomerController from '../controllers/customerController.js';
 
-function customerRoute(req, res, path, method) {
-  if (path === '/api/admin/customer' && method === 'GET') {
-    CustomerController.getAllCustomers(req,res);
-  } 
-  else if (path === '/api/customer' && method === 'POST') {
-    const itemData = JSON.parse(req.body);
-    CustomerController.createItem(req,res,itemData);
-  } 
-  else if (path === '/api/customer' && method === 'DELETE') {
-    const itemData = JSON.parse(req.body);
-    CustomerController.createItem(req,res,itemData);
-  }
-  else {
-    // Handle other HTTP methods if needed
-    res.writeHead(405, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ message: 'Method Not Allowed' }));
-  }
-}
-  
-export default customerRoute;
+const router = express.Router();
+
+// Define the route for getting all customers
+router.get('/admin/customers', CustomerController.getAllCustomers);
+
+// Define the route for creating a new customer
+router.post('/customers', CustomerController.createCustomer);
+
+// Define the route for deleting a customer
+router.delete('/customers/:id', CustomerController.deleteCustomer);
+
+// Optionally handle unsupported methods for customer-related endpoints
+router.all('/customers', (req, res) => {
+  res.status(405).json({ message: 'Method Not Allowed' });
+});
+
+export default router;

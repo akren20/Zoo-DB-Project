@@ -1,73 +1,40 @@
-// backend/controllers/animalController.js
-import CustomersModel from '../models/customerModel.js';
+// backend/controllers/customerController.js
+import CustomersModel from '../models/customersModel.js';
 
-class CustomersController {
-  // @desc  Gets All Items
-  // @route GET /api/items
+class CustomerController {
+  // GET all customers
   static async getAllCustomers(req, res) {
     try {
-      const items = await CustomersModel.findAllCustomers();
-
-      res.writeHead(200, {
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "*"
-      });
-      
-      res.end(JSON.stringify(items));
-
-    } catch(err) {
-      // set error status code and content-type
-      res.writeHead(500, { "Content-Type": "application/json" });
-      // send error
-      res.end(JSON.stringify({ message: err.message }));
-
+      const customers = await CustomersModel.findAllCustomers();
+      res.status(200).json(customers);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
   }
-  static async updateCustomer(req, res) {
+
+  // POST a new customer
+  static async createCustomer(req, res) {
     try {
-      // Extract customer data from request body
-      const { customerId, updatedData } = req.body;
-  
-      // Construct the SQL UPDATE statement
-      const sql = `UPDATE customer SET ? WHERE customer_id = ?`;
-  
-      // Execute the SQL statement with the provided customer data and ID
-      await pool.query(sql, [updatedData, customerId]);
-  
-      // Send success response
-      res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ message: "Customer updated successfully" }));
-    } catch(err) {
-      // Set error status code and content-type
-      res.writeHead(500, { "Content-Type": "application/json" });
-      // Send error response
-      res.end(JSON.stringify({ message: err.message }));
+      const newCustomer = await CustomersModel.createCustomer(req.body);
+      res.status(201).json({
+        message: "Customer created successfully",
+        customer: newCustomer
+      });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
   }
-  
+
+  // DELETE a customer
   static async deleteCustomer(req, res) {
     try {
-      // Assuming the customer_id is provided in the req.params object
-      const customerId = req.params.customerId;
-  
-      // Construct the SQL DELETE statement
-      const sql = `DELETE FROM customer WHERE customer_id = ?`;
-  
-      // Execute the SQL statement with the provided customer_id
-      await pool.query(sql, [customerId]);
-  
-      // Send success response
-      res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ message: "Customer deleted successfully" }));
-    } catch(err) {
-      // Set error status code and content-type
-      res.writeHead(500, { "Content-Type": "application/json" });
-      // Send error response
-      res.end(JSON.stringify({ message: err.message }));
+      const { id } = req.params;  // The ID should be part of the URL path
+      await CustomersModel.deleteCustomer(id);
+      res.status(200).json({ message: "Customer deleted successfully" });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
   }
-  
-
 }
 
-export default CustomersController;
+export default CustomerController;

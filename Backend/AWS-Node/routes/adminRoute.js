@@ -1,23 +1,20 @@
-// backend/routes/adminRoute.js include admin controller file down below
+import express from 'express';
 import AdminController from '../controllers/adminController.js';
 
-function AdminRoute(req, res, path, method) {
-  if (path === '/api/admin/employee' && method === 'GET') {
-    AdminController.getAllEmployees(req,res);
-  } 
-  else if (path === '/api/admin' && method === 'POST') {
-    const itemData = JSON.parse(req.body);
-    AdminController.createItem(req,res,itemData);
-  } 
-  else if (path === '/api/admin' && method === 'DELETE') {
-    const itemData = JSON.parse(req.body);
-    AdminController.createItem(req,res,itemData);
-  }
-  else {
-    // Handle other HTTP methods if needed
-    res.writeHead(405, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ message: 'Method Not Allowed' }));
-  }
-}
-  
-export default AdminRoute;
+const router = express.Router();
+
+// Get all employees
+router.get('/admin/employee', AdminController.getAllEmployees);
+
+// Create a new item - assuming this is an admin item; if it’s for employees, this needs clarification
+router.post('/admin', AdminController.createItem);
+
+// Delete an item - similarly, this needs to point to a specific method for deletion
+router.delete('/admin', AdminController.deleteItem);  // Change `createItem` to `deleteItem` in your AdminController if not done already
+
+// Handle unsupported methods
+router.all('*', (req, res) => {
+    res.status(405).json({ message: 'Method Not Allowed' });
+});
+
+export default router;

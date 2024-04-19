@@ -1,23 +1,19 @@
-// backend/routes/adminRoute.js include admin controller file down below
+// backend/routes/adminRoute.js
 import FoodController from '../controllers/foodController.js';
 
 function foodRoute(req, res, path, method) {
   if (path === '/api/admin/food' && method === 'GET') {
-    FoodController.getAllAnimals(req,res);
-  } 
-  else if (path === '/api/food' && method === 'POST') {
-    const itemData = JSON.parse(req.body);
-    FoodController.createItem(req,res,itemData);
-  } 
-  else if (path === '/api/food' && method === 'DELETE') {
-    const itemData = JSON.parse(req.body);
-    FoodController.createItem(req,res,itemData);
-  }
-  else {
-    // Handle other HTTP methods if needed
+    FoodController.getAllFoods(req, res);  // Corrected method name
+  } else if (path === '/api/food' && method === 'POST') {
+    const foodData = JSON.parse(req.body);
+    FoodController.createFood(req, res, foodData);  // Assuming there is a 'createFood' method
+  } else if (path === '/api/food/:id' && method === 'DELETE') {
+    const { id } = req.params;
+    FoodController.deleteFoodShopItem(req, res, id);  // Corrected to handle deletion with ID
+  } else {
     res.writeHead(405, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ message: 'Method Not Allowed' }));
   }
 }
-  
+
 export default foodRoute;

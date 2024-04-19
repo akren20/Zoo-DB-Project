@@ -1,23 +1,18 @@
-// backend/routes/adminRoute.js include admin controller file down below
-import HealthController from '../controllers/healthController.js';
+// backend/routes/habitatRoute.js
+import HabitatController from '../controllers/habitatsController.js';
 
-function healthRoute(req, res, path, method) {
-  if (path === '/api/admin/health' && method === 'GET') {
-    HealthController.getAllHealths(req,res);
-  } 
-  else if (path === '/api/health' && method === 'POST') {
-    const itemData = JSON.parse(req.body);
-    HealthController.createItem(req,res,itemData);
-  } 
-  else if (path === '/api/health' && method === 'DELETE') {
-    const itemData = JSON.parse(req.body);
-    HealthController.createItem(req,res,itemData);
-  }
-  else {
-    // Handle other HTTP methods if needed
+function habitatRoute(req, res, path, method) {
+  if (path === '/api/admin/habitat' && method === 'GET') {
+    HabitatController.getAllHabitats(req, res);
+  } else if (path === '/api/habitat' && method === 'POST') {
+    const habitatData = JSON.parse(req.body);
+    HabitatController.createHabitat(req, res, habitatData);  // Assuming a createHabitat method exists
+  } else if (path === '/api/habitat/:id' && method === 'DELETE') {
+    HabitatController.deleteHabitat(req, res);
+  } else {
     res.writeHead(405, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ message: 'Method Not Allowed' }));
   }
 }
-  
-export default healthRoute;
+
+export default habitatRoute;

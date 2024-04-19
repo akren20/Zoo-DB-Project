@@ -1,3 +1,48 @@
+// backend/controllers/transactionsController.js
+import TransactionsModel from '../models/transactionsModel.js';
+
+class TransactionsController {
+  static async getAllTransactions(req, res) {
+    try {
+      const transactions = await TransactionsModel.findAllTransactions();
+      res.writeHead(200, {
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*"
+      });
+      res.end(JSON.stringify(transactions));
+    } catch(err) {
+      res.writeHead(500, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ message: err.message }));
+    }
+  }
+
+  static async createTransaction(req, res, transactionData) {
+    try {
+      const transactionId = await TransactionsModel.insertTransaction(transactionData);
+      res.writeHead(201, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ message: "Transaction created successfully", transactionId }));
+    } catch(err) {
+      res.writeHead(500, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ message: err.message }));
+    }
+  }
+
+  static async updateTransaction(req, res) {
+    try {
+      const { transactionId, updatedData } = req.body;
+      await TransactionsModel.updateTransaction(transactionId, updatedData);
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ message: "Transaction updated successfully" }));
+    } catch(err) {
+      res.writeHead(500, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ message: err.message }));
+    }
+  }
+
+  static async deleteTransaction(req, res) {
+    try {
+      const { transactionId } = req.params;
+      await 
 // backend/controllers/animalController.js
 import TransactionsModel from '../models/transactionModel.js';
 

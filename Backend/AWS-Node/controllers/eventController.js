@@ -1,70 +1,35 @@
-// backend/controllers/animalController.js
-import EventsModel from '../models/eventModel.js';
+// backend/controllers/eventsController.js
+import EventsModel from '../models/eventsModel.js';
 
 class EventsController {
-  // @desc  Gets All Items
-  // @route GET /api/items
   static async getAllEvents(req, res) {
     try {
-      const items = await AnimalsModel.findAllEvents();
-
-      res.writeHead(200, {
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "*"
-      });
-      
-      res.end(JSON.stringify(items));
-
+      const events = await EventsModel.findAllEvents();
+      res.status(200).json(events);
     } catch(err) {
-      // set error status code and content-type
-      res.writeHead(500, { "Content-Type": "application/json" });
-      // send error
-      res.end(JSON.stringify({ message: err.message }));
-
+      res.status(500).json({ message: err.message });
     }
   }
+
   static async updateEvent(req, res) {
     try {
       const { id } = req.params;
       const updatedEvent = await EventsModel.updateEvent(id, req.body);
-
-      res.writeHead(200, {
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "*"
-      });
-      
-      res.end(JSON.stringify(updatedEvent));
-
+      res.status(200).json(updatedEvent);
     } catch(err) {
-      // Set error status code and content-type
-      res.writeHead(500, { "Content-Type": "application/json" });
-      // Send error message
-      res.end(JSON.stringify({ message: err.message }));
+      res.status(500).json({ message: err.message });
     }
   }
 
-  // @desc  Delete Event
-  // @route DELETE /api/events/:id
   static async deleteEvent(req, res) {
     try {
       const { id } = req.params;
-      const deletedEvent = await EventsModel.deleteEvent(id);
-
-      res.writeHead(200, {
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "*"
-      });
-      
-      res.end(JSON.stringify(deletedEvent));
-
+      await EventsModel.deleteEvent(id);
+      res.status(200).json({ message: "Event deleted successfully" });
     } catch(err) {
-      // Set error status code and content-type
-      res.writeHead(500, { "Content-Type": "application/json" });
-      // Send error message
-      res.end(JSON.stringify({ message: err.message }));
+      res.status(500).json({ message: err.message });
     }
   }
-
 }
 
 export default EventsController;

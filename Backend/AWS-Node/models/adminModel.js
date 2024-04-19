@@ -1,14 +1,17 @@
-// backend/models/itemsModel.js
+// backend/models/adminModel.js
 import pool from '../zoodb.js';
 
 class AdminsModel {
+  // Method to fetch all employees
   static async findAllEmployees() {
     try {
-      const [result] = await pool.query(`SELECT * FROM employee;`);
-      return result;
-    } catch(err) {
-      console.log(err);
-      throw new Error('Failed to retrieve all items');
+      // Execute the query safely using parameterized statements
+      const [results] = await pool.query('SELECT * FROM employee;');
+      return results;
+    } catch (err) {
+      console.error("Error retrieving employees from database:", err);
+      // Rethrow the error or handle it depending on your error handling strategy
+      throw new Error('Failed to retrieve employees');
     }
   }
 }
