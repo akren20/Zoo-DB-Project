@@ -1,8 +1,7 @@
 -- Create the zoodb1 schema
-CREATE SCHEMA IF NOT EXISTS zoodb;
+CREATE DATABASE IF NOT EXISTS zoodb;
 
 -- DROP DATABASE IF EXISTS zoodb;
-
 -- Use the zoodb1 schema
 USE zoodb;
 
@@ -369,6 +368,29 @@ CREATE TABLE `food_shop` (
   FOREIGN KEY (`gftshop_id`) REFERENCES `gift_shop` (`gftshop_id`) ON DELETE CASCADE
 );
 
+DROP TABLE IF EXISTS `register`;
+CREATE TABLE `register` (
+  `register_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `register_fname` varchar(100) NOT NULL,
+  `register_lname` varchar(100) NOT NULL,
+  `register_type` varchar(8) NOT NULL, -- user type
+  `register_username` varchar(100) NOT NULL,
+  `register_password` varchar(250) NOT NULL
+);
+
+DROP TABLE IF EXISTS `login`;
+CREATE TABLE `login` (
+  `login_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `login_username` varchar(100) NOT NULL,
+  `login_password` varchar(250) NOT NULL
+--   FOREIGN KEY (`login_username`) REFERENCES `register` (`register_username`),
+--   FOREIGN KEY (`login_password`) REFERENCES `register` (`register_password`)
+);
+
+CREATE INDEX idx_register_username ON register(register_username);
+CREATE INDEX idx_register_password ON register(register_password);
+
+
 SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 -- Records of shop inventory
@@ -516,6 +538,15 @@ BEGIN
     WHERE MONTH(m.medical_checkup) = p_month AND YEAR(m.medical_checkup) = p_year;
 END;
 
+CREATE TABLE `transaction_log` (
+  `transaction_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `transaction_type` ENUM('ticket', 'food', 'gift') NOT NULL,
+  `transaction_time` datetime NOT NULL,
+  `transaction_price` decimal(10,2) NOT NULL,
+  `customer_name` varchar(250) NOT NULL,
+  `customer_email` varchar(50) NOT NULL,
+   FOREIGN KEY (`transaction_id`) REFERENCES `transaction` (`transaction_id`)
+);
 
 -- Generate monthly report of animal's health.
 -- exp: CALL GenerateMonthlyReport(4,2023);
@@ -538,16 +569,6 @@ BEGIN
         UPDATE animal SET animal_status = 0 WHERE animal_id = NEW.animal_id;
     END IF;
 END //
-
-CREATE TABLE `transaction_log` (
-  `transaction_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `transaction_type` ENUM('ticket', 'food', 'gift') NOT NULL,
-  `transaction_time` datetime NOT NULL,
-  `transaction_price` decimal(10,2) NOT NULL,
-  `customer_name` varchar(250) NOT NULL,
-  `customer_email` varchar(50) NOT NULL,
-   FOREIGN KEY (`transaction_id`) REFERENCES `transaction` (`transaction_id`)
-);
 
 -- Trigger to Track Transactions
 DELIMITER //
