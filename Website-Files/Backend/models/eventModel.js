@@ -1,7 +1,7 @@
 // backend/models/eventsModel.js
 import pool from '../zoodb.js';
 
-class EventsModel {
+class EventModel {
   static async findAllEvents() {
     try {
       const [results, _] = await pool.query(`SELECT * FROM events;`);
@@ -32,4 +32,4 @@ class EventsModel {
   }
 }
 
-export default EventsModel;
+export default EventModel;

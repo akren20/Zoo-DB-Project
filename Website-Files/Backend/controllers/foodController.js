@@ -1,5 +1,5 @@
 // backend/controllers/foodController.js
-import FoodsModel from '../models/foodsModel.js';
+import FoodsModel from '../models/foodModel.js';
 
 class FoodController {
   static async getAllFoods(req, res) {

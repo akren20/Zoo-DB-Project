@@ -1,5 +1,5 @@
 // backend/routes/medicalRoute.js
-import MedicalController from '../controllers/medicalsController.js';
+import MedicalController from '../controllers/medicalController.js';
 
 function medicalRoute(req, res, path, method) {
   if (path.match(/^\/api\/medical\/?$/) && method === 'GET') {

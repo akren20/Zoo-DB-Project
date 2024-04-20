@@ -1,5 +1,5 @@
 // backend/controllers/medicalsController.js
-import MedicalsModel from '../models/medicalsModel.js';
+import MedicalsModel from '../models/medicalModel.js';
 
 class MedicalsController {
   static async getAllMedicals(req, res) {

@@ -1,16 +1,16 @@
 import express from 'express';
-import AdminController from '../controllers/adminController.js';
+import AdminsController from '../controllers/adminController.js'; // Adjusted import to match controller filename
 
 const router = express.Router();
 
 // Get all employees
-router.get('/admin/employee', AdminController.getAllEmployees);
+router.get('/employee', AdminsController.getAllEmployees);
 
-// Create a new item - assuming this is an admin item; if it’s for employees, this needs clarification
-router.post('/admin', AdminController.createItem);
+// Add a new employee
+router.post('/employee', AdminsController.addEmployee); // Changed to reflect the correct function and path
 
-// Delete an item - similarly, this needs to point to a specific method for deletion
-router.delete('/admin', AdminController.deleteItem);  // Change `createItem` to `deleteItem` in your AdminController if not done already
+// Delete an employee - A specific employeeId is now included in the route
+router.delete('/employee/:employeeId', AdminsController.deleteEmployee); // Adjusted for employee deletion
 
 // Handle unsupported methods
 router.all('*', (req, res) => {

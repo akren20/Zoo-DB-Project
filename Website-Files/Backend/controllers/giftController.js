@@ -1,5 +1,5 @@
 // backend/controllers/giftsController.js
-import GiftsModel from '../models/giftsModel.js';  // Make sure the file name is giftsModel.js
+import GiftsModel from '../models/giftModel.js';  // Make sure the file name is giftsModel.js
 
 class GiftsController {
   static async getAllGifts(req, res) {

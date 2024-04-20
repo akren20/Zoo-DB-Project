@@ -1,10 +1,10 @@
 // backend/controllers/eventsController.js
-import EventsModel from '../models/eventsModel.js';
+import EventsModel from '../models/eventModel.js';
 
-class EventsController {
+class EventController {
   static async getAllEvents(req, res) {
     try {
-      const events = await EventsModel.findAllEvents();
+      const events = await EventModel.findAllEvents();
       res.status(200).json(events);
     } catch(err) {
       res.status(500).json({ message: err.message });
@@ -14,7 +14,7 @@ class EventsController {
   static async updateEvent(req, res) {
     try {
       const { id } = req.params;
-      const updatedEvent = await EventsModel.updateEvent(id, req.body);
+      const updatedEvent = await EventModel.updateEvent(id, req.body);
       res.status(200).json(updatedEvent);
     } catch(err) {
       res.status(500).json({ message: err.message });
@@ -24,7 +24,7 @@ class EventsController {
   static async deleteEvent(req, res) {
     try {
       const { id } = req.params;
-      await EventsModel.deleteEvent(id);
+      await EventModel.deleteEvent(id);
       res.status(200).json({ message: "Event deleted successfully" });
     } catch(err) {
       res.status(500).json({ message: err.message });
@@ -32,4 +32,4 @@ class EventsController {
   }
 }
 
-export default EventsController;
+export default EventController;

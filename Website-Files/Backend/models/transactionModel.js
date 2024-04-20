@@ -1,7 +1,7 @@
-// backend/models/transactionsModel.js
+// backend/models/transactionModel.js
 import pool from '../zoodb.js';
 
-class TransactionsModel {
+class TransactionModel {
   static async findAllTransactions() {
     try {
       const [results, _] = await pool.query(`SELECT * FROM transaction;`);
@@ -44,4 +44,4 @@ class TransactionsModel {
   }
 }
 
-export default TransactionsModel;
+export default TransactionModel;

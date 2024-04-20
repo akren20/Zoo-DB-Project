@@ -1,5 +1,5 @@
 // backend/controllers/employeeController.js
-import EmployeesModel from '../models/employeesModel.js';
+import EmployeesModel from '../models/employeeModel.js';
 
 class EmployeeController {
   // GET all employees

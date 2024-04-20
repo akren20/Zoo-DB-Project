@@ -1,5 +1,5 @@
 // backend/controllers/customerController.js
-import CustomersModel from '../models/customersModel.js';
+import CustomersModel from '../models/customerModel.js';
 
 class CustomerController {
   // GET all customers

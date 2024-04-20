@@ -1,5 +1,5 @@
-// backend/controllers/habitatsController.js
-import HabitatsModel from '../models/habitatsModel.js';
+// backend/controllers/habitatController.js
+import HabitatsModel from '../models/habitatModel.js';
 
 class HabitatsController {
   static async getAllHabitats(req, res) {
