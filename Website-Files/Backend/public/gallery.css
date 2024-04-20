@@ -1,0 +1,275 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)), url(Gallery/ocean.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+
+nav{
+    display: flex;
+    padding: 2%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aboutnav-links {
+    flex:1;
+    text-align: right    
+}
+
+.aboutnav-links ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.aboutnav-links ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.aboutnav-links ul li::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: white;
+    display: block;
+    margin: auto;
+    transition: 0.5s
+}
+
+.aboutnav-links ul li:hover::after{
+    width:100%;
+}
+
+.row{
+    display: flex;
+    height: 88%;
+    align-items: center;
+    margin-left: 25px;
+    margin-top: 75px;
+}
+
+.col{
+    flex-basis: 50%;
+}    
+
+h1{
+    color: #fff;
+    font-size: 100px;
+}
+
+p{
+    color: #fff;
+    font-size: 11px;
+    line-height: 15px;
+}
+
+.card{
+    width: 250px;
+    height: 280px;
+    display: inline-block;
+    border-radius: 10px;    
+    padding: 15px 25px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 10px 15px;
+    background-position: center;
+    background-size: cover;
+    transition: transform 0.5s;
+}
+
+
+.card1 {
+    background-image: url(Gallery/fish.jpg);
+}
+
+.card2 {
+    background-image: url(Gallery/jellyfish.jpg);
+}
+
+.card3 {
+    background-image: url(Gallery/sea-turtle.jpg);
+}
+
+.card4 {
+    background-image: url(Gallery/shark.jpg);
+}
+
+.card:hover{
+    transform: translateY(-10px);
+}
+
+h5{
+    margin-left: 5px;
+    margin-top: 225px;
+    color: aliceblue;
+    text-shadow: 0 0 5px #999;
+    font-size: 25px;
+    align-items: center;
+
+}
+
+/*Arctic Animals*/
+
+.container1 {
+    margin-top: 1px;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)), url(Gallery/arctic.jpeg);
+    background-position: center;
+    background-size: cover;
+    padding-top: 0px;
+}
+
+
+.card11 {
+    background-image: url(Gallery/polar-bear.jpg);
+}
+
+.card12 {
+    background-image: url(Gallery/seal.jpg);
+}
+
+.card13 {
+    background-image: url(Gallery/snowy-owl.jpg);
+}
+
+.card14 {
+    background-image: url(Gallery/reindeer.jpg);
+}
+
+
+/*Tropical Animals*/
+
+.container2 {
+    margin-top: 1px;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)), url(Gallery/rainforest.jpg);
+    background-position: center;
+    background-size: cover;
+    padding-top: 0px;
+}
+
+.container2 h5{
+    margin-left: 5px;
+    margin-top: 200px;
+    color: aliceblue;
+    text-shadow: 0 0 5px #999;
+    font-size: 25px;
+    align-items: center;
+
+}
+
+.card21 {
+    background-image: url(Gallery/tree-frogs.jpg);
+}
+
+.card22 {
+    background-image: url(Gallery/iguana.jpg);
+}
+
+.card23 {
+    background-image: url(Gallery/jaguar.jpg);
+}
+
+.card24 {
+    background-image: url(Gallery/red-howler-monkey.jpeg);
+}
+
+
+/*Footer styling*/
+
+.content {
+    padding: 20px;
+  }
+
+  .container3{
+	max-width: 1170px;
+	margin:auto;
+}
+
+.footer-row{
+	display: flex;
+	flex-wrap: wrap;
+}
+  
+.footer{
+	background-color: #848da1f8;
+    padding-bottom: 35px;
+    padding-top: 20px;
+    max-height: 100%;
+    border-top: 0px;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+	font-size: 18px;
+	color: #ffffff;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+}
+.footer-col h4::before{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom: -10px;
+	background-color: #1e7de9;
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+}
+.footer-col ul li:not(:last-child){
+	margin-bottom: 10px;
+}
+.footer-col ul li a{
+	font-size: 16px;
+	text-transform: capitalize;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 300;
+	color: #ffffff;
+	display: block;
+	transition: all 0.3s ease;
+}
+.footer-col ul li p:hover{
+	color: #ffffff;
+	padding-left: 8px;
+}
+.footer-col .social-links p{
+	display: inline-block;
+	height: fit-content;
+	width: 40px;
+	background-color: rgba(255,255,255,0.2);
+	margin:0 10px 10px 0;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	color: #ffffff;
+	transition: all 0.5s ease;
+}
+.footer-col .social-links p:hover{
+	color: #24262b;
+	background-color: #ffffff;
+}
+
+.unclickable {
+    color: #ffffff; /* Inherit the text color from the parent */
+    cursor: default; /* Set default cursor */
+    pointer-events: none; /* Disable pointer events */
+  }
+  

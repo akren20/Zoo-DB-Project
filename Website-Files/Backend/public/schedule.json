@@ -1,0 +1,133 @@
+[
+    {
+      "id": 1,
+      "name": "John Doe",
+      "schedule": {
+        "Monday": "8:00 AM - 4:00 PM",
+        "Tuesday": "Off",
+        "Wednesday": "8:00 AM - 4:00 PM",
+        "Thursday": "10:00 AM - 6:00 PM",
+        "Friday": "8:00 AM - 4:00 PM",
+        "Saturday": "Off",
+        "Sunday": "Off"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "schedule": {
+        "Monday": "Off",
+        "Tuesday": "8:00 AM - 4:00 PM",
+        "Wednesday": "10:00 AM - 6:00 PM",
+        "Thursday": "8:00 AM - 4:00 PM",
+        "Friday": "10:00 AM - 6:00 PM",
+        "Saturday": "Off",
+        "Sunday": "8:00 AM - 4:00 PM"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Alice Johnson",
+      "schedule": {
+        "Monday": "8:00 AM - 4:00 PM",
+        "Tuesday": "10:00 AM - 6:00 PM",
+        "Wednesday": "Off",
+        "Thursday": "8:00 AM - 4:00 PM",
+        "Friday": "10:00 AM - 6:00 PM",
+        "Saturday": "Off",
+        "Sunday": "10:00 AM - 6:00 PM"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Bob Williams",
+      "schedule": {
+        "Monday": "8:00 AM - 4:00 PM",
+        "Tuesday": "Off",
+        "Wednesday": "Off",
+        "Thursday": "10:00 AM - 6:00 PM",
+        "Friday": "8:00 AM - 4:00 PM",
+        "Saturday": "10:00 AM - 6:00 PM",
+        "Sunday": "10:00 AM - 6:00 PM"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Emily Brown",
+      "schedule": {
+        "Monday": "10:00 AM - 6:00 PM",
+        "Tuesday": "8:00 AM - 4:00 PM",
+        "Wednesday": "Off",
+        "Thursday": "8:00 AM - 4:00 PM",
+        "Friday": "Off",
+        "Saturday": "8:00 AM - 4:00 PM",
+        "Sunday": "10:00 AM - 6:00 PM"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Michael Davis",
+      "schedule": {
+        "Monday": "8:00 AM - 4:00 PM",
+        "Tuesday": "Off",
+        "Wednesday": "8:00 AM - 4:00 PM",
+        "Thursday": "10:00 AM - 6:00 PM",
+        "Friday": "8:00 AM - 4:00 PM",
+        "Saturday": "Off",
+        "Sunday": "10:00 AM - 6:00 PM"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Sarah Clark",
+      "schedule": {
+        "Monday": "10:00 AM - 6:00 PM",
+        "Tuesday": "8:00 AM - 4:00 PM",
+        "Wednesday": "10:00 AM - 6:00 PM",
+        "Thursday": "Off",
+        "Friday": "10:00 AM - 6:00 PM",
+        "Saturday": "Off",
+        "Sunday": "8:00 AM - 4:00 PM"
+      }
+    },
+    {
+      "id": 8,
+      "name": "David Wilson",
+      "schedule": {
+        "Monday": "8:00 AM - 4:00 PM",
+        "Tuesday": "10:00 AM - 6:00 PM",
+        "Wednesday": "8:00 AM - 4:00 PM",
+        "Thursday": "10:00 AM - 6:00 PM",
+        "Friday": "8:00 AM - 4:00 PM",
+        "Saturday": "Off",
+        "Sunday": "Off"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Laura Martinez",
+      "schedule": {
+        "Monday": "10:00 AM - 6:00 PM",
+        "Tuesday": "Off",
+        "Wednesday": "10:00 AM - 6:00 PM",
+        "Thursday": "8:00 AM - 4:00 PM",
+        "Friday": "10:00 AM - 6:00 PM",
+        "Saturday": "8:00 AM - 4:00 PM",
+        "Sunday": "Off"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Kevin Lee",
+      "schedule": {
+        "Monday": "8:00 AM - 4:00 PM",
+        "Tuesday": "10:00 AM - 6:00 PM",
+        "Wednesday": "8:00 AM - 4:00 PM",
+        "Thursday": "10:00 AM - 6:00 PM",
+        "Friday": "Off",
+        "Saturday": "Off",
+        "Sunday": "8:00 AM - 4:00 PM"
+      }
+    }
+  ]
+  

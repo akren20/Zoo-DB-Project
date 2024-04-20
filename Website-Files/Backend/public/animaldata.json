@@ -1,0 +1,115 @@
+{
+    "animals": [
+      {
+        "animal_id": 1,
+        "animal_type": "Mammal",
+        "animal_dob": "2018-05-10",
+        "animal_habitat": 1,
+        "animal_gender": 0,
+        "animal_health": 0,
+        "animal_species": "Tiger",
+        "animal_status": 0,
+        "animal_name": "Simba"
+      },
+      {
+        "animal_id": 2,
+        "animal_type": "Bird",
+        "animal_dob": "2019-02-15",
+        "animal_habitat": 2,
+        "animal_gender": 1,
+        "animal_health": 0,
+        "animal_species": "Parrot",
+        "animal_status": 0,
+        "animal_name": "Polly"
+      },
+      {
+        "animal_id": 3,
+        "animal_type": "Reptile",
+        "animal_dob": "2020-07-20",
+        "animal_habitat": 3,
+        "animal_gender": 0,
+        "animal_health": 0,
+        "animal_species": "Snake",
+        "animal_status": 0,
+        "animal_name": "Slytherin"
+      },
+      {
+        "animal_id": 4,
+        "animal_type": "Mammal",
+        "animal_dob": "2017-12-03",
+        "animal_habitat": 1,
+        "animal_gender": 1,
+        "animal_health": 1,
+        "animal_species": "Elephant",
+        "animal_status": 1,
+        "animal_name": "Dumbo"
+      },
+      {
+        "animal_id": 5,
+        "animal_type": "Bird",
+        "animal_dob": "2018-09-28",
+        "animal_habitat": 2,
+        "animal_gender": 0,
+        "animal_health": 0,
+        "animal_species": "Eagle",
+        "animal_status": 0,
+        "animal_name": "Aquila"
+      },
+      {
+        "animal_id": 6,
+        "animal_type": "Reptile",
+        "animal_dob": "2019-04-12",
+        "animal_habitat": 3,
+        "animal_gender": 1,
+        "animal_health": 0,
+        "animal_species": "Turtle",
+        "animal_status": 0,
+        "animal_name": "Shelly"
+      },
+      {
+        "animal_id": 7,
+        "animal_type": "Mammal",
+        "animal_dob": "2020-01-08",
+        "animal_habitat": 1,
+        "animal_gender": 0,
+        "animal_health": 0,
+        "animal_species": "Gorilla",
+        "animal_status": 0,
+        "animal_name": "Kong"
+      },
+      {
+        "animal_id": 8,
+        "animal_type": "Bird",
+        "animal_dob": "2017-11-11",
+        "animal_habitat": 2,
+        "animal_gender": 1,
+        "animal_health": 0,
+        "animal_species": "Owl",
+        "animal_status": 0,
+        "animal_name": "Hoot"
+      },
+      {
+        "animal_id": 9,
+        "animal_type": "Reptile",
+        "animal_dob": "2018-08-24",
+        "animal_habitat": 3,
+        "animal_gender": 0,
+        "animal_health": 0,
+        "animal_species": "Crocodile",
+        "animal_status": 0,
+        "animal_name": "Snappy"
+      },
+      {
+        "animal_id": 10,
+        "animal_type": "Mammal",
+        "animal_dob": "2019-03-30",
+        "animal_habitat": 1,
+        "animal_gender": 1,
+        "animal_health": 0,
+        "animal_species": "Lion",
+        "animal_status": 0,
+        "animal_name": "Nala"
+      }
+    ]
+  }
+  

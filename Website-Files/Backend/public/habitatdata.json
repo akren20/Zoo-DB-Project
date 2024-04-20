@@ -1,0 +1,102 @@
+[
+    {
+        "habitat_id": 1,
+        "habitat_size": 150.5,
+        "habitat_location": 101,
+        "habitat_temp": 25.5,
+        "habitat_type": "Forest",
+        "habitat_condition": 3,
+        "habitat_humidity": 70.5,
+        "habitat_security": "Fenced perimeter"
+    },
+    {
+        "habitat_id": 2,
+        "habitat_size": 200.3,
+        "habitat_location": 102,
+        "habitat_temp": 20.8,
+        "habitat_type": "Aquarium",
+        "habitat_condition": 4,
+        "habitat_humidity": 80.2,
+        "habitat_security": "Underwater cameras"
+    },
+    {
+        "habitat_id": 3,
+        "habitat_size": 180.2,
+        "habitat_location": 103,
+        "habitat_temp": 28.0,
+        "habitat_type": "Savanna",
+        "habitat_condition": 2,
+        "habitat_humidity": 60.0,
+        "habitat_security": "Ranger patrols"
+    },
+    {
+        "habitat_id": 4,
+        "habitat_size": 120.8,
+        "habitat_location": 104,
+        "habitat_temp": 18.5,
+        "habitat_type": "Tundra",
+        "habitat_condition": 1,
+        "habitat_humidity": 45.3,
+        "habitat_security": "Barbed wire fence"
+    },
+    {
+        "habitat_id": 5,
+        "habitat_size": 250.0,
+        "habitat_location": 105,
+        "habitat_temp": 30.2,
+        "habitat_type": "Desert",
+        "habitat_condition": 3,
+        "habitat_humidity": 20.0,
+        "habitat_security": "Security cameras"
+    },
+    {
+        "habitat_id": 6,
+        "habitat_size": 190.7,
+        "habitat_location": 106,
+        "habitat_temp": 22.6,
+        "habitat_type": "Rainforest",
+        "habitat_condition": 4,
+        "habitat_humidity": 85.0,
+        "habitat_security": "Tree canopy observation"
+    },
+    {
+        "habitat_id": 7,
+        "habitat_size": 130.4,
+        "habitat_location": 107,
+        "habitat_temp": 17.8,
+        "habitat_type": "Arctic",
+        "habitat_condition": 2,
+        "habitat_humidity": 55.8,
+        "habitat_security": "Remote sensors"
+    },
+    {
+        "habitat_id": 8,
+        "habitat_size": 220.6,
+        "habitat_location": 108,
+        "habitat_temp": 27.3,
+        "habitat_type": "Grassland",
+        "habitat_condition": 3,
+        "habitat_humidity": 75.6,
+        "habitat_security": "Perimeter fence"
+    },
+    {
+        "habitat_id": 9,
+        "habitat_size": 160.9,
+        "habitat_location": 109,
+        "habitat_temp": 21.9,
+        "habitat_type": "Wetland",
+        "habitat_condition": 2,
+        "habitat_humidity": 65.4,
+        "habitat_security": "Marshland surveillance"
+    },
+    {
+        "habitat_id": 10,
+        "habitat_size": 140.2,
+        "habitat_location": 110,
+        "habitat_temp": 19.7,
+        "habitat_type": "Mountain",
+        "habitat_condition": 3,
+        "habitat_humidity": 40.2,
+        "habitat_security": "Mountain ranger patrols"
+    }
+]

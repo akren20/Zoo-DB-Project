@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { response } from 'express';
 import cors from 'cors';
 
 // Import route handlers
@@ -13,13 +13,15 @@ import healthRoute from './routes/healthRoute.js';
 import medicalRoute from './routes/medicalRoute.js';
 import transactionRoute from './routes/transactionRoute.js';
 import adminRoute from './routes/adminRoute.js';
+import { DbService } from './zoodb.js';
 
 const app = express();
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 3306;  //website is on loacal host 5500 while server and db are on 3306
 
 // Middleware to handle JSON, CORS
 app.use(express.json());
 app.use(cors());
+app.use(express.static('../public')); //added
 
 // Route handlers
 app.use('/api/animals', animalRoute);
@@ -34,6 +36,30 @@ app.use('/api/medicals', medicalRoute);
 app.use('/api/transactions', transactionRoute);
 app.use('/api/admin', adminRoute);
 
+//create
+app.post('/insert', (req,res) => {
+  console.log(request.body);
+});
+
+//read
+app.get('/getAll', (req,res) => {
+  const db = DbService.getDbServiceInstance();
+  const result = db.getAllData();
+
+  result
+  .then(data => response.json({data: data}))
+  .catch(err => console.log(err));
+});
+
+//update
+
+
+//delete
+
+
+
+
+//DO NOT TOUCH
 // GET route to confirm server is running
 app.get('/', (req, res) => {
   res.send('Welcome to the API. Server is running.');

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Portal</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .tab { overflow: hidden; border: 1px solid #ccc; background-color: #f1f1f1; }
+        .tab button { background-color: inherit; float: left; border: none; outline: none; cursor: pointer; padding: 14px 16px; transition: 0.3s; }
+        .tab button:hover { background-color: #ddd; }
+        .tab button.active { background-color: #ccc; }
+        .tabcontent { display: none; padding: 6px 12px; border: 1px solid #ccc; border-top: none; }
+        /* Styles for logout button */
+        .logout-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: grey;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            border-bottom: 50px;
+        }
+        .logout-btn:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Employee Portal</h2>
+<a href="login.html" class="logout-btn">Logout</a>
+
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Schedule')">Employee Schedule</button>
+    <button class="tablinks" onclick="openTab(event, 'Events')">Events for the Week</button>
+    <button class="tablinks" onclick="openTab(event, 'Habitat')">Habitat Status</button>
+    <button class="tablinks" onclick="openTab(event, 'Medical')">Medical Status</button>
+</div>
+
+<div id="Schedule" class="tabcontent">
+    <h3>Employee Schedule</h3>
+    <p>Employee schedules for the week will be displayed here.</p>
+    <table id="scheduleTable">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Employee schedules will be dynamically inserted here -->
+            <div class="table">
+                <div class="employees__names--item"></div>
+            </div>
+        </tbody>
+    </table>
+</div>
+<script src="schedule.js">
+    // Call the function to insert employee schedules when the page loads
+    window.addEventListener("load", insertEmployeeSchedules);
+</script>
+
+
+<div id="Events" class="tabcontent">
+    <h3>Upcoming Events</h3>
+    <p>View and Manage all Upcoming events here.</p>
+    <div class="event-subtabs">
+        <button class="subtablinks" onclick="openSubTab(event, 'EventInformation')">Event Information Report</button>
+        <div id="EventInformation" class="subtabcontent">
+            <div class="addEventItem" style="display:none;"></div>
+            <div class="event-items__names--list"></div>
+            <div class="addSku" style="display:none;"></div>
+        </div>
+    </div>
+    <form class="addEventItem_create">
+        <input type="text" name="eventID" placeholder="Event ID Number" required>
+        <input type="text" name="eventName" placeholder="Event Name" required>
+        <input type="date" name="eventStartDate" placeholder="Event Start Date" required>
+        <input type="date" name="eventEndDate" placeholder="Event End Date" required>
+        <input type="text" name="eventOrganizer" placeholder="Event Organizer" required>
+        <input type="date" name="eventRegisterDeadline" placeholder="Registration Deadline" required>
+        <input type="time" name="eventStartTime" placeholder="Start Time" required>
+        <input type="time" name="eventEndTime" placeholder="End Time" required>
+        <input type="text" name="eventStatus" placeholder="Event Status: Early, On Time, or Late" required>
+        <input type="text" name="eventEmployeeID" placeholder="ID Number of Employee Working the Event" required>
+        <button type="submit">Add Event Information</button>
+
+    </form>   
+</div>
+<script src="event.js"></script> 
+
+
+<div id="Habitat" class="tabcontent">
+    <h3>Habitat Status</h3>
+    <p>Habitat status of animals will be displayed here.</p>
+    <div class="habitat-subtabs">
+        <button class="subtablinks" onclick="openSubTab(event, 'HabitatInformation')">Habitat Information Report</button>
+        <div id="HabitatInformation" class="subtabcontent">
+            <div class="addHabitatItem" style="display:none;"></div>
+            <div class="habitat-items__names--list"></div>
+            <div class="addSku" style="display:none;"></div>
+        </div>
+    </div>
+    <form class="addHabitatItem_create">
+        <input type="text" name="habitatID" placeholder="Habitat ID" required>
+        <input type="text" name="habitatSize" placeholder="Habitat Size (In Square Feet)" required>
+        <input type="text" name="HabitatLoc" placeholder="Habitat Location" required>
+        <input type="text" name="HabitatTemp" placeholder="Habitat Temperature" required>
+        <input type="text" name="habitatType" placeholder="Habitat Type" required>
+        <input type="text" name="habitatCond" placeholder="Habitat Condition (Number)" required>
+        <input type="text" name="HabitatHumid" placeholder="Habitat Humidity Temperature" required>
+        <input type="text" name="HabitatSecure" placeholder="Habitat Security" required>
+        <button type="submit">Add Habitat Information</button>
+    </form>    
+</div>
+<script src="habitat.js"></script> 
+
+<div id="Medical" class="tabcontent">
+    <h3>Medical</h3>
+    <p>Access medical records, status updates, and current Medical Inventory.</p>
+    <div class="medical-subtabs">
+        <button class="subtablinks" onclick="openSubTab(event, 'MedicalInformation')">Medical Information Report</button>
+        <div id="MedicalInformation" class="subtabcontent">
+            <h4>Medical Information</h4>
+            <!--button class="createSku">Add New Sku</button-->
+            <div class="medical-items__names--list"></div>
+            <div class="addSku" style="display:none;"></div>
+        </div>
+    </div>
+    <form class="addMedicalItem_create">
+        <input type="text" name="medicalCheckup" placeholder="Checkup Completed (Y or N)" required>
+        <input type="text" name="medicalStatus" placeholder="Medical Status (Good, Fair, or Poor Condition)" required>
+        <input type="text" name="vetId" placeholder="Veterinarian ID Number" required>
+        <input type="text" name="medicalID" placeholder="Animal ID" required>
+        <button type="submit">Add Medical Information</button>
+        <div class="medical-items__names--item"></div>
+    </form>
+
+    <form class="addMedicalItem_create">
+        <input type="text" name="medicalSku" placeholder="Sku" required>
+        <input type="email" name="medicalCost" placeholder="Cost ($)" required>
+        <input type="text" name="medicalQuantity" placeholder="Quantity" required>
+        <input type="text" name="medicalSupplier" placeholder="Supplier" required>
+        <input type="text" name="medicalLocation" placeholder="Storage Location" required>
+        <input type="date" class="addMedical_create--dob" name="Expiration Date" required>
+        <button type="submit">Add Medical Inventory</button>
+    </form>
+</div>
+<script src="medical.js"></script>  
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Open the first tab by default
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementsByClassName("tablinks")[0].click();
+    });
+</script>
+
+</body>
+</html>

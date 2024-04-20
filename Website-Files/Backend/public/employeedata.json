@@ -1,0 +1,122 @@
+[ 
+    { 
+        "id": 1001, 
+        "imageUrl": "gfg.png", 
+        "firstName": "Thomas", 
+        "lastName": "Leannon", 
+        "email": "Thomas.Leannon@gfg.com", 
+        "contactNumber": "4121091095", 
+        "age": 43, 
+        "dob": "08/26/1979", 
+        "salary": 1, 
+        "address": "Address1"
+    }, 
+    { 
+        "id": 1002, 
+        "imageUrl": "gfg.png", 
+        "firstName": "Faye", 
+        "lastName": "Sauer", 
+        "email": "Faye.Sauer@gfg.com", 
+        "contactNumber": "4914696673", 
+        "age": 60, 
+        "dob": "06/28/1962", 
+        "salary": 2, 
+        "address": "Address2"
+    },
+    {
+        "id": 1003,
+        "imageUrl": "gfg.png",
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "John.Doe@gfg.com",
+        "contactNumber": "1234567890",
+        "age": 35,
+        "dob": "05/15/1989",
+        "salary": 3,
+        "address": "Address3"
+    },
+    {
+        "id": 1004,
+        "imageUrl": "gfg.png",
+        "firstName": "Alice",
+        "lastName": "Smith",
+        "email": "Alice.Smith@gfg.com",
+        "contactNumber": "9876543210",
+        "age": 28,
+        "dob": "11/20/1996",
+        "salary": 4,
+        "address": "Address4"
+    },
+    {
+        "id": 1005,
+        "imageUrl": "gfg.png",
+        "firstName": "Michael",
+        "lastName": "Johnson",
+        "email": "Michael.Johnson@gfg.com",
+        "contactNumber": "2468013579",
+        "age": 45,
+        "dob": "03/10/1979",
+        "salary": 5,
+        "address": "Address5"
+    },
+    {
+        "id": 1006,
+        "imageUrl": "gfg.png",
+        "firstName": "Emily",
+        "lastName": "Brown",
+        "email": "Emily.Brown@gfg.com",
+        "contactNumber": "3692581470",
+        "age": 31,
+        "dob": "09/02/1993",
+        "salary": 6,
+        "address": "Address6"
+    },
+    {
+        "id": 1007,
+        "imageUrl": "gfg.png",
+        "firstName": "David",
+        "lastName": "Wilson",
+        "email": "David.Wilson@gfg.com",
+        "contactNumber": "7531902468",
+        "age": 52,
+        "dob": "07/18/1972",
+        "salary": 7,
+        "address": "Address7"
+    },
+    {
+        "id": 1008,
+        "imageUrl": "gfg.png",
+        "firstName": "Jessica",
+        "lastName": "Taylor",
+        "email": "Jessica.Taylor@gfg.com",
+        "contactNumber": "1593574802",
+        "age": 40,
+        "dob": "04/30/1984",
+        "salary": 8,
+        "address": "Address8"
+    },
+    {
+        "id": 1009,
+        "imageUrl": "gfg.png",
+        "firstName": "Daniel",
+        "lastName": "Anderson",
+        "email": "Daniel.Anderson@gfg.com",
+        "contactNumber": "8024671359",
+        "age": 37,
+        "dob": "02/14/1987",
+        "salary": 9,
+        "address": "Address9"
+    },
+    {
+        "id": 1010,
+        "imageUrl": "gfg.png",
+        "firstName": "Jennifer",
+        "lastName": "Martinez",
+        "email": "Jennifer.Martinez@gfg.com",
+        "contactNumber": "4679135820",
+        "age": 48,
+        "dob": "12/05/1976",
+        "salary": 10,
+        "address": "Address10"
+    }
+]
