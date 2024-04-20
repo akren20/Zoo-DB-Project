@@ -1,5 +1,5 @@
 // api/controllers/cartController.js
-import { addToCart } from '../services/cartService.js';
+import { addToCart } from '../models/cartModel.js';
 
 export const handleAddToCart = (req, res) => {
     const { userId, ticketId, quantity } = req.body;
