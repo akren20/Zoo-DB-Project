@@ -51,12 +51,13 @@ CREATE TABLE `animal`  (
   `animal_gender` int, -- 0 = male, 1 = female
   `animal_health` int, -- 0 = healthy, 1 = not healthy
   `animal_species` varchar(20) NOT NULL,
-  `animal_status` int, -- 0 = healthy
+  `animal_status` int, -- 1 = seen already and 0 = has not been seen
   `animal_name` varchar(25) NOT NULL,
   FOREIGN KEY (`animal_habitat`) REFERENCES `habitat`(`habitat_id`)
 );
 
-
+ALTER TABLE `animal`
+MODIFY COLUMN `animal_status` int DEFAULT 0;
 -- ----------------------------
 -- Records of animal
 -- ----------------------------
@@ -151,6 +152,19 @@ VALUES
 
 SET FOREIGN_KEY_CHECKS = 1;
 
+-- ----------------------------
+-- Create the vet table
+-- ----------------------------
+
+DROP TABLE IF EXISTS `vet`;
+CREATE TABLE `vet` (
+  `vet_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `vet_name` varchar(100) NOT NULL,
+  `vet_specialization` varchar(100),
+  `patient_checkup` tinyint DEFAULT 0, -- 0 indicates no pending checkup
+  `patient_id` int,
+  FOREIGN KEY(`patient_id`) REFERENCES `animal`(`animal_id`) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
 -- ----------------------------
 -- Table structure for health
@@ -556,34 +570,43 @@ CREATE TABLE `transaction_log` (
 -- ------------------------------------------------------
 GRANT UPDATE, TRIGGER ON your_database.* TO 'admin';
 
-DELIMITER //
+-- Create a trigger to update animal_status and set patient_checkup in vet table
+-- whenever a new health record is inserted, the trigger will update the animal_health and animal_status fields in 
+-- the animal table, with animal_status defaulting to 0 if it's a new entry incdicating that the animal needs to have its first checkup. Additionally, it will set patient_checkup to 
+-- 0 in the vet table for the corresponding vet.
 
--- Trigger to Update Animal Status
-CREATE TRIGGER update_animal_status
-AFTER INSERT ON health
+DELIMITER //
+CREATE TRIGGER update_animal_health AFTER INSERT ON health
 FOR EACH ROW
 BEGIN
-    DECLARE animal_status_var INT;
-    SELECT animal_health INTO animal_status_var FROM animal WHERE animal_id = NEW.animal_id;
-    IF animal_status_var = 1 AND NEW.health_status = 0 THEN
-        UPDATE animal SET animal_status = 0 WHERE animal_id = NEW.animal_id;
-    END IF;
-END //
+    -- Update animal_health and animal_status
+    UPDATE animal 
+    SET animal_health = NEW.health_status,
+        animal_status = 0
+    WHERE animal_id = NEW.animal_id;
 
--- Trigger to Track Transactions
-DELIMITER //
-
-CREATE TRIGGER track_transactions AFTER INSERT ON transaction 
-FOR EACH ROW 
-BEGIN 
-    INSERT INTO transaction_log (transaction_type, transaction_time, transaction_price, customer_name, customer_email) 
-    VALUES (NEW.transaction_type, NEW.transaction_time, NEW.transaction_price, NEW.customer_name, NEW.customer_email); 
-END //
-
+    -- Set patient_checkup to 0 in the vet table
+    UPDATE vet SET patient_checkup = 0 WHERE vet_id = NEW.vet_id;
+END;
+//
 DELIMITER ;
-DELIMITER //
 
 DELIMITER //
+-- This trigger will prevent the deletion of animals from the animal table if they have associated medical records in the medical table.
+-- to make sure that an animal's medical records have not accidentally been cleared/deleted from the database if they are still part of the zoo.
+-- 
+CREATE TRIGGER prevent_delete_animal BEFORE DELETE ON animal
+FOR EACH ROW
+BEGIN
+    DECLARE med_count INT;
+    SELECT COUNT(*) INTO med_count FROM medical WHERE medical_id = OLD.animal_id;
+    IF med_count > 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Cannot delete animal with associated medical records';
+    END IF;
+END;
+//
+DELIMITER ;
+
 
 -- ALTER USER 'admin'@'70-138-67-151.lightspeed.hstntx.sbcglobal.net' IDENTIFIED BY 'umadb123!';
 
