@@ -364,6 +364,58 @@ CREATE TABLE `gift_shop` (
 );
 
 
+
+-- ----------------------------
+-- Table structure for carts
+-- ----------------------------
+DROP TABLE IF EXISTS `carts`;
+CREATE TABLE `carts` (
+  `cart_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `user_id` int NOT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (`user_id`) REFERENCES `customer`(`customer_id`)
+);
+
+-- ----------------------------
+-- Table structure for cart_items
+-- ----------------------------
+DROP TABLE IF EXISTS `cart_items`;
+CREATE TABLE `cart_items` (
+  `cart_item_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `cart_id` int NOT NULL,
+  `ticket_id` int NOT NULL,
+  `quantity` int NOT NULL,
+  FOREIGN KEY (`cart_id`) REFERENCES `carts`(`cart_id`),
+  FOREIGN KEY (`ticket_id`) REFERENCES `tickets`(`ticket_id`)
+);
+
+-- ----------------------------
+-- Table structure for tickets
+-- ----------------------------
+DROP TABLE IF EXISTS `tickets`;
+CREATE TABLE `tickets` (
+  `ticket_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `ticket_type` varchar(100) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+);
+
+
+
+
+-- ----------------------------
+-- Records of tickets
+-- ----------------------------
+INSERT INTO `tickets` (`ticket_type`, `price`)
+VALUES
+('General', 15.00),
+('Bronze', 20.00),
+('Silver', 25.00),
+('Gold', 30.00);
+
+
+
+
+
 -- ----------------------------
 -- Records of shop inventory
 -- ----------------------------
@@ -411,6 +463,9 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 INSERT INTO `food_shop` VALUES (1, 1, 'Hambuger', '50', '5.99');
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+
 
 -- ----------------------------
 -- View structure for admin_view
