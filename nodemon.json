@@ -1,0 +1,6 @@
+{
+    "ext": "js,json",
+    "watch": ["backend"],
+    "exec": "node --experimental-modules server.js"
+  }
+  
