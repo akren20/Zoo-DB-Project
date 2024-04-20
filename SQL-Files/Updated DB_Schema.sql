@@ -280,9 +280,15 @@ CREATE TABLE `food_shop` (
 );
 
 -- ----------------------------
--- Records of shop
+-- Employee records
 -- ----------------------------
-
+CREATE TABLE IF NOT EXISTS employee_audit (
+  audit_id INT AUTO_INCREMENT PRIMARY KEY,
+  employee_id INT,
+  update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  description VARCHAR(255),
+  FOREIGN KEY (employee_id) REFERENCES employee(employee_id)
+);
 
 
 
@@ -661,7 +667,17 @@ BEGIN
 END;
 //
 DELIMITER ;
+-- trigger if any updates were made to employee table
+DELIMITER $$
+CREATE TRIGGER AfterEmployeeUpdate
+AFTER UPDATE ON employee
+FOR EACH ROW
+BEGIN
+   INSERT INTO employee_audit(employee_id, description)
+   VALUES (OLD.employee_id, CONCAT('Updated employee data from ', OLD.name, ' to ', NEW.name));
+END$$
 
+DELIMITER ;
 
 -- ALTER USER 'admin'@'70-138-67-151.lightspeed.hstntx.sbcglobal.net' IDENTIFIED BY 'umadb123!';
 
