@@ -23,7 +23,7 @@ This Database Management Software (DBMS) is configured to simulate general infor
 
 
 ## Features
--Ability for Employees (Staff), Administrators, and Visitors to log into separate webpages.
+-Ability for Employees (Staff), Administrators, and Visitors (Customers) to log into separate webpages.
     -Administrators are able to update information in tables
     -Visitors are not
     -Regular Employees are not
@@ -36,6 +36,8 @@ This Database Management Software (DBMS) is configured to simulate general infor
 -DBMS can make joins between tables to search for custom information from within the website Administration Portal
 
 -Contains multiple "triggers" for different events to automate updates to DBMS tuples (table information)
+    - Trigger 1: Trigger to update animal_status and set patient_checkup in the vet table whenever a new health record is inserted, the trigger will update the animal_health       and animal_status fields in the animal table, with animal_status defaulting to 0 if it's a new entry indicating that the animal needs to have its first checkup.              Additionally, it will set patient_checkup to 0 in the vet table for the corresponding vet.
+    - Trigger 2: This trigger will prevent the deletion of animals from the animal table if they have associated medical records in the medical table. To make sure that an         animal's medical records have not accidentally been cleared/deleted from the database if they are still part of the zoo and in the case that an animal leaves the UH          Zoo, those medical records will still;l be available in the system in case another Zoo may need them later.
 
 
 
@@ -43,6 +45,7 @@ This Database Management Software (DBMS) is configured to simulate general infor
 
 - HTML: Used for creating the structure and content of web pages.
 - JavaScript: Used for client-side scripting and dynamic interactions on the web pages.
+- NodeJS: Used for server-side scripting and back-end functionality.
 - PHP: Used for server-side scripting and back-end functionality.
 - CSS: Used for styling and layout of the web pages.
 - MySQL: Used as the relational database management system for storing and managing data.
@@ -57,8 +60,7 @@ This Database Management Software (DBMS) is configured to simulate general infor
         - The Live Preview Extension will render the webpage to the right hand side of the code. 
 
 ## Usage
-1. Run `npm start` to start the application.
-2. ...
+1. Run `npm run dev` to start the application.
 
 ## Contributing
 Contributions are NOT welcome from outsiders. Go away! For team members, please follow these guidelines:
