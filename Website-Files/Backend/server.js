@@ -13,7 +13,9 @@ import healthRoute from './routes/healthRoute.js';
 import medicalRoute from './routes/medicalRoute.js';
 import transactionRoute from './routes/transactionRoute.js';
 import adminRoute from './routes/adminRoute.js';
-import { DbService } from './zoodb.js';
+import cartRoutes from './routes/cartRoutes.js';
+
+
 
 const app = express();
 const port = process.env.PORT || 3306;  //website is on loacal host 5500 while server and db are on 3306
@@ -35,6 +37,9 @@ app.use('/api/healths', healthRoute);
 app.use('/api/medicals', medicalRoute);
 app.use('/api/transactions', transactionRoute);
 app.use('/api/admin', adminRoute);
+app.use('/api/cart', cartRoutes);
+
+
 
 //create
 app.post('/insert', (req,res) => {

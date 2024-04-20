@@ -1,5 +1,5 @@
 // api/services/cartService.js
-import pool from '../../config/db.js';  // Adjust the path as necessary
+import pool from '..Zoo-DB-Project/Website-Files/Backend/zoodb.js';  // Adjust the path as necessary
 
 export const addToCart = (userId, ticketId, quantity, callback) => {
     pool.query('SELECT id FROM carts WHERE user_id = ?', [userId], (err, results) => {
