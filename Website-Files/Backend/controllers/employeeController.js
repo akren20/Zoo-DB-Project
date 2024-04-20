@@ -1,4 +1,3 @@
-// backend/controllers/employeeController.js
 import EmployeesModel from '../models/employeeModel.js';
 
 class EmployeeController {
@@ -28,7 +27,7 @@ class EmployeeController {
   // PUT update an existing employee
   static async updateEmployee(req, res) {
     try {
-      const { id } = req.params;  // The ID should be part of the URL path
+      const { id } = req.params;  // Ensure ID is part of the URL
       const updatedEmployee = await EmployeesModel.updateEmployee(id, req.body);
       res.status(200).json({
         message: "Employee updated successfully",
@@ -42,7 +41,7 @@ class EmployeeController {
   // DELETE an employee
   static async deleteEmployee(req, res) {
     try {
-      const { id } = req.params;  // The ID should be part of the URL path
+      const { id } = req.params;
       await EmployeesModel.deleteEmployee(id);
       res.status(200).json({ message: "Employee deleted successfully" });
     } catch (error) {
