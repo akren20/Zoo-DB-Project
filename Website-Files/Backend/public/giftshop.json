@@ -1,4 +1,0 @@
-[
-    { "customerName": "Alice", "email": "alice@example.com", "purchase": "Souvenir Cup", "amount": "$10" },
-    { "customerName": "Bob", "email": "bob@example.com", "purchase": "Hat", "amount": "$5" }
-  ]
