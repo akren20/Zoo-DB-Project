@@ -786,3 +786,18 @@ h3{
     background: #6ebee4c9;
     font-weight: normal;
   }
+
+
+
+  .small-container.cart-page {
+    background-color: rgba(255, 255, 255, 0.85); /* White with 85% opacity */
+    padding: 20px; /* Add some padding around the content */
+    border-radius: 10px; /* Optional: Adds rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+}
+
+
+.buy-tickets-button {
+    font-size: 5em; /* Adjust the font size as needed */
+    padding: 20px 40px; /* Adjust the padding as needed */
+}

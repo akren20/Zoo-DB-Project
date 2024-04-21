@@ -1,148 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.boostrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        .cart-container {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .total {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+        .btn-remove {
+            color: red;
+            cursor: pointer;
+        }
+    </style>
 </head>
-
-
 <body>
-<section class = "aboutpg-header">
-
-
-<section class="about">
-    <nav>
-        <!--<a href="index.html"><img src="C:/Users/ari_a/OneDrive/Documents/School Work/Code/Databases/Zoo_DB/Zoo-DB-Project/Website/logo.png" alt="Logo"></a>-->
-        <div class="nav-links" id="navLinks">
-            <!--i class="fa fa-times" onclick="hideMenu()"></i> <--X sign-->
-                <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
-                    <li><a href="tickets.html">TICKETS</a></li>
-                    <li><a href="login.html">LOGIN</a></li>
-                    <li><a href="register.html">REGISTER</a></li>
-                    <li><a href="gallery.html">GALLERY</a></li>
-                    <li><a href="cart.html">PURCHASE</a></li>
-
-                </ul>
-        </div>
-        <!--i class="fa fa-bars" onclick="showMenu()"></i>  <--three bars-->
-    </nav>
-
-<!---Cart-->
-    <div class="small-container cart-page">
-        <table>
-            <tr>
-                <th>Tickets</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cartinfo">
-                        <img src = "gold_tier.png" alt="">
-                        <div>
-                            <p>Gold Ticket</p>
-                            <small>Price: $50.00</small>
-                        </div>
-                    </div>
-
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$50.00</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cartinfo">
-                        <img src="silver_tier.png" alt="Silver Ticket">
-                        <div>
-                            <p>Silver Ticket</p>
-                            <small>Price: $40.00</small>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$40.00</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cartinfo">
-                        <img src="bronze_tier.png" alt="Bronze Ticket">
-                        <div>
-                            <p>Bronze Ticket</p>
-                            <small>Price: $30.00</small>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$30.00</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cartinfo">
-                        <img src="ga_tier.png" alt="General Admission Ticket">
-                        <div>
-                            <p>General Admission Ticket</p>
-                            <small>Price: $20.00</small>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$20.00</td>
-            </tr>
-
+    <div class="container cart-container">
+        <h2>Your Shopping Cart</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Gold Tier Ticket</td>
+                    <td>$125.00</td>
+                    <td><input type="number" value="1" min="1" class="form-control" style="width: 80px;"></td>
+                    <td>$125.00</td>
+                    <td><span class="btn-remove">Remove</span></td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Silver Tier Ticket</td>
+                    <td>$75.00</td>
+                    <td><input type="number" value="2" min="1" class="form-control" style="width: 80px;"></td>
+                    <td>$150.00</td>
+                    <td><span class="btn-remove">Remove</span></td>
+                </tr>
+                <!-- Add more rows here for more items -->
+            </tbody>
         </table>
-
-    </div>
-
-
-
-
-<!---Footer-->
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="footer-col">
-                <h4>contact information</h4>
-                <ul>
-                    <li><span class="unclickable">About Us</span></li>
-                    <li><span class="unclickable">123 Zoo Lane, Pearland, Texas, 77584</span></li>
-                    <li><span class="unclickable">Phone: 123-456-7890</span></li>
-                    <li><span class="unclickable">Email: info@uhzoo.com</span></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>hours of operation</h4>
-                <ul>
-                    <li><span class="unclickable">Monday - Thursday: 8:00 AM - 7:00 PM</span></li>
-                    <li><span class="unclickable">Friday - Sunday: 10:00 AM - 9:00 PM</span></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Membership</h4>
-                <ul>
-                    <li><span class="unclickable">Learn about our membership options and benefits.</span></li>
-                    <li><a href="tickets.html">Tickets and Membership Options</a></li>
-
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Donate</h4>
-                <ul>
-                    <li><span class="unclickable">Support our conservation efforts and animal care programs.</span></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Membership</h4>
-                <ul>
-                    <li><span class="unclickable">&copy; 2024 University of Houston Zoo. </span></li>
-                    <li><span class="unclickable">All rights reserved.</span></li>
-                </ul>
-            </div>
+        <div class="total">
+            Total: $275.00
         </div>
+        <button class="btn btn-primary">Checkout</button>
     </div>
-</footer>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
